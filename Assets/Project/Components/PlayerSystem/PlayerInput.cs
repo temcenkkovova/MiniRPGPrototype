@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
 
   void Update()
   {
-    Vector3 inputVector = input.Player.Move.ReadValue<Vector3>();
+    Vector2 inputVector = input.Player.Move.ReadValue<Vector2>();
     if (movement != null) movement.Move(inputVector);
   }
 

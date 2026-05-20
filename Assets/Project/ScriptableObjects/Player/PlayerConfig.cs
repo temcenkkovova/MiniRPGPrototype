@@ -7,5 +7,6 @@ public class PlayerConfig : ScriptableObject
   public float expToNextLevel;
   public float multiplyExp;
   public float baseDamage;
+  public float sprintSpeed;
 
 }

@@ -4,9 +4,18 @@ public class PlayerStats
 {
   private float health;
   private float moveSpeed;
+  private float sprintSpeed;
   public float ExpToNextLevel;
   public float MultiplyExp;
   private float baseDamage;
+  public float SprintSpeed
+  {
+    get => sprintSpeed; set
+    {
+      sprintSpeed = value;
+      OnSprintSpeedChanged?.Invoke(sprintSpeed);
+    }
+  }
   public float BaseDamage
   {
     get => baseDamage; set
@@ -37,6 +46,7 @@ public class PlayerStats
 
   public event Action<PlayerStats> OnStatsChanged;
   public event Action<float> OnBaseDamageChanged;
+  public event Action<float> OnSprintSpeedChanged;
 
   public PlayerStats(PlayerConfig config)
   {
@@ -45,5 +55,6 @@ public class PlayerStats
     ExpToNextLevel = config.expToNextLevel;
     MultiplyExp = config.multiplyExp;
     BaseDamage = config.baseDamage;
+    SprintSpeed = config.sprintSpeed;
   }
 }

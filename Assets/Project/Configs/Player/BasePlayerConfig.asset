@@ -17,3 +17,4 @@ MonoBehaviour:
   expToNextLevel: 5
   multiplyExp: 0.2
   baseDamage: 12
+  sprintSpeed: 6

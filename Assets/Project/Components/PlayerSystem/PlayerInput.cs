@@ -1,6 +1,7 @@
 
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -24,9 +25,22 @@ public class PlayerInput : MonoBehaviour
   void OnEnable()
   {
     input.Enable();
+    input.Player.Sprint.started += OnSprintStarted;
+    input.Player.Sprint.canceled += OnSprintCanceled;
   }
   public void OnDisable()
   {
     input.Disable();
+    input.Player.Sprint.started -= OnSprintStarted;
+    input.Player.Sprint.canceled -= OnSprintCanceled;
+  }
+
+  public void OnSprintStarted(InputAction.CallbackContext context)
+  {
+    movement.ChangeSprintState(true);
+  }
+  public void OnSprintCanceled(InputAction.CallbackContext context)
+  {
+    movement.ChangeSprintState(false);
   }
 }

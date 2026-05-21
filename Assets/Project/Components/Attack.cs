@@ -5,8 +5,10 @@ public abstract class Attack : MonoBehaviour
 {
 
   [SerializeField] protected AttackConfig attackConfig;
+  public float WeaponAttackDamage => attackConfig.damage;
 
   protected float lastAttackTime;
+
 
   public void Init(AttackConfig config)
   {

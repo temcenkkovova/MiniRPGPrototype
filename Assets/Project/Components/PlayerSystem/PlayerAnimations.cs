@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
   private Animator animator;
   private PlayerMovement movement;
+  public event Action AttackAnimationFinished;
+  public event Action AttackAnimationStarted;
 
   void Awake()
   {
@@ -22,4 +25,14 @@ public class PlayerAnimations : MonoBehaviour
   {
     animator.SetTrigger("Attack");
   }
+
+  public void OnAttackAnimationStarted()
+  {
+    AttackAnimationStarted?.Invoke();
+  }
+  public void OnAttackAnimationFinished()
+  {
+    AttackAnimationFinished?.Invoke();
+  }
+
 }

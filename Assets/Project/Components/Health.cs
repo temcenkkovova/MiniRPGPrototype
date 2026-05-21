@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public abstract class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour, IDamageable
 {
-  public float CurrentHealth { get; private set; }
+  //public float CurrentHealth { get; private set; }
+  public float CurrentHealth;
   public float MaxHealth { get; private set; }
   public event Action<float> OnHealthChanged;
   public event Action OnDeath;

@@ -6,6 +6,7 @@
 /[Ll]ogs/
 /UserSettings/
 
+
 MemoryCaptures/
 
 .vscode/
@@ -19,4 +20,4 @@ MemoryCaptures/
 *.booproj
 *.svd
 *.pdb
-*.zipgit add .
+*.zip

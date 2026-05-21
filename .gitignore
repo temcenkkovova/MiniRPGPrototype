@@ -19,3 +19,4 @@ MemoryCaptures/
 *.booproj
 *.svd
 *.pdb
+*.zipgit add .

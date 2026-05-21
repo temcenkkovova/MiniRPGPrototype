@@ -8,6 +8,7 @@ public class PlayerBootstrap : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerMovement movement;
     private PlayerHealth health;
+    private PlayerCombat playerCombat;
 
     public void Awake()
     {
@@ -17,14 +18,16 @@ public class PlayerBootstrap : MonoBehaviour
 
     public void Start()
     {
-        if (movement == null && health == null) return;
+        if (movement == null && health == null && playerCombat == null) return;
         movement.Init(playerStats);
         health.Init(playerStats.Health);
+        playerCombat.InitBaseStats(playerStats);
     }
 
     public void GetAllComponents()
     {
         movement = GetComponent<PlayerMovement>();
         health = GetComponent<PlayerHealth>();
+        playerCombat = GetComponent<PlayerCombat>();
     }
 }

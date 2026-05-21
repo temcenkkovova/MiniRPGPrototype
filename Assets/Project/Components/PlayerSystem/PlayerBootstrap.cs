@@ -12,12 +12,10 @@ public class PlayerBootstrap : MonoBehaviour
 
     public void Awake()
     {
-        playerStats = new PlayerStats(config);
-        GetAllComponents();
-    }
 
-    public void Start()
-    {
+        GetAllComponents();
+        playerStats = new PlayerStats(config);
+
         if (movement == null && health == null && playerCombat == null) return;
         movement.Init(playerStats);
         health.Init(playerStats.Health);

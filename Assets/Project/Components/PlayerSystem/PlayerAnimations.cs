@@ -18,5 +18,8 @@ public class PlayerAnimations : MonoBehaviour
     animator.SetFloat("MoveSpeed", movement.CurrentSpeedPercent, 0.1f, Time.deltaTime);
   }
 
-
+  public void StartAttackAnimation()
+  {
+    animator.SetTrigger("Attack");
+  }
 }

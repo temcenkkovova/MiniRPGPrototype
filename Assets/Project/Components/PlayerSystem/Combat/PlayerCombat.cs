@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-  public float BaseDamage => playerStats.BaseDamage;
+
   private PlayerStats playerStats;
-  [SerializeField] private AttackConfig attackConfig;
+  public float PlayerDamage => playerStats.BaseDamage;
 
   public void InitBaseStats(PlayerStats stats)
   {

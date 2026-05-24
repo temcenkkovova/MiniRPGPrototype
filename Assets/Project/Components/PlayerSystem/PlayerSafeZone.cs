@@ -13,6 +13,7 @@ public class PlayerSafeZone : MonoBehaviour
     {
       safeZoneStatus = true;
       OnSafeZone?.Invoke(safeZoneStatus);
+      Debug.Log("Is safe zone");
     }
 
   }
@@ -23,6 +24,7 @@ public class PlayerSafeZone : MonoBehaviour
     {
       safeZoneStatus = false;
       OnSafeZone?.Invoke(safeZoneStatus);
+      Debug.Log("Leave  safe zone");
     }
   }
 }

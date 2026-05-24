@@ -10,6 +10,7 @@ public class IdleState : IEnemyState
   public IdleState(float movementRadius, EnemyTargetSystem targetSystem, EnemyFSMController enemyFSMController, EnemyBootstrap enemy)
   {
     fsm = enemyFSMController;
+    enemyTargetSystem = targetSystem;
     this.enemy = enemy;
   }
   public void Update()

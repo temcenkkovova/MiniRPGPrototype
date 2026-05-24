@@ -8,7 +8,7 @@ public abstract class Health : MonoBehaviour, IDamageable
   public float MaxHealth { get; private set; }
   public event Action<float> OnHealthChanged;
   public event Action OnDeath;
-  public event Action<float> Damaged; // It needs for show UI notification
+  public event Action<DamageInfo> OnDamaged; // It needs for show UI notification
 
   protected virtual void Die()
   {
@@ -22,7 +22,7 @@ public abstract class Health : MonoBehaviour, IDamageable
     OnHealthChanged?.Invoke(maxHealth);
   }
 
-  public void TakeDamage(float damage)
+  public void TakeDamage(float damage, Transform attacker)
   {
     if (CurrentHealth <= damage)
     {
@@ -32,7 +32,11 @@ public abstract class Health : MonoBehaviour, IDamageable
     else
     {
       CurrentHealth -= damage;
-      Damaged?.Invoke(damage);
+      OnDamaged?.Invoke(new DamageInfo
+      {
+        Damage = damage,
+        attacker = attacker
+      });
     }
 
     OnHealthChanged?.Invoke(CurrentHealth);

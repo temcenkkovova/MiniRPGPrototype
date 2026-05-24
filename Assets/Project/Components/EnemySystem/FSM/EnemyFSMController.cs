@@ -24,9 +24,9 @@ public class EnemyFSMController : MonoBehaviour
     currentState?.Enter();
   }
 
-  public void InitState(EnemyHealth enemyHealth)
+  public void InitState(EnemyHealth enemyHealth, IEnemyState idleState)
   {
     this.enemyHealth = enemyHealth;
-    //SwitchState()
+    SwitchState(idleState);
   }
 }

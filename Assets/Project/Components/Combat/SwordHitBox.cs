@@ -4,6 +4,7 @@ public class SwordHitBox : MonoBehaviour
 {
   private float damage;
   private Collider swordCollider;
+  public Transform ownerTr;
   void Awake()
   {
     swordCollider = GetComponent<Collider>();
@@ -23,7 +24,7 @@ public class SwordHitBox : MonoBehaviour
   {
     if (other.TryGetComponent<IDamageable>(out var damageable))
     {
-      damageable.TakeDamage(damage);
+      damageable.TakeDamage(damage, ownerTr);
     }
 
   }

@@ -30,7 +30,8 @@ public class EnemyMovement : MonoBehaviour
 
   public void StopMove()
   {
-    rb.velocity = Vector3.zero;
+    moveDirection = Vector3.zero;
+    rb.velocity = moveDirection;
   }
 
 

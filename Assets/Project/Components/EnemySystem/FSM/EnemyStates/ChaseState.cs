@@ -8,19 +8,21 @@ public class ChaseState : IEnemyState
   private EnemyAttack enemyAttack;
   private EnemyBootstrap enemy;
 
-  public ChaseState(EnemyTargetSystem targetSystem, EnemyMovement enemyMovement, EnemyFSMController enemyFSMController, EnemyBootstrap enemy, EnemyAttack enemyAttack)
+
+  public ChaseState(EnemyContext enemyContext, EnemyFSMController fSMController)
   {
-    this.targetSystem = targetSystem;
-    movement = enemyMovement;
-    fsm = enemyFSMController;
-    this.enemy = enemy;
-    this.enemyAttack = enemyAttack;
+    targetSystem = enemyContext.enemyTargetSystem;
+    movement = enemyContext.enemyMovement;
+    fsm = fSMController;
+    enemy = enemyContext.enemy;
+    enemyAttack = enemyContext.enemyAttack;
   }
 
   public void Update()
   {
     if (targetSystem.TargetTr != null)
     {
+      Debug.Log("attack state");
       Vector3 offset = targetSystem.TargetTr.position - enemy.transform.position;
       offset.y = 0f;
       float distanceSqr = offset.sqrMagnitude;
@@ -40,11 +42,12 @@ public class ChaseState : IEnemyState
     else
     {
       fsm.SwitchState(enemy.IdleSt);
+      movement.StopMove();
     }
   }
   public void Exit()
   {
-    movement.StopMove();
+
   }
 
   public void Enter()

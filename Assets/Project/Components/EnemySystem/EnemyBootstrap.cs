@@ -27,10 +27,10 @@ public class EnemyBootstrap : MonoBehaviour
   void Start()
   {
     if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || enemyAttack == null) return;
-    chaseState = new ChaseState(enemyTargetSystem, enemyMovement, fsmController, this, enemyAttack);
-    idleState = new IdleState(enemyTargetSystem, fsmController, this);
-    attackState = new AttackState(enemyTargetSystem, fsmController, this, enemyAttack);
-    patrolState = new PatrolState(10f, enemyTargetSystem, fsmController, this, enemyMovement);
+    chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
+    idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
+    attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
+    patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController, 10f);
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt);

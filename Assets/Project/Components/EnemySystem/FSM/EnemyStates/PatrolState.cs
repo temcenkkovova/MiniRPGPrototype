@@ -12,19 +12,22 @@ public class PatrolState : IEnemyState
   private float radius;
   private float timer;
   private Vector3 patrolPoint;
-  public PatrolState(float movementRadius, EnemyTargetSystem targetSystem, EnemyFSMController enemyFSMController, EnemyBootstrap enemy, EnemyMovement enemyMovement)
+
+  public PatrolState(EnemyContext enemyContext, EnemyFSMController fSMController, float movementRadius)
   {
-    fsm = enemyFSMController;
-    enemyTargetSystem = targetSystem;
-    this.enemy = enemy;
-    movement = enemyMovement;
+    enemyTargetSystem = enemyContext.enemyTargetSystem;
+    movement = enemyContext.enemyMovement;
+    fsm = fSMController;
+    enemy = enemyContext.enemy;
     radius = movementRadius;
   }
+
   public void Update()
   {
     if (enemyTargetSystem.TargetTr != null)
     {
       fsm.SwitchState(enemy.ChaseSt);
+      return;
     }
 
 
@@ -38,6 +41,7 @@ public class PatrolState : IEnemyState
     if (timer <= 0f)
     {
       fsm.SwitchState(enemy.IdleSt);
+      movement.StopMove();
     }
   }
 
@@ -50,6 +54,6 @@ public class PatrolState : IEnemyState
   public void Exit()
   {
 
-    movement.StopMove();
+
   }
 }

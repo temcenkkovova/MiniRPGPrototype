@@ -9,17 +9,20 @@ public class IdleState : IEnemyState
   private EnemyBootstrap enemy;
   private float idleTime = 2f;
   private float timer;
-  public IdleState(EnemyTargetSystem targetSystem, EnemyFSMController enemyFSMController, EnemyBootstrap enemy)
+
+  public IdleState(EnemyContext enemyContext, EnemyFSMController fSMController)
   {
-    fsm = enemyFSMController;
-    enemyTargetSystem = targetSystem;
-    this.enemy = enemy;
+    enemyTargetSystem = enemyContext.enemyTargetSystem;
+    fsm = fSMController;
+    enemy = enemyContext.enemy;
+
   }
   public void Update()
   {
     if (enemyTargetSystem.TargetTr != null)
     {
       fsm.SwitchState(enemy.ChaseSt);
+      return;
     }
     else
     {

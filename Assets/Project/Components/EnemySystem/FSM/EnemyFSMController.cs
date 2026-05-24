@@ -5,13 +5,6 @@ public class EnemyFSMController : MonoBehaviour
   private IEnemyState currentState;
   private EnemyHealth enemyHealth;
 
-  void Awake()
-  {
-
-    if (enemyHealth == null) return; // it needs to handle death state for future.
-
-  }
-
   void Update()
   {
     currentState?.Update();

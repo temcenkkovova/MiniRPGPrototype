@@ -35,6 +35,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
+
   }
 
   private void InitComponents()

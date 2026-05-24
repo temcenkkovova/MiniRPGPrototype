@@ -1,0 +1,32 @@
+using UnityEngine;
+
+public class EnemyAnimationsController : MonoBehaviour
+{
+  private Animator animator;
+  private EnemyMovement movement;
+
+  void Start()
+  {
+    animator = GetComponentInChildren<Animator>();
+    movement = GetComponent<EnemyMovement>();
+  }
+
+  public void AttackAnimation()
+  {
+    animator.SetTrigger("Attack");
+  }
+
+  public void MoveAnimation()
+  {
+
+    animator.SetFloat("WalkSpeed", movement.CurrentEnemySpeedPercent, 0.1f, Time.deltaTime);
+
+  }
+
+  void Update()
+  {
+    if (movement == null) return;
+    MoveAnimation();
+  }
+
+}

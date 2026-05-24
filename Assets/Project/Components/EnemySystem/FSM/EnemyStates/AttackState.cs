@@ -32,6 +32,7 @@ public class AttackState : IEnemyState
       }
 
       Debug.Log("here will be attack action");
+      enemyAttack.TryAttack();
     }
     else
     {

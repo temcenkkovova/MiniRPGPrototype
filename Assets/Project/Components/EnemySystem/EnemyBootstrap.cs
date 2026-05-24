@@ -17,7 +17,7 @@ public class EnemyBootstrap : MonoBehaviour
   private EnemyTargetSystem enemyTargetSystem;
   private EnemyMovement enemyMovement;
   private EnemyAttack enemyAttack;
-
+  private EnemyAnimationsController enemyAnimationController;
 
   void Awake()
   {
@@ -26,7 +26,7 @@ public class EnemyBootstrap : MonoBehaviour
 
   void Start()
   {
-    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || enemyAttack == null) return;
+    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || enemyAttack == null || enemyAnimationController == null) return;
     chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
@@ -35,6 +35,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
+    enemyAttack.OnAttack += enemyAnimationController.AttackAnimation;
 
   }
 
@@ -45,6 +46,16 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement = GetComponent<EnemyMovement>();
     enemyTargetSystem = GetComponent<EnemyTargetSystem>();
     enemyAttack = GetComponent<EnemyAttack>();
+    enemyAnimationController = GetComponent<EnemyAnimationsController>();
   }
 
+  void OnDisable()
+  {
+    if (enemyHealth != null && enemyAttack != null)
+    {
+      enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
+      enemyAttack.OnAttack -= enemyAnimationController.AttackAnimation;
+    }
+
+  }
 }

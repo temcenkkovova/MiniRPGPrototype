@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 423736130}
   - component: {fileID: 423736129}
   - component: {fileID: 423736128}
+  - component: {fileID: 423736137}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -256,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConfig: {fileID: 11400000, guid: 27ad6942e483e6646a67a9235d6bfdf6, type: 2}
+  isAttack: 0
 --- !u!114 &423736133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +316,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &423736137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423736127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7e6fcaa69ef9740acd1318728c5955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &424421149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConfig: {fileID: 11400000, guid: 27ad6942e483e6646a67a9235d6bfdf6, type: 2}
+  isAttack: 0
 --- !u!54 &2014181519
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2009,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95905397883882224, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a9cdbc64ffd9be443b9adb4ef94349de, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
 --- !u!4 &2120304049 stripped

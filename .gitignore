@@ -5,6 +5,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /UserSettings/
+/Assets/RPGHero/
 
 MemoryCaptures/
 
@@ -19,3 +20,5 @@ MemoryCaptures/
 *.booproj
 *.svd
 *.pdb
+*.zip
+*.zip.meta

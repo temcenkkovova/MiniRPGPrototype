@@ -9,7 +9,7 @@ public class EnemyTargetSystem : MonoBehaviour
   public void SetNewTarget(DamageInfo damageInfo)
   {
     targetTr = damageInfo.attacker;
-    player = GetComponent<PlayerBootstrap>();
+    player = damageInfo.attacker.GetComponent<PlayerBootstrap>();
 
     if (player != null)
     {
@@ -19,7 +19,10 @@ public class EnemyTargetSystem : MonoBehaviour
 
   public void RemoveTarget(bool newSafeZoneStatus)
   {
-    if (!newSafeZoneStatus)
-      targetTr = null;
+
+    if (newSafeZoneStatus)
+      player.GetComponent<PlayerSafeZone>().OnSafeZone -= RemoveTarget;
+
+    targetTr = null;
   }
 }

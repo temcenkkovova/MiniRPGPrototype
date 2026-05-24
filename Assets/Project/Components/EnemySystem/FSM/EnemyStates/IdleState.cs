@@ -7,7 +7,9 @@ public class IdleState : IEnemyState
   private EnemyTargetSystem enemyTargetSystem;
   private EnemyFSMController fsm;
   private EnemyBootstrap enemy;
-  public IdleState(float movementRadius, EnemyTargetSystem targetSystem, EnemyFSMController enemyFSMController, EnemyBootstrap enemy)
+  private float idleTime = 2f;
+  private float timer;
+  public IdleState(EnemyTargetSystem targetSystem, EnemyFSMController enemyFSMController, EnemyBootstrap enemy)
   {
     fsm = enemyFSMController;
     enemyTargetSystem = targetSystem;
@@ -19,13 +21,20 @@ public class IdleState : IEnemyState
     {
       fsm.SwitchState(enemy.ChaseSt);
     }
-
-    Debug.Log("Idle");
+    else
+    {
+      timer -= Time.deltaTime;
+      Debug.Log("Idle");
+      if (timer <= 0f)
+      {
+        fsm.SwitchState(enemy.PatrolSt);
+      }
+    }
   }
 
   public void Enter()
   {
-
+    timer = idleTime;
   }
   public void Exit()
   {

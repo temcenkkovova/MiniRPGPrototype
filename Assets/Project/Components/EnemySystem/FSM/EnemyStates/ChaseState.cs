@@ -27,13 +27,14 @@ public class ChaseState : IEnemyState
 
       if (distanceSqr <= enemyAttack.attackConfig.range * enemyAttack.attackConfig.range)
       {
+        movement.StopMove();
         fsm.SwitchState(enemy.AttackSt);
         return;
       }
       Vector3 dir = offset.normalized;
 
 
-      //movement.Move(dir, movement.enemyConfig.moveSpeed);
+      movement.SetDirection(dir);
 
     }
     else
@@ -43,7 +44,7 @@ public class ChaseState : IEnemyState
   }
   public void Exit()
   {
-
+    movement.StopMove();
   }
 
   public void Enter()

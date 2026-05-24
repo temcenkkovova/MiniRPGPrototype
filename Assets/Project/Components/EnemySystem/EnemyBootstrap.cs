@@ -9,9 +9,11 @@ public class EnemyBootstrap : MonoBehaviour
   private ChaseState chaseState;
   private IdleState idleState;
   private AttackState attackState;
+  private PatrolState patrolState;
   public IdleState IdleSt => idleState;
   public ChaseState ChaseSt => chaseState;
-  public ChaseState AttackSt => chaseState;
+  public AttackState AttackSt => attackState;
+  public PatrolState PatrolSt => patrolState;
   private EnemyTargetSystem enemyTargetSystem;
   private EnemyMovement enemyMovement;
   private EnemyAttack enemyAttack;
@@ -26,8 +28,9 @@ public class EnemyBootstrap : MonoBehaviour
   {
     if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || enemyAttack == null) return;
     chaseState = new ChaseState(enemyTargetSystem, enemyMovement, fsmController, this, enemyAttack);
-    idleState = new IdleState(10, enemyTargetSystem, fsmController, this);
+    idleState = new IdleState(enemyTargetSystem, fsmController, this);
     attackState = new AttackState(enemyTargetSystem, fsmController, this, enemyAttack);
+    patrolState = new PatrolState(10f, enemyTargetSystem, fsmController, this, enemyMovement);
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt);

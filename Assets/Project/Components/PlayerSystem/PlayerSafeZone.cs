@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSafeZone : MonoBehaviour
 {
-  private bool safeZoneStatus;
+  private bool safeZoneStatus = false;
   public bool InSafeZone => safeZoneStatus;
   public event Action<bool> OnSafeZone;
 
@@ -13,7 +13,7 @@ public class PlayerSafeZone : MonoBehaviour
     {
       safeZoneStatus = true;
       OnSafeZone?.Invoke(safeZoneStatus);
-      Debug.Log("Is safe zone");
+
     }
 
   }
@@ -24,7 +24,7 @@ public class PlayerSafeZone : MonoBehaviour
     {
       safeZoneStatus = false;
       OnSafeZone?.Invoke(safeZoneStatus);
-      Debug.Log("Leave  safe zone");
+
     }
   }
 }

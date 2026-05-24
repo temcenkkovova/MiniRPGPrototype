@@ -888,6 +888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPGHeroHP
       objectReference: {fileID: 0}
+    - target: {fileID: 1556040939566342, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1854735698366320, guid: c20397bf1592dc040b827e8716b0bd41, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1059,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1c418e79fc66c46921dc919925389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentHealth: 0
 --- !u!114 &1974371179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1134,7 @@ GameObject:
   - component: {fileID: 2014181513}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1224,3 +1229,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70217c308aabf24c9a83e9eb0fb6d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentHealth: 0

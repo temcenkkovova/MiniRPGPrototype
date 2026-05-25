@@ -36,12 +36,11 @@ public class PatrolState : IEnemyState
     movement.SetDirection(dir);
 
     float distance = Vector3.Distance(enemy.transform.position, patrolPoint);
-    Debug.Log("patrol");
-    //if (distance < 1f || timer <= 0f)
-    if (timer <= 0f)
+    if (distance <= 0.2f || timer <= 0f)
     {
-      fsm.SwitchState(enemy.IdleSt);
       movement.StopMove();
+      fsm.SwitchState(enemy.IdleSt);
+      return;
     }
   }
 

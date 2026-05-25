@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
       rotateDir.y = 0f;
       if (rotateDir.sqrMagnitude < 0.01f) return;
       Quaternion targetRotation = Quaternion.LookRotation(rotateDir);
-      transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+      transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.fixedDeltaTime);
     }
 
   }

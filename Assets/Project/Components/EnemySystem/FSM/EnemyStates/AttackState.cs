@@ -54,7 +54,7 @@ public class AttackState : IEnemyState
 
   public void Enter()
   {
-
+    movement.StopMove(); // to stop move during attack . But it does not work correctly;
   }
 
 }

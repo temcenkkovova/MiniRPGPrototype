@@ -2,36 +2,29 @@ using UnityEngine;
 
 public class MeleeAttack : Attack
 {
-  private PlayerCombat playerCombat;
+  private ICombatStats combatStats;
   public SwordHitBox swordHitBox;
-  private PlayerAnimations playerAnimations;
-
 
   void Awake()
   {
-    playerCombat = GetComponent<PlayerCombat>();
-    playerAnimations = GetComponent<PlayerAnimations>();
+    combatStats = GetComponent<ICombatStats>();
+
   }
 
   protected override void ExecuteAttack()
   {
-    if (playerCombat == null) return;
-    float totalDamage = playerCombat.PlayerDamage + attackConfig.damage;
+    if (combatStats == null) return;
+    float totalDamage = combatStats.Damage + attackConfig.damage;
     swordHitBox.EnableCollider();
     swordHitBox.SetDamage(totalDamage);
   }
 
-  void OnEnable()
-  {
 
-    playerAnimations.AttackAnimationStarted += EnableHitbox;
-    playerAnimations.AttackAnimationFinished += DisableHitbox;
-  }
-  private void EnableHitbox()
+  public void EnableHitbox()
   {
     swordHitBox.EnableCollider();
   }
-  private void DisableHitbox()
+  public void DisableHitbox()
   {
     swordHitBox.DisableCollider();
   }

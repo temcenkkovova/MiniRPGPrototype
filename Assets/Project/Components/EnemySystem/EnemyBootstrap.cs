@@ -16,8 +16,9 @@ public class EnemyBootstrap : MonoBehaviour
   public PatrolState PatrolSt => patrolState;
   private EnemyTargetSystem enemyTargetSystem;
   private EnemyMovement enemyMovement;
-  private EnemyAttack enemyAttack;
+  private Attack attack;
   private EnemyAnimationsController enemyAnimationController;
+  private EnemyAttackManager enemyAttackManager;
 
   void Awake()
   {
@@ -26,16 +27,16 @@ public class EnemyBootstrap : MonoBehaviour
 
   void Start()
   {
-    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || enemyAttack == null || enemyAnimationController == null) return;
-    chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
-    idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
-    attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController);
-    patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = enemyAttack, enemyMovement = enemyMovement }, fsmController, 10f);
+    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null) return;
+    chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
+    idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
+    attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
+    patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, 10f);
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
-    enemyAttack.OnAttack += enemyAnimationController.AttackAnimation;
+    //attack.OnAttack += enemyAnimationController.AttackAnimation;
 
   }
 
@@ -45,16 +46,17 @@ public class EnemyBootstrap : MonoBehaviour
     fsmController = GetComponent<EnemyFSMController>();
     enemyMovement = GetComponent<EnemyMovement>();
     enemyTargetSystem = GetComponent<EnemyTargetSystem>();
-    enemyAttack = GetComponent<EnemyAttack>();
+    attack = GetComponent<Attack>();
     enemyAnimationController = GetComponent<EnemyAnimationsController>();
+    enemyAttackManager = GetComponent<EnemyAttackManager>();
   }
 
   void OnDisable()
   {
-    if (enemyHealth != null && enemyAttack != null)
+    if (enemyHealth != null && attack != null)
     {
       enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
-      enemyAttack.OnAttack -= enemyAnimationController.AttackAnimation;
+      //enemyAttack.OnAttack -= enemyAnimationController.AttackAnimation;
     }
 
   }

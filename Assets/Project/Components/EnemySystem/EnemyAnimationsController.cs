@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class EnemyAnimationsController : MonoBehaviour
 {
   private Animator animator;
   private EnemyMovement movement;
+
 
   void Start()
   {
@@ -28,5 +30,10 @@ public class EnemyAnimationsController : MonoBehaviour
     if (movement == null) return;
     MoveAnimation();
   }
+  public void StartAttackAnimation()
+  {
+    animator.SetTrigger("Attack");
+  }
+
 
 }

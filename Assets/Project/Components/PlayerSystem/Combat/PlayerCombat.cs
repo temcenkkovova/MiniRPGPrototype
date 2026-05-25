@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, ICombatStats
 {
 
   private PlayerStats playerStats;
-  public float PlayerDamage => playerStats.BaseDamage;
+  public float Damage => playerStats.BaseDamage;
+
 
   public void InitBaseStats(PlayerStats stats)
   {

@@ -6,6 +6,7 @@ public abstract class Attack : MonoBehaviour
 
   [SerializeField] protected AttackConfig attackConfig;
   public float WeaponAttackDamage => attackConfig.damage;
+  public float RangeAttack => attackConfig.range;
 
   protected float lastAttackTime;
 

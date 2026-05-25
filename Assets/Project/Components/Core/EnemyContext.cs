@@ -2,7 +2,7 @@ public class EnemyContext
 {
   public EnemyTargetSystem enemyTargetSystem;
   public EnemyMovement enemyMovement;
-  public EnemyAttack enemyAttack;
+  public Attack enemyAttack;
   public EnemyBootstrap enemy;
 
 }

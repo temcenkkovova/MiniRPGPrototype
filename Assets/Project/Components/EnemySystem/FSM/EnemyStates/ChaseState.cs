@@ -5,7 +5,7 @@ public class ChaseState : IEnemyState
   private EnemyTargetSystem targetSystem;
   private EnemyFSMController fsm;
   private EnemyMovement movement;
-  private EnemyAttack enemyAttack;
+  private Attack enemyAttack;
   private EnemyBootstrap enemy;
 
 
@@ -27,7 +27,7 @@ public class ChaseState : IEnemyState
       offset.y = 0f;
       float distanceSqr = offset.sqrMagnitude;
 
-      if (distanceSqr <= enemyAttack.attackConfig.range * enemyAttack.attackConfig.range)
+      if (distanceSqr <= enemyAttack.RangeAttack * enemyAttack.RangeAttack)
       {
         movement.StopMove();
         fsm.SwitchState(enemy.AttackSt);

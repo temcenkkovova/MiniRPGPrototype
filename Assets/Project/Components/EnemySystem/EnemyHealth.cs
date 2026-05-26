@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyHealth : Health
 {
   // public event Action<Transform> OnDamaged;
+  public float HealthPercent => MaxHealth / CurrentHealth;
   void Start()
   {
 

@@ -24,6 +24,10 @@ public class EnemyAnimationsController : MonoBehaviour
     animator.SetFloat("WalkSpeed", movement.CurrentEnemySpeedPercent, 0.1f, Time.deltaTime);
 
   }
+  public void DeadAnimation()
+  {
+    animator.SetTrigger("Dead");
+  }
 
   void Update()
   {

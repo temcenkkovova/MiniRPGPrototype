@@ -10,10 +10,12 @@ public class EnemyBootstrap : MonoBehaviour
   private IdleState idleState;
   private AttackState attackState;
   private PatrolState patrolState;
+  private DeadState deadState;
   public IdleState IdleSt => idleState;
   public ChaseState ChaseSt => chaseState;
   public AttackState AttackSt => attackState;
   public PatrolState PatrolSt => patrolState;
+  public DeadState DeadSt => deadState;
   private EnemyTargetSystem enemyTargetSystem;
   private EnemyMovement enemyMovement;
   private Attack attack;
@@ -32,11 +34,12 @@ public class EnemyBootstrap : MonoBehaviour
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, 10f);
+    deadState = new DeadState(fsmController, enemyAnimationController);
+
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyMovement.Init(enemyConfig);
-    fsmController.InitState(enemyHealth, IdleSt);
+    fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
-    //attack.OnAttack += enemyAnimationController.AttackAnimation;
 
   }
 
@@ -56,7 +59,6 @@ public class EnemyBootstrap : MonoBehaviour
     if (enemyHealth != null && attack != null)
     {
       enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
-      //enemyAttack.OnAttack -= enemyAnimationController.AttackAnimation;
     }
 
   }

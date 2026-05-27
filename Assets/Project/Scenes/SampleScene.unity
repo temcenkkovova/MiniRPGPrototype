@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 423736139}
   - component: {fileID: 423736140}
   - component: {fileID: 423736141}
+  - component: {fileID: 423736142}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -739,6 +740,19 @@ MonoBehaviour:
   fillImage: {fileID: 73544355}
   textField: {fileID: 34048195}
   enemyHealth: {fileID: 423736130}
+--- !u!114 &423736142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423736127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea6f73a0633bb242b8a1acaa514e267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEconomy: {fileID: 2097430920}
 --- !u!1 &424421149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1904,7 @@ GameObject:
   - component: {fileID: 1152083977}
   - component: {fileID: 1152083976}
   - component: {fileID: 1152083975}
+  - component: {fileID: 1152083980}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1995,6 +2010,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1152083980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152083974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124e856ea4107ae42b42210a1707b1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEconomy: {fileID: 2097430920}
+  currencyField: {fileID: 915966344}
 --- !u!1 &1164361663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1759537257034320, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
@@ -2448,6 +2477,7 @@ GameObject:
   - component: {fileID: 1968706208}
   - component: {fileID: 1968706207}
   - component: {fileID: 1968706206}
+  - component: {fileID: 1968706219}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -2632,6 +2662,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1968706219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968706205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea6f73a0633bb242b8a1acaa514e267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEconomy: {fileID: 2097430920}
 --- !u!1001 &1974371166
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ public class EnemyBootstrap : MonoBehaviour
   private Attack attack;
   private EnemyAnimationsController enemyAnimationController;
   private EnemyAttackManager enemyAttackManager;
+  private EnemyRewardSystem enemyRewardSystem;
+
 
   void Awake()
   {
@@ -29,7 +31,7 @@ public class EnemyBootstrap : MonoBehaviour
 
   void Start()
   {
-    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null) return;
+    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null || enemyRewardSystem == null) return;
     chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
@@ -40,6 +42,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
+    enemyRewardSystem.Init(enemyConfig.rewardCurrency);
 
   }
 
@@ -52,6 +55,7 @@ public class EnemyBootstrap : MonoBehaviour
     attack = GetComponent<Attack>();
     enemyAnimationController = GetComponent<EnemyAnimationsController>();
     enemyAttackManager = GetComponent<EnemyAttackManager>();
+    enemyRewardSystem = GetComponent<EnemyRewardSystem>();
   }
 
   void OnDisable()

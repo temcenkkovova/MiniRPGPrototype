@@ -4,6 +4,7 @@ public class EnemyConfig : ScriptableObject
 {
   public float maxHealth;
   public float moveSpeed;
+  public float rewardCurrency;
 
 
 }

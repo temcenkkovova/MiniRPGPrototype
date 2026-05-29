@@ -1,4 +1,4 @@
 public interface IRewardableCurrency
 {
-  public float RewardCurrency { get; set; }
+  public float RewardCoins { get; set; }
 }

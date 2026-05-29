@@ -4,12 +4,12 @@ public class EnemyRewardSystem : MonoBehaviour, IRewardableCurrency
 {
 
   private EnemyHealth enemyHealth;
-  public float RewardCurrency { get; set; }
+  public float RewardCoins { get; set; }
   public GameEconomy gameEconomy;
 
-  public void Init(float rewardAmount)
+  public void Init(float coins)
   {
-    RewardCurrency = rewardAmount;
+    RewardCoins = coins;
   }
   void Awake()
   {
@@ -22,7 +22,7 @@ public class EnemyRewardSystem : MonoBehaviour, IRewardableCurrency
   public void HandleDeathReward()
   {
     if (gameEconomy != null)
-      gameEconomy.AddCurrency(RewardCurrency);
+      gameEconomy.AddCurrency(RewardCoins);
   }
 
   void OnDisable()

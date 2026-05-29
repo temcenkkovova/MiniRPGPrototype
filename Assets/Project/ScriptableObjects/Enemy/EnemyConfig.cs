@@ -4,7 +4,6 @@ public class EnemyConfig : ScriptableObject
 {
   public float maxHealth;
   public float moveSpeed;
-  public float rewardCurrency;
-
+  public float coinsReward; // I`ll add CurrencyType enum for future if I have another type of Currency . Example : Wood , Stone . For now it`s premature abstraction
 
 }

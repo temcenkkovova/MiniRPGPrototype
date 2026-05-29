@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerLevel : MonoBehaviour
   public float CurrentExp { get; private set; }
   public float ExpToNextLevel { get; private set; }
   public float MultiplyExp { get; private set; }
+  public event Action<int> OnLevelUpdate;
 
 
   private PlayerBootstrap player; // I'll need the player to update PlayerStats when the player levels up.
@@ -37,5 +39,6 @@ public class PlayerLevel : MonoBehaviour
     CurrentLevel++;
     CurrentExp -= ExpToNextLevel;
     ExpToNextLevel *= MultiplyExp;
+    OnLevelUpdate?.Invoke(CurrentLevel);
   }
 }

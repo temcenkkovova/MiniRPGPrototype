@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 4363619545394087199}
   - component: {fileID: -320163766845239300}
   m_Layer: 5
-  m_Name: SimpleWeaponPrefab
+  m_Name: ShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

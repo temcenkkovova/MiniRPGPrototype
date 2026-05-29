@@ -42,7 +42,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
-    enemyRewardSystem.Init(enemyConfig.coinsReward);
+    enemyRewardSystem.Init(enemyConfig.coinsReward, enemyConfig.expReward);
 
   }
 

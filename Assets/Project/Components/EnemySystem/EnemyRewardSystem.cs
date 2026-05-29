@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class EnemyRewardSystem : MonoBehaviour, IRewardableCurrency
+public class EnemyRewardSystem : MonoBehaviour
 {
 
   private EnemyHealth enemyHealth;
-  public float RewardCoins { get; set; }
+  public float Currencies { get; private set; }
+  public float Experience { get; private set; }
   public GameEconomy gameEconomy;
+  public PlayerLevel playerLevel;
 
-  public void Init(float coins)
+  public void Init(float coins, float expReward)
   {
-    RewardCoins = coins;
+    Currencies = coins;
+    Experience = expReward;
   }
   void Awake()
   {
@@ -21,8 +24,9 @@ public class EnemyRewardSystem : MonoBehaviour, IRewardableCurrency
 
   public void HandleDeathReward()
   {
-    if (gameEconomy != null)
-      gameEconomy.AddCurrency(RewardCoins);
+    if (gameEconomy == null || playerLevel == null) return;
+    gameEconomy.AddCurrency(Currencies);
+    playerLevel.AddExp(Experience);
   }
 
   void OnDisable()

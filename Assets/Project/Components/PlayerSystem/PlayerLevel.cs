@@ -10,6 +10,7 @@ public class PlayerLevel : MonoBehaviour
   public float ExpToNextLevel { get; private set; }
   public float MultiplyExp { get; private set; }
   public event Action<int> OnLevelUpdate;
+  public event Action<float> OnCurrentExpChanged;
 
 
   private PlayerBootstrap player; // I'll need the player to update PlayerStats when the player levels up.
@@ -28,6 +29,7 @@ public class PlayerLevel : MonoBehaviour
   public void AddExp(float expValue)
   {
     CurrentExp += expValue;
+    OnCurrentExpChanged?.Invoke(CurrentExp);
     while (CurrentExp >= ExpToNextLevel)
     {
       LevelUp();
@@ -39,6 +41,8 @@ public class PlayerLevel : MonoBehaviour
     CurrentLevel++;
     CurrentExp -= ExpToNextLevel;
     ExpToNextLevel *= MultiplyExp;
+    OnCurrentExpChanged?.Invoke(CurrentExp);
     OnLevelUpdate?.Invoke(CurrentLevel);
+
   }
 }

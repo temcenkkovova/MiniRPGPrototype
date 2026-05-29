@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   moveSpeed: 2
-  rewardCurrency: 50
+  coinsReward: 20
+  expReward: 20

@@ -27,7 +27,7 @@ public class ShopManagerUI : MonoBehaviour
     for (int i = 0; i < shopSystem.shopItems.Count; i++)
     {
       ShopItem item = Instantiate(prefabItem, shopGridUI);
-      item.Init(shopSystem.shopItems[i]);
+      item.Init(shopSystem.shopItems[i], shopSystem);
     }
 
   }

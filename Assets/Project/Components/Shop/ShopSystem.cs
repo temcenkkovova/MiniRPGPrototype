@@ -9,25 +9,33 @@ public class ShopSystem : MonoBehaviour
 
 
   public List<ItemData> shopItems;
-
+  public GameEconomy gameEconomy;
+  public event Action<ItemData> OnItemPurchased;
+  public InventorySystem inventory;
 
   void Start()
   {
 
   }
 
-  public void AddItem(ItemData newItem)
+  public void AddItem(ItemData newItem) // I will need this methods in future , when I have upgrade weapon by hero  power
   {
     OnItemsChanged?.Invoke();
   }
 
-  public void RemoveItem(ItemData item)
+  public void RemoveItem(ItemData item) // I will need this methods in  future , when I have craft
   {
     OnItemsChanged?.Invoke();
   }
 
   public void BuyItem(ItemData item)
   {
-
+    if (shopItems.Contains(item))
+    {
+      if (!gameEconomy.HasEnough(item.price)) return;
+      gameEconomy.SpendCurrency(item.price);
+      inventory.AddItem(item);
+      OnItemPurchased?.Invoke(item);
+    }
   }
 }

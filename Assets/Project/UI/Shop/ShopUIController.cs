@@ -11,9 +11,9 @@ public class ShopUIController : MonoBehaviour
 
   void Start()
   {
-    // OpenShop();// temporary code;  
-  }
 
+  }
+  // Shop can be open by pressing button  if you close to NPC
   public void OpenShop()
   {
     if (shopPanel == null) return;

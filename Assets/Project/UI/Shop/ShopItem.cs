@@ -9,12 +9,21 @@ public class ShopItem : MonoBehaviour
   public TMP_Text descriptionField;
   public TMP_Text priceField;
   public Button priceBtn;
+  private ItemData itemData;
 
-  public void Init(ItemData item)
+  private ShopSystem shopSystem;
+  public void Init(ItemData item, ShopSystem shop)
   {
+    itemData = item;
     iconField.sprite = item.icon;
     titleField.text = item.title;
     priceField.text = item.price.ToString();
+    shopSystem = shop;
+  }
+
+  public void HandleBuyClick()
+  {
+    shopSystem.BuyItem(itemData);
   }
 
 }

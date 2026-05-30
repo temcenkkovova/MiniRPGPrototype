@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e42b17ad8ec1841a3024af14bea832, type: 3}
-  m_Name: Exalibure
+  m_Name: ArtursSword
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d0e897f0734eb4ca49c2f5dc2fd18ddd, type: 3}
-  description: This is a legendary exalibur
-  title: Exalibur
-  price: 5
-  weaponConfig: {fileID: 11400000, guid: 466f389c99b02c046800e3be890cfa66, type: 2}
+  icon: {fileID: 21300000, guid: 65b83aeb1e21843758a6bccd50c5f791, type: 3}
+  description: Weapon of The King Artur
+  title: The King Artur
+  price: 10
+  weaponConfig: {fileID: 11400000, guid: 1e3cb58ee311e6e46a2e2d3380f85b43, type: 2}

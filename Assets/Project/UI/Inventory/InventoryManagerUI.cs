@@ -4,6 +4,7 @@ using UnityEngine;
 public class InventoryManagerUI : MonoBehaviour
 {
   public event Action OnInventoryOpened;
+  public event Action OnInventoryClosed;
   public GameObject inventoryPanel;
   private bool isOpen = false;
 
@@ -18,7 +19,7 @@ public class InventoryManagerUI : MonoBehaviour
   {
     isOpen = false;
     inventoryPanel.SetActive(isOpen);
-    OnInventoryOpened?.Invoke();
+    OnInventoryClosed?.Invoke();
   }
 
 }

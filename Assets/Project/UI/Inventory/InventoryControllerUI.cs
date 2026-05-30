@@ -6,6 +6,7 @@ public class InventoryControllerUI : MonoBehaviour
   public Transform gridParent;
   public InventoryItem itemPrefab;
   public InventoryManagerUI inventoryManager;
+  public InventoryDetailsPanelUI inventoryDetailsPanelUI;
 
 
   void Awake()
@@ -13,6 +14,7 @@ public class InventoryControllerUI : MonoBehaviour
     if (inventory == null || inventoryManager == null) return;
     inventory.OnInventoryChanged += RebuildUI;
     inventoryManager.OnInventoryOpened += RebuildUI;
+    inventoryManager.OnInventoryClosed += HandleCloseInventory;
   }
 
   public void RebuildUI()
@@ -23,14 +25,20 @@ public class InventoryControllerUI : MonoBehaviour
     for (int i = 0; i < inventory.inventoryItems.Count; i++)
     {
       InventoryItem item = Instantiate(itemPrefab, gridParent);
-      item.Init(inventory.inventoryItems[i]);
+      item.Init(inventory.inventoryItems[i], inventoryDetailsPanelUI);
     }
+  }
+
+  public void HandleCloseInventory()
+  {
+    inventoryDetailsPanelUI.ClearDetailsPanel();
   }
 
   void OnDisable()
   {
     if (inventory == null || inventoryManager == null) return;
     inventory.OnInventoryChanged -= RebuildUI;
+    inventoryManager.OnInventoryClosed -= HandleCloseInventory;
     inventoryManager.OnInventoryOpened -= RebuildUI;
   }
 }

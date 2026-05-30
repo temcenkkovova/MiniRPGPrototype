@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 755fe510703697847abc187c50ad6074, type: 3}
-  m_Name: ExaliburConfig
+  m_Name: KingArtur
   m_EditorClassIdentifier: 
-  damage: 40
-  cooldown: 0.7
+  damage: 60
+  cooldown: 0.5
   range: 2
   weaponPrefab: {fileID: 1733665775871714, guid: fe9dbec53c6344347a45c89fa7c33846, type: 3}

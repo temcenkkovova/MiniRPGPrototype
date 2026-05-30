@@ -5582,8 +5582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItems:
   - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
-  - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
-  - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
+  - {fileID: 11400000, guid: ed575c51ecf2a6d47b26550fd8d5e6ab, type: 2}
   - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
   gameEconomy: {fileID: 2097430920}
   inventory: {fileID: 2097430923}

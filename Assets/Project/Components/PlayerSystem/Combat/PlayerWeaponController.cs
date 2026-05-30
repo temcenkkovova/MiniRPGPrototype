@@ -28,6 +28,4 @@ public class PlayerWeaponController : MonoBehaviour
     attack.InitWeaponHitBox(weapon.GetComponent<SwordHitBox>());
     attack.Init(CurrentWeaponConfig);
   }
-
-
 }

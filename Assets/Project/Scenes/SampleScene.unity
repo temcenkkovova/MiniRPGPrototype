@@ -3192,6 +3192,7 @@ MonoBehaviour:
   gridParent: {fileID: 1809691589}
   detailsPanel: {fileID: 1653863032}
   prefab: {fileID: -697401009724258404, guid: 61e2d2771079c56439fe19e0c96c2cd0, type: 3}
+  playerWeaponController: {fileID: 1974371187}
 --- !u!4 &1187722258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4946330883490848, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}

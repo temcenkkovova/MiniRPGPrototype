@@ -12,6 +12,7 @@ public class InventoryDetailsPanelUI : MonoBehaviour
   //public ConsumableItemDetail consumePrefab; // for future
   private bool isOpenPanel = false;
   public event Action<bool> OnOpenDetailPanel;
+  public PlayerWeaponController playerWeaponController;
   public void SetItemDetails(ItemData item)
   {
     itemData = item;
@@ -21,7 +22,7 @@ public class InventoryDetailsPanelUI : MonoBehaviour
     if (item is WeaponItem config)
     {
       WeaponItemDetail weaponItemDetail = Instantiate(prefab, gridParent);
-      weaponItemDetail.Init(config);
+      weaponItemDetail.Init(config, playerWeaponController);
     }
     // I can add another type of Item 
 

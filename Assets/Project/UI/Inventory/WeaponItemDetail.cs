@@ -11,13 +11,23 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   public TMP_Text speedField;
   public TMP_Text radiusField;
   public Button equipBtn;
+  private WeaponItem weaponToEquip;
+  private PlayerWeaponController playerWeaponController;
 
-  public void Init(WeaponItem weaponItem)
+  public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon)
   {
+    weaponToEquip = weaponItem;
+    playerWeaponController = playerWeapon;
     icon.sprite = weaponItem.icon;
     titleField.text = weaponItem.title;
     damageField.text = weaponItem.weaponConfig.damage.ToString();
     radiusField.text = weaponItem.weaponConfig.range.ToString();
     speedField.text = weaponItem.weaponConfig.cooldown.ToString() + "s";
+  }
+
+  public void HandleEquipClick()
+  {
+    if (playerWeaponController == null) return;
+    playerWeaponController.EquipWeapon(weaponToEquip.weaponConfig);
   }
 }

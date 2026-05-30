@@ -22,13 +22,13 @@ public class ChaseState : IEnemyState
 
   public void Update()
   {
+
     if (targetSystem.TargetTr != null)
     {
 
       Vector3 offset = targetSystem.TargetTr.position - enemy.transform.position;
       offset.y = 0f;
       float distanceSqr = offset.sqrMagnitude;
-
       if (distanceSqr <= enemyAttack.RangeAttack * enemyAttack.RangeAttack)
       {
         movement.StopMove();

@@ -1,24 +1,27 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Attack : MonoBehaviour
 {
 
-  [SerializeField] protected AttackConfig attackConfig;
-  public float WeaponAttackDamage => attackConfig.damage;
-  public float RangeAttack => attackConfig.range;
+  [NonSerialized] protected WeaponConfig weaponConfig;
+  public float WeaponAttackDamage => weaponConfig.damage;
+  public float RangeAttack => weaponConfig.range;
 
   protected float lastAttackTime;
 
 
-  public void Init(AttackConfig config)
+  public void Init(WeaponConfig config)
   {
-    attackConfig = config;
+
+    weaponConfig = config;
+
   }
 
   public virtual bool CanAttack()
   {
-    return Time.time >= lastAttackTime + attackConfig.cooldown;
+    return Time.time >= lastAttackTime + weaponConfig.cooldown;
   }
 
   public virtual void TryAttack()

@@ -6,4 +6,5 @@ public class EnemyCombat : MonoBehaviour, ICombatStats
   public float Damage => damage;
 
 
+
 }

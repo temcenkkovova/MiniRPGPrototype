@@ -26,6 +26,7 @@ public class EnemyAttackManager : MonoBehaviour
 
   public void ManageAttack()
   {
+
     if (!attack.CanAttack()) return;
     attack.TryAttack();
     enemyAnimationsController.StartAttackAnimation();
@@ -40,7 +41,6 @@ public class EnemyAttackManager : MonoBehaviour
   }
   public void HandleFinishedAttack()
   {
-    Debug.Log("fi");
     isAttacking = false;
     meleeAttack.DisableHitbox();
   }

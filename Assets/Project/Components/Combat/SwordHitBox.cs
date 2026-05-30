@@ -4,7 +4,7 @@ public class SwordHitBox : MonoBehaviour
 {
   private float damage;
   private Collider swordCollider;
-  public Transform ownerTr;
+  private Transform ownerTr;
   void Awake()
   {
     swordCollider = GetComponent<Collider>();
@@ -14,9 +14,10 @@ public class SwordHitBox : MonoBehaviour
     DisableCollider();
   }
 
-  public void SetDamage(float newDamage)
+  public void SetDamage(float newDamage, Transform ownerTr)
   {
     damage = newDamage;
+    this.ownerTr = ownerTr;
 
   }
 
@@ -35,11 +36,15 @@ public class SwordHitBox : MonoBehaviour
   }
   public void EnableCollider()
   {
-    swordCollider.enabled = true;
+
+    if (swordCollider)
+      swordCollider.enabled = true;
   }
 
   public void DisableCollider()
   {
-    swordCollider.enabled = false;
+
+    if (swordCollider)
+      swordCollider.enabled = false;
   }
 }

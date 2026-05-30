@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class PlayerWeaponController : MonoBehaviour
+public class EnemyWeaponController : MonoBehaviour
 {
-
+  public WeaponConfig startWeaponConfig;
   public WeaponConfig CurrentWeaponConfig { get; private set; }
-  private MeleeAttack attack;
-  [SerializeField] private WeaponConfig startWeapon;
   public Transform weaponPositionGrid;
 
+  private MeleeAttack attack;
   void Awake()
   {
     attack = GetComponent<MeleeAttack>();
-  }
 
+  }
   void Start()
   {
-    EquipWeapon(startWeapon);
+    EquipWeapon(startWeaponConfig);
   }
+
   public void EquipWeapon(WeaponConfig newWeapon)
   {
     CurrentWeaponConfig = newWeapon;
@@ -28,6 +28,4 @@ public class PlayerWeaponController : MonoBehaviour
     attack.InitWeaponHitBox(weapon.GetComponent<SwordHitBox>());
     attack.Init(CurrentWeaponConfig);
   }
-
-
 }

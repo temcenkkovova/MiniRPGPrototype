@@ -3,20 +3,23 @@ using UnityEngine;
 public class MeleeAttack : Attack
 {
   private ICombatStats combatStats;
-  public SwordHitBox swordHitBox;
+  private SwordHitBox swordHitBox;
 
   void Awake()
   {
     combatStats = GetComponent<ICombatStats>();
 
   }
+  public void InitWeaponHitBox(SwordHitBox hitBox)
+  {
+    swordHitBox = hitBox;
+  }
 
   protected override void ExecuteAttack()
   {
     if (combatStats == null) return;
-    float totalDamage = combatStats.Damage + attackConfig.damage;
-    swordHitBox.EnableCollider();
-    swordHitBox.SetDamage(totalDamage);
+    float totalDamage = combatStats.Damage + weaponConfig.damage;
+    swordHitBox.SetDamage(totalDamage, gameObject.transform);
   }
 
 

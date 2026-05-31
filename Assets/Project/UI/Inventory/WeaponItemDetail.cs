@@ -13,10 +13,12 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   public Button equipBtn;
   private WeaponItem weaponToEquip;
   public TMP_Text battlePowerField;
+  private InventorySystem inventorySystem;
   private PlayerWeaponController playerWeaponController;
 
-  public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon)
+  public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon, InventorySystem inventory)
   {
+    inventorySystem = inventory;
     weaponToEquip = weaponItem;
     playerWeaponController = playerWeapon;
     icon.sprite = weaponItem.icon;
@@ -31,5 +33,10 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   {
     if (playerWeaponController == null) return;
     playerWeaponController.EquipWeapon(weaponToEquip.weaponConfig);
+  }
+  public void HandleSellClick()
+  {
+    if (inventorySystem == null) return;
+    inventorySystem.SellItem(weaponToEquip);
   }
 }

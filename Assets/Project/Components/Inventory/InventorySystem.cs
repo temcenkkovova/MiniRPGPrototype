@@ -24,7 +24,7 @@ public class InventorySystem : MonoBehaviour
 
   }
 
-  public void RemoveItem(ItemData item)
+  public void SellItem(ItemData item)
   {
     if (inventoryItems.Contains(item))
     {

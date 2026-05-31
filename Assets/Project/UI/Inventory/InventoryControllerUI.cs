@@ -25,7 +25,7 @@ public class InventoryControllerUI : MonoBehaviour
     for (int i = 0; i < inventory.inventoryItems.Count; i++)
     {
       InventoryItem item = Instantiate(itemPrefab, gridParent);
-      item.Init(inventory.inventoryItems[i], inventoryDetailsPanelUI);
+      item.Init(inventory.inventoryItems[i], inventoryDetailsPanelUI, inventory);
     }
   }
 

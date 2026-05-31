@@ -13,16 +13,19 @@ public class InventoryDetailsPanelUI : MonoBehaviour
   private bool isOpenPanel = false;
   public event Action<bool> OnOpenDetailPanel;
   public PlayerWeaponController playerWeaponController;
-  public void SetItemDetails(ItemData item)
+  private InventorySystem inventorySystem;
+  public void SetItemDetails(ItemData item, InventorySystem inventory)
   {
+    inventorySystem = inventory;
+    if (inventorySystem != null)
+      inventorySystem.OnInventoryChanged += ClearDetailsPanel;
     itemData = item;
-
     foreach (Transform child in gridParent)
       Destroy(child.gameObject);
     if (item is WeaponItem config)
     {
       WeaponItemDetail weaponItemDetail = Instantiate(prefab, gridParent);
-      weaponItemDetail.Init(config, playerWeaponController);
+      weaponItemDetail.Init(config, playerWeaponController, inventorySystem);
     }
     // I can add another type of Item 
 
@@ -40,5 +43,11 @@ public class InventoryDetailsPanelUI : MonoBehaviour
     isOpenPanel = false;
     detailsPanel.SetActive(isOpenPanel);
     OnOpenDetailPanel?.Invoke(isOpenPanel);
+  }
+
+  void OnDisable()
+  {
+    if (inventorySystem != null)
+      inventorySystem.OnInventoryChanged -= ClearDetailsPanel;
   }
 }

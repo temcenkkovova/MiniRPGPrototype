@@ -15,4 +15,5 @@ MonoBehaviour:
   damage: 40
   cooldown: 0.7
   range: 2
+  startBP: 439
   weaponPrefab: {fileID: 1464936058200639765, guid: 1ae23a17914d67c4799c13a0187c623a, type: 3}

@@ -12,6 +12,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   public TMP_Text radiusField;
   public Button equipBtn;
   private WeaponItem weaponToEquip;
+  public TMP_Text battlePowerField;
   private PlayerWeaponController playerWeaponController;
 
   public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon)
@@ -23,6 +24,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
     damageField.text = weaponItem.weaponConfig.damage.ToString();
     radiusField.text = weaponItem.weaponConfig.range.ToString();
     speedField.text = weaponItem.weaponConfig.cooldown.ToString() + "s";
+    battlePowerField.text = weaponItem.weaponConfig.startBP.ToString();
   }
 
   public void HandleEquipClick()

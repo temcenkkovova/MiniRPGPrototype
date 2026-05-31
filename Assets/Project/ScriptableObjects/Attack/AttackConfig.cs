@@ -5,5 +5,6 @@ public class AttackConfig : ScriptableObject
   public float damage;
   public float cooldown;
   public float range;
+  public int startBP;
 
 }

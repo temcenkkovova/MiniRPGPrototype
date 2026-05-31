@@ -5,23 +5,23 @@ using UnityEngine;
 public abstract class Attack : MonoBehaviour
 {
 
-  [NonSerialized] protected WeaponConfig weaponConfig;
-  public float WeaponAttackDamage => weaponConfig.damage;
-  public float RangeAttack => weaponConfig.range;
+  [NonSerialized] protected WeaponStats weaponStats;
+  public float WeaponAttackDamage => weaponStats.WeaponDamage;
+  public float RangeAttack => weaponStats.AttackRange;
 
   protected float lastAttackTime;
 
 
-  public void Init(WeaponConfig config)
+  public void Init(WeaponStats weaponStats)
   {
 
-    weaponConfig = config;
+    this.weaponStats = weaponStats;
 
   }
 
   public virtual bool CanAttack()
   {
-    return Time.time >= lastAttackTime + weaponConfig.cooldown;
+    return Time.time >= lastAttackTime + weaponStats.AttackCooldown;
   }
 
   public virtual void TryAttack()

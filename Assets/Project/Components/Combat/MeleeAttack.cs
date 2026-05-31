@@ -18,7 +18,7 @@ public class MeleeAttack : Attack
   protected override void ExecuteAttack()
   {
     if (combatStats == null) return;
-    float totalDamage = combatStats.Damage + weaponConfig.damage;
+    float totalDamage = combatStats.Damage + weaponStats.WeaponDamage;
     swordHitBox.SetDamage(totalDamage, gameObject.transform);
   }
 

@@ -15,4 +15,6 @@ MonoBehaviour:
   damage: 10
   cooldown: 1
   range: 2
+  startBP: 0
   weaponPrefab: {fileID: 1464936058200639765, guid: 1ae23a17914d67c4799c13a0187c623a, type: 3}
+  weaponAudioConfig: {fileID: 11400000, guid: a7a8cbd39063fa346a790ad0ab6e9130, type: 2}

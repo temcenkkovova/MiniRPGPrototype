@@ -17,3 +17,4 @@ MonoBehaviour:
   range: 2
   startBP: 1020
   weaponPrefab: {fileID: 4673701426247691224, guid: e4aa1ff7ddb773840a65abf60f8f3ce1, type: 3}
+  weaponAudioConfig: {fileID: 11400000, guid: a7a8cbd39063fa346a790ad0ab6e9130, type: 2}

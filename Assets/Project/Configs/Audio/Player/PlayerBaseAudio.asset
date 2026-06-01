@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d23b62bf8520b94b8b6508f0bf0d457, type: 3}
+  m_Name: PlayerBaseAudio
+  m_EditorClassIdentifier: 
+  hitClips:
+  - {fileID: 8300000, guid: b915b870bac73ef46b32c0e880a4b503, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: a989d045a506695489144c948fd8a3ad, type: 3}
+  sprintClips:
+  - {fileID: 8300000, guid: 50eeaa4363e043440b38b88932f4752f, type: 3}
+  volume: 0.8
+  pitchMin: 0.75
+  pitchMax: 1.05

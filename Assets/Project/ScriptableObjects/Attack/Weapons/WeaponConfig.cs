@@ -4,5 +4,6 @@ public class WeaponConfig : AttackConfig
 {
 
   public GameObject weaponPrefab;
+  public WeaponAudioConfig weaponAudioConfig;
 
 }

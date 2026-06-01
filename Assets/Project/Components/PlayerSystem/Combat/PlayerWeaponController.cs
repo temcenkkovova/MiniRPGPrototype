@@ -9,10 +9,12 @@ public class PlayerWeaponController : MonoBehaviour
   public Transform weaponPositionGrid;
   private WeaponStats weaponStats;
   public WeaponItem EquippedWeapon { get; private set; }
+  private PlayerAudio playerAudio;
 
   void Awake()
   {
     attack = GetComponent<MeleeAttack>();
+    playerAudio = GetComponent<PlayerAudio>();
   }
 
   void Start()
@@ -32,6 +34,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     attack.InitWeaponHitBox(weapon.GetComponent<SwordHitBox>());
     attack.Init(weaponStats);
+    playerAudio.InitWeaponConfig(CurrentWeaponConfig.weaponAudioConfig);
   }
 
   public bool IsEquipped(WeaponItem weaponItem)

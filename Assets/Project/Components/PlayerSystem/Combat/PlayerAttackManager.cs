@@ -40,6 +40,7 @@ public class PlayerAttackManager : MonoBehaviour
     if (!attack.CanAttack()) return;
     attack.TryAttack();
     playerAnimations.StartAttackAnimation();
+    OnAttackStatusChanged?.Invoke(true);
   }
 
 

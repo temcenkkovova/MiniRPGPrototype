@@ -18,3 +18,4 @@ MonoBehaviour:
   multiplyExp: 1.2
   baseDamage: 12
   sprintSpeed: 6
+  playerAudioConfig: {fileID: 11400000, guid: 7195254b246cd19489754a9717b9f621, type: 2}

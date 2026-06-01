@@ -3,15 +3,18 @@ using UnityEngine;
 public class PlayerInteractionController : MonoBehaviour
 {
   private NPCBootstrap currentNPC;
+  private NPCInteraction npcInteraction;
 
-  public void InitCurrentNPC(NPCBootstrap newNPC)
+  public void InitCurrentNPC(NPCBootstrap newNPC, NPCInteraction npcInteraction)
   {
 
     currentNPC = newNPC;
+    this.npcInteraction = npcInteraction;
   }
 
   public void HandleInteract()
   {
-    currentNPC?.Interact();
+    if (npcInteraction.InRadius)
+      currentNPC?.Interact();
   }
 }

@@ -7,6 +7,7 @@ public class NPCInteraction : MonoBehaviour
   public float npcRadius = 1f;
   private SphereCollider npcCollider;
   private bool inRadius = false;
+  public bool InRadius => inRadius;
   public event Action<bool> OnInteractRequested;
 
 
@@ -25,7 +26,7 @@ public class NPCInteraction : MonoBehaviour
     {
       PlayerInteractionController playerController = other.GetComponent<PlayerInteractionController>();
       inRadius = true;
-      playerController.InitCurrentNPC(GetComponent<NPCBootstrap>());
+      playerController.InitCurrentNPC(GetComponent<NPCBootstrap>(), this);
       OnInteractRequested?.Invoke(inRadius);
     }
   }

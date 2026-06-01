@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
   private PlayerMovement movement;
 
   private PlayerAttackManager playerAttackManager;
+  private PlayerInteractionController interactionController;
 
 
   void Awake()
@@ -16,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     input = new PlayerController();
     movement = GetComponent<PlayerMovement>();
     playerAttackManager = GetComponent<PlayerAttackManager>();
-
+    interactionController = GetComponent<PlayerInteractionController>();
   }
 
   void Update()
@@ -31,6 +32,7 @@ public class PlayerInput : MonoBehaviour
     input.Player.Sprint.started += OnSprintStarted;
     input.Player.Sprint.canceled += OnSprintCanceled;
     input.Player.Attack.performed += OnAttackStarted;
+    input.Player.Interact.performed += OnInteractStarted;
   }
   public void OnDisable()
   {
@@ -38,6 +40,7 @@ public class PlayerInput : MonoBehaviour
     input.Player.Sprint.started -= OnSprintStarted;
     input.Player.Sprint.canceled -= OnSprintCanceled;
     input.Player.Attack.performed -= OnAttackStarted;
+    input.Player.Interact.performed -= OnInteractStarted;
   }
 
   public void OnSprintStarted(InputAction.CallbackContext context)
@@ -51,5 +54,9 @@ public class PlayerInput : MonoBehaviour
   public void OnAttackStarted(InputAction.CallbackContext context)
   {
     playerAttackManager.ManageAttack();
+  }
+  public void OnInteractStarted(InputAction.CallbackContext context)
+  {
+    interactionController.HandleInteract();
   }
 }

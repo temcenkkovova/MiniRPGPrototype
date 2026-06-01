@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 423736141}
   - component: {fileID: 423736142}
   - component: {fileID: 423736143}
+  - component: {fileID: 423736144}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1494,6 +1495,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWeaponConfig: {fileID: 11400000, guid: 3e50733875b55644a981630fbbb1108d, type: 2}
   weaponPositionGrid: {fileID: 840671650}
+--- !u!114 &423736144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423736127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfae5d6b96d36f142867acf5123e955d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAudioConfig: {fileID: 11400000, guid: 71b30b9b00072fc42bbefe891203af6c, type: 2}
 --- !u!1 &424421149
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,6 +4737,7 @@ GameObject:
   - component: {fileID: 1968706206}
   - component: {fileID: 1968706219}
   - component: {fileID: 1968706220}
+  - component: {fileID: 1968706221}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -4933,6 +4948,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWeaponConfig: {fileID: 11400000, guid: 3e50733875b55644a981630fbbb1108d, type: 2}
   weaponPositionGrid: {fileID: 1098060967}
+--- !u!114 &1968706221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968706205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfae5d6b96d36f142867acf5123e955d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAudioConfig: {fileID: 11400000, guid: 71b30b9b00072fc42bbefe891203af6c, type: 2}
 --- !u!1001 &1974371166
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,5 @@ public class PlayerConfig : ScriptableObject
   public float multiplyExp;
   public float baseDamage;
   public float sprintSpeed;
-  public PlayerAudioConfig playerAudioConfig;
 
 }

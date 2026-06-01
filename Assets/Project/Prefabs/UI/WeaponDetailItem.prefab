@@ -912,6 +912,7 @@ MonoBehaviour:
   speedField: {fileID: 6874795225351279892}
   radiusField: {fileID: 6874795224876720963}
   equipBtn: {fileID: 6874795225780821562}
+  btnTextField: {fileID: 6874795225643356365}
   battlePowerField: {fileID: 5855121700455241983}
 --- !u!1 &6874795225351279894
 GameObject:

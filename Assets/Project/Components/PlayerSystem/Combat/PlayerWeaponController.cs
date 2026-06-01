@@ -8,6 +8,7 @@ public class PlayerWeaponController : MonoBehaviour
   [SerializeField] private WeaponConfig startWeapon;
   public Transform weaponPositionGrid;
   private WeaponStats weaponStats;
+  public WeaponItem EquippedWeapon { get; private set; }
 
   void Awake()
   {
@@ -18,9 +19,11 @@ public class PlayerWeaponController : MonoBehaviour
   {
     EquipWeapon(startWeapon);
   }
-  public void EquipWeapon(WeaponConfig newWeapon)
+  public void EquipWeapon(WeaponConfig newWeapon, WeaponItem weaponItem = null)
   {
     CurrentWeaponConfig = newWeapon;
+    if (weaponItem)
+      EquippedWeapon = weaponItem;
     weaponStats = new WeaponStats(CurrentWeaponConfig);
     foreach (Transform child in weaponPositionGrid)
       Destroy(child.gameObject);
@@ -29,5 +32,10 @@ public class PlayerWeaponController : MonoBehaviour
 
     attack.InitWeaponHitBox(weapon.GetComponent<SwordHitBox>());
     attack.Init(weaponStats);
+  }
+
+  public bool IsEquipped(WeaponItem weaponItem)
+  {
+    return EquippedWeapon == weaponItem;
   }
 }

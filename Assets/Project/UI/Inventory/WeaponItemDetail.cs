@@ -11,10 +11,13 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   public TMP_Text speedField;
   public TMP_Text radiusField;
   public Button equipBtn;
+  public TMP_Text btnTextField;
   private WeaponItem weaponToEquip;
   public TMP_Text battlePowerField;
   private InventorySystem inventorySystem;
   private PlayerWeaponController playerWeaponController;
+
+
 
   public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon, InventorySystem inventory)
   {
@@ -27,16 +30,28 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
     radiusField.text = weaponItem.weaponConfig.range.ToString();
     speedField.text = weaponItem.weaponConfig.cooldown.ToString() + "s";
     battlePowerField.text = weaponItem.weaponConfig.startBP.ToString();
+
+    equipBtn.interactable = !playerWeaponController.IsEquipped(weaponToEquip); ;
+    if (playerWeaponController.IsEquipped(weaponToEquip))
+    {
+      btnTextField.text = "Equipped";
+    }
   }
 
   public void HandleEquipClick()
   {
     if (playerWeaponController == null) return;
-    playerWeaponController.EquipWeapon(weaponToEquip.weaponConfig);
+    playerWeaponController.EquipWeapon(weaponToEquip.weaponConfig, weaponToEquip);
+
+    equipBtn.interactable = !playerWeaponController.IsEquipped(weaponToEquip);
+    btnTextField.text = "Equipped";
   }
   public void HandleSellClick()
   {
     if (inventorySystem == null) return;
+    if (playerWeaponController.IsEquipped(weaponToEquip)) return;
     inventorySystem.SellItem(weaponToEquip);
   }
+
+
 }

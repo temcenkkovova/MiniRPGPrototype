@@ -6,6 +6,7 @@ public class PlayerAttackManager : MonoBehaviour
   private PlayerAnimations playerAnimations;
   private Attack attack;
   private MeleeAttack meleeAttack;
+  private PlayerHealth playerHealth;
 
 
 
@@ -18,6 +19,7 @@ public class PlayerAttackManager : MonoBehaviour
     attack = GetComponent<Attack>();
     playerAnimations = GetComponent<PlayerAnimations>();
     meleeAttack = GetComponent<MeleeAttack>();
+    playerHealth = GetComponent<PlayerHealth>();
     if (meleeAttack && playerAnimations)
     {
       playerAnimations.AttackAnimationStarted += meleeAttack.EnableHitbox;
@@ -38,6 +40,7 @@ public class PlayerAttackManager : MonoBehaviour
   public void ManageAttack()
   {
     if (!attack.CanAttack()) return;
+    if (playerHealth.IsDead) return; // temporary condition
     attack.TryAttack();
     playerAnimations.StartAttackAnimation();
     OnAttackStatusChanged?.Invoke(true);

@@ -23,19 +23,17 @@ public class PlayerRespawn : MonoBehaviour
     this.playerStats = playerStats;
   }
 
-  public void Respawn()
+  public void HandleRespawn()
   {
-    if (characterController == null) return;
+    if (characterController == null || playerHealth == null) return;
     characterController.enabled = false; // I need to disable cc during respawn;
     transform.position = respawnPos.position;
     characterController.enabled = true;
-    ResetStats();
+    playerHealth.Respawn();
+    playerHealth.ResetMaxHealth(playerStats.Health);
+
   }
 
-  private void ResetStats()
-  {
-    if (playerHealth == null) return;
-    playerHealth.ResetMaxHealth(playerStats.Health);
-  }
+
 
 }

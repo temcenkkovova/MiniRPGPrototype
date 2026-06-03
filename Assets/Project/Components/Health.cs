@@ -9,10 +9,12 @@ public abstract class Health : MonoBehaviour, IDamageable
   public event Action<float> OnHealthChanged;
   public event Action OnDeath;
   public event Action<DamageInfo> OnDamaged; // It needs for show UI notification
+  public bool IsDead { get; private set; }
 
   protected virtual void Die()
   {
     OnDeath?.Invoke();
+    IsDead = true;
   }
 
   public void Init(float maxHealth)
@@ -24,10 +26,11 @@ public abstract class Health : MonoBehaviour, IDamageable
 
   public void TakeDamage(float damage, Transform attacker)
   {
+    if (CurrentHealth <= 0) return;
     if (CurrentHealth <= damage)
     {
       CurrentHealth = 0f;
-      OnDeath?.Invoke();
+      Die();
     }
     else
     {
@@ -47,4 +50,9 @@ public abstract class Health : MonoBehaviour, IDamageable
     OnHealthChanged?.Invoke(CurrentHealth);
   }
 
+  public void Respawn()
+  {
+    IsDead = false;
+
+  }
 }

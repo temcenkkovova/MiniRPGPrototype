@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
   private PlayerStats playerStats;
+  private PlayerHealth playerHealth;
   public float MoveSpeed => playerStats.MoveSpeed;
   public float SprintSpeed => playerStats.SprintSpeed;
   private CharacterController characterController;
@@ -17,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
   float gravity = -9.81f;
   float verticalVelocity;
 
-
+  void Awake()
+  {
+    playerHealth = GetComponent<PlayerHealth>();
+  }
   public void Init(PlayerStats playerData)
   {
     playerStats = playerData;
@@ -26,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
   public void Move(Vector2 input)
   {
+    if (!playerHealth) return;
+    if (playerHealth.IsDead) return;
     Vector3 forward = Camera.main.transform.forward;
     Vector3 right = Camera.main.transform.right;
     forward.y = 0;
@@ -47,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
   public void ChangeSprintState(bool newSprintState)
   {
+    if (!playerHealth) return;
+    if (playerHealth.IsDead) return;
     if (isSprinting == newSprintState) return;
 
     isSprinting = newSprintState;

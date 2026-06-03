@@ -5,6 +5,7 @@ public class PlayerAnimations : MonoBehaviour
 {
   private Animator animator;
   private PlayerMovement movement;
+  private PlayerHealth playerHealth;
   public event Action AttackAnimationFinished;
   public event Action AttackAnimationStarted;
 
@@ -12,6 +13,16 @@ public class PlayerAnimations : MonoBehaviour
   {
     animator = GetComponent<Animator>();
     movement = GetComponent<PlayerMovement>();
+    playerHealth = GetComponent<PlayerHealth>();
+  }
+  void Start()
+  {
+    if (playerHealth == null) return;
+    playerHealth.OnDeath += PlayDeathAnimation;
+
+
+
+
   }
 
 
@@ -33,6 +44,12 @@ public class PlayerAnimations : MonoBehaviour
   public void OnAttackAnimationFinished()
   {
     AttackAnimationFinished?.Invoke();
+
   }
 
+
+  public void PlayDeathAnimation()
+  {
+    animator.SetTrigger("Dead");
+  }
 }

@@ -79,5 +79,7 @@ public class PlayerStats
     MoveSpeed *= 1.1f;
     Health *= 1.3f;
     SprintSpeed *= 1.1f;
+
+    Debug.Log(Health);
   }
 }

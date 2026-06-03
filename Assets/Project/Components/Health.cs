@@ -41,5 +41,10 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     OnHealthChanged?.Invoke(CurrentHealth);
   }
+  public void ResetMaxHealth(float maxHealth)
+  {
+    CurrentHealth = maxHealth;
+    OnHealthChanged?.Invoke(CurrentHealth);
+  }
 
 }

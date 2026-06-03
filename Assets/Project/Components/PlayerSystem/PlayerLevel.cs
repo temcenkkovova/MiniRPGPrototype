@@ -13,12 +13,6 @@ public class PlayerLevel : MonoBehaviour
   public event Action<float> OnCurrentExpChanged;
 
 
-  private PlayerBootstrap player; // I'll need the player to update PlayerStats when the player levels up.
-  void Awake()
-  {
-    player = GetComponent<PlayerBootstrap>();
-  }
-
   public void Init(PlayerConfig playerConfig)
   {
     config = playerConfig;

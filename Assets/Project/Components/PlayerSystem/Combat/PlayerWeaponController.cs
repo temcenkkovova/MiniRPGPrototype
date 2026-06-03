@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
@@ -7,9 +8,11 @@ public class PlayerWeaponController : MonoBehaviour
   private MeleeAttack attack;
   [SerializeField] private WeaponConfig startWeapon;
   public Transform weaponPositionGrid;
-  private WeaponStats weaponStats;
+  [NonSerialized] public WeaponStats weaponStats;
   public WeaponItem EquippedWeapon { get; private set; }
   private PlayerAudio playerAudio;
+  public event Action OnWeaponChanged;
+
 
   void Awake()
   {
@@ -35,6 +38,7 @@ public class PlayerWeaponController : MonoBehaviour
     attack.InitWeaponHitBox(weapon.GetComponent<SwordHitBox>());
     attack.Init(weaponStats);
     playerAudio.InitWeaponConfig(CurrentWeaponConfig.weaponAudioConfig);
+    OnWeaponChanged?.Invoke();
   }
 
   public bool IsEquipped(WeaponItem weaponItem)

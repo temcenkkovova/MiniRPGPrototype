@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class PlayerStats
 {
@@ -22,6 +23,7 @@ public class PlayerStats
     {
       baseDamage = value;
       OnBaseDamageChanged?.Invoke(baseDamage);
+      OnStatsChanged?.Invoke();
     }
   }
   public float Health
@@ -30,6 +32,7 @@ public class PlayerStats
     {
       health = value;
       OnHealthChanged?.Invoke(health);
+      OnStatsChanged?.Invoke();
     }
   }
   public event Action<float> OnHealthChanged;
@@ -40,11 +43,23 @@ public class PlayerStats
     {
       moveSpeed = value;
       OnMoveSpeedChanged?.Invoke(moveSpeed);
+      OnStatsChanged?.Invoke();
+    }
+  }
+  public int PlayerPower
+  {
+    get
+    {
+      return Mathf.RoundToInt(
+          BaseDamage * 10 +
+          MoveSpeed * 5 +
+          Health * 5
+      );
     }
   }
   public event Action<float> OnMoveSpeedChanged;
 
-  public event Action<PlayerStats> OnStatsChanged;
+  public event Action OnStatsChanged;
   public event Action<float> OnBaseDamageChanged;
   public event Action<float> OnSprintSpeedChanged;
 
@@ -56,5 +71,13 @@ public class PlayerStats
     MultiplyExp = config.multiplyExp;
     BaseDamage = config.baseDamage;
     SprintSpeed = config.sprintSpeed;
+  }
+
+  public void IncreaseStats(int value)
+  {
+    BaseDamage *= 1.2f;
+    MoveSpeed *= 1.1f;
+    Health *= 1.3f;
+    SprintSpeed *= 1.1f;
   }
 }

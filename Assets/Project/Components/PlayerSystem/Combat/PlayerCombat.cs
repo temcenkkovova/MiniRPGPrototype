@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour, ICombatStats
 {
 
-  private PlayerStats playerStats;
+  [NonSerialized] public PlayerStats playerStats;
   public float Damage => playerStats.BaseDamage;
+  // public float PlayerBP => playerStats.PlayerPower;
 
 
   public void InitBaseStats(PlayerStats stats)

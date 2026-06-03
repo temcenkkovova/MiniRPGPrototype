@@ -25,11 +25,27 @@ public class PlayerBootstrap : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        if (playerStats != null || playerLevel != null)
+        {
+            playerLevel.OnLevelUpdate += playerStats.IncreaseStats;
+        }
+    }
+
     public void GetAllComponents()
     {
         movement = GetComponent<PlayerMovement>();
         health = GetComponent<PlayerHealth>();
         playerCombat = GetComponent<PlayerCombat>();
         playerLevel = GetComponent<PlayerLevel>();
+    }
+
+    void OnDisable()
+    {
+        if (playerStats != null || playerLevel != null)
+        {
+            playerLevel.OnLevelUpdate -= playerStats.IncreaseStats;
+        }
     }
 }

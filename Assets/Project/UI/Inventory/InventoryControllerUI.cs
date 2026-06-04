@@ -7,7 +7,7 @@ public class InventoryControllerUI : MonoBehaviour
   public InventoryItem itemPrefab;
   public InventoryManagerUI inventoryManager;
   public InventoryDetailsPanelUI inventoryDetailsPanelUI;
-
+  public PlayerWeaponController playerWeaponController;
 
   void Awake()
   {
@@ -25,7 +25,8 @@ public class InventoryControllerUI : MonoBehaviour
     for (int i = 0; i < inventory.inventoryItems.Count; i++)
     {
       InventoryItem item = Instantiate(itemPrefab, gridParent);
-      item.Init(inventory.inventoryItems[i], inventoryDetailsPanelUI, inventory);
+      item.Init(inventory.inventoryItems[i], inventoryDetailsPanelUI, inventory, playerWeaponController);
+
     }
   }
 

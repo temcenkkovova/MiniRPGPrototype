@@ -21,6 +21,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
 
   public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon, InventorySystem inventory)
   {
+
     inventorySystem = inventory;
     weaponToEquip = weaponItem;
     playerWeaponController = playerWeapon;
@@ -35,6 +36,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
     if (playerWeaponController.IsEquipped(weaponToEquip))
     {
       btnTextField.text = "Equipped";
+
     }
   }
 

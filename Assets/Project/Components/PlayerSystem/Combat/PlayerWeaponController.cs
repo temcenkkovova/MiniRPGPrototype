@@ -26,9 +26,15 @@ public class PlayerWeaponController : MonoBehaviour
   }
   public void EquipWeapon(WeaponConfig newWeapon, WeaponItem weaponItem = null)
   {
+
     CurrentWeaponConfig = newWeapon;
     if (weaponItem)
+    {
       EquippedWeapon = weaponItem;
+
+    }
+
+
     weaponStats = new WeaponStats(CurrentWeaponConfig);
     foreach (Transform child in weaponPositionGrid)
       Destroy(child.gameObject);

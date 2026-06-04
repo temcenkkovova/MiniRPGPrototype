@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconField: {fileID: 5240244878604746707}
-  inventoryDetailsPanel: {fileID: 0}
 --- !u!1 &5240244878604746701
 GameObject:
   m_ObjectHideFlags: 0

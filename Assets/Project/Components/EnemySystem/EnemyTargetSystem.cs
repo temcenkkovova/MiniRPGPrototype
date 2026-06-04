@@ -6,6 +6,13 @@ public class EnemyTargetSystem : MonoBehaviour
   public Transform TargetTr => targetTr;
   private PlayerBootstrap player;
   private PlayerHealth playerHealth;
+  private EnemyHealth enemyHealth;
+
+  void Awake()
+  {
+    enemyHealth = GetComponent<EnemyHealth>();
+
+  }
 
   public void SetNewTarget(DamageInfo damageInfo)
   {
@@ -23,6 +30,13 @@ public class EnemyTargetSystem : MonoBehaviour
   public void RemoveTarget()
   {
     targetTr = null;
+
+    if (enemyHealth == null) return;
+    if (enemyHealth.CurrentHealth < enemyHealth.MaxHealth)
+    {
+      Debug.Log("qq");
+      enemyHealth.ResetHealth();
+    }
   }
 
   public void EnteredSafeZone(bool inSafeZone)

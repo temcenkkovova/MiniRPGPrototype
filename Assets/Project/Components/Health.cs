@@ -55,4 +55,10 @@ public abstract class Health : MonoBehaviour, IDamageable
     IsDead = false;
 
   }
+
+  public void ResetHealth()
+  {
+    CurrentHealth = MaxHealth;
+    OnHealthChanged?.Invoke(CurrentHealth);
+  }
 }

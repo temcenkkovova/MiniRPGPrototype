@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerPower : MonoBehaviour
+public class PlayerTotalPower : MonoBehaviour
 {
 
   private PlayerWeaponController playerWeapon;
@@ -15,19 +15,17 @@ public class PlayerPower : MonoBehaviour
     playerWeapon = GetComponent<PlayerWeaponController>();
     playerCombat = GetComponent<PlayerCombat>();
 
-    playerWeapon.OnWeaponChanged += SetBattlePower;
+    playerWeapon.OnWeaponChanged += SetTotalPower;
 
   }
 
   void Start()
   {
     if (playerCombat == null || playerWeapon == null) return;
-    playerCombat.playerStats.OnStatsChanged += SetBattlePower;
-
-
+    playerCombat.playerStats.OnStatsChanged += SetTotalPower;
   }
 
-  public void SetBattlePower()
+  public void SetTotalPower()
   {
     battlePower = Mathf.RoundToInt(
     playerCombat.playerStats.PlayerPower + playerWeapon.weaponStats.CombatPower);

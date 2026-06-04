@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerPowerUI : MonoBehaviour
 {
   public TMP_Text textField;
-  public PlayerPower playerPower;
+  public PlayerTotalPower playerPower;
 
   void Awake()
   {

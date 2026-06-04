@@ -6,6 +6,7 @@ public class ShopManagerUI : MonoBehaviour
   public Transform shopGridUI;
   public ShopItem prefabItem;
   public ShopUIController shopUIController;
+  public PlayerTotalPower playerTotalPower;
 
 
 
@@ -28,6 +29,7 @@ public class ShopManagerUI : MonoBehaviour
     {
       ShopItem item = Instantiate(prefabItem, shopGridUI);
       item.Init(shopSystem.shopItems[i], shopSystem);
+      item.GetComponent<ShopItemController>().Init(shopSystem.shopItems[i], playerTotalPower);
     }
 
   }

@@ -10,6 +10,7 @@ public class ShopItem : MonoBehaviour
   public TMP_Text priceField;
   public Button priceBtn;
   private ItemData itemData;
+  public TMP_Text battlePowerField;
 
   private ShopSystem shopSystem;
   public void Init(ItemData item, ShopSystem shop)
@@ -19,6 +20,11 @@ public class ShopItem : MonoBehaviour
     titleField.text = item.title;
     priceField.text = item.price.ToString();
     shopSystem = shop;
+
+    if (item is WeaponItem weapon)
+    {
+      battlePowerField.text = weapon.weaponConfig.startBP.ToString();
+    }
   }
 
   public void HandleBuyClick()

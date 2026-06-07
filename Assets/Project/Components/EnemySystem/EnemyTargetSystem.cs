@@ -16,6 +16,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
   public void SetNewTarget(DamageInfo damageInfo)
   {
+    if (damageInfo.attacker.tag != "Player") return;
     targetTr = damageInfo.attacker;
     player = damageInfo.attacker.GetComponent<PlayerBootstrap>();
     playerHealth = damageInfo.attacker.GetComponent<PlayerHealth>();

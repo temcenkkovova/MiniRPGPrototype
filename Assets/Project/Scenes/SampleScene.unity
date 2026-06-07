@@ -4488,6 +4488,7 @@ MonoBehaviour:
   itemPrefab: {fileID: -6847380021336456743, guid: 486bb309a9c49c44f86b3b9159c709d7, type: 3}
   inventoryManager: {fileID: 1152083986}
   inventoryDetailsPanelUI: {fileID: 1152083987}
+  playerWeaponController: {fileID: 1974371187}
 --- !u!114 &1152083986
 MonoBehaviour:
   m_ObjectHideFlags: 0

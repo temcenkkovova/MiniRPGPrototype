@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 755fe510703697847abc187c50ad6074, type: 3}
-  m_Name: ExaliburConfig
+  m_Name: BaseSword
   m_EditorClassIdentifier: 
-  damage: 40
-  cooldown: 0.7
+  damage: 5
+  cooldown: 1
   range: 2
-  startBP: 1300
+  startBP: 20
   weaponPrefab: {fileID: 1464936058200639765, guid: 1ae23a17914d67c4799c13a0187c623a, type: 3}
   weaponAudioConfig: {fileID: 11400000, guid: a7a8cbd39063fa346a790ad0ab6e9130, type: 2}

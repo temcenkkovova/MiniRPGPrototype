@@ -52,7 +52,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   {
     if (inventorySystem == null) return;
     if (playerWeaponController.IsEquipped(weaponToEquip)) return;
-    inventorySystem.SellItem(weaponToEquip);
+    inventorySystem.TrySellItem(weaponToEquip);
   }
 
 

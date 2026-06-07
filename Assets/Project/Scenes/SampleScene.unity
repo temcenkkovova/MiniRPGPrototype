@@ -5950,6 +5950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522151222}
   - component: {fileID: 1522151223}
+  - component: {fileID: 1522151224}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -5986,6 +5987,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolParent: {fileID: 289961001}
   prefab: {fileID: 289961000}
+--- !u!114 &1522151224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522151221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61211bebc4ba14649a8db6b58598dab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySystem: {fileID: 2097430923}
+  shopSystem: {fileID: 2097430922}
+  gameEconomy: {fileID: 2097430920}
 --- !u!1 &1534258183
 GameObject:
   m_ObjectHideFlags: 0

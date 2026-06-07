@@ -20,6 +20,7 @@ public class ShopSystem : MonoBehaviour
 
   public void AddItem(ItemData newItem) // I will need this methods in future , when I have upgrade weapon by hero  power
   {
+    shopItems.Add(newItem);
     OnItemsChanged?.Invoke();
   }
 

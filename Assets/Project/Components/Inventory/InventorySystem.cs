@@ -6,7 +6,7 @@ public class InventorySystem : MonoBehaviour
 {
   public List<ItemData> inventoryItems;
   public event Action OnInventoryChanged;
-
+  public event Action<ItemData> OnItemSold;
   public void AddItem(ItemData item)
   {
     if (item is WeaponItem weaponItem)
@@ -24,12 +24,18 @@ public class InventorySystem : MonoBehaviour
 
   }
 
-  public void SellItem(ItemData item)
+  public void TrySellItem(ItemData item)
   {
     if (inventoryItems.Contains(item))
-    {
-      inventoryItems.Remove(item);
-      OnInventoryChanged?.Invoke();
-    }
+      OnItemSold?.Invoke(item);
+
+  }
+
+  public void Sell(ItemData item)
+  {
+
+    inventoryItems.Remove(item);
+    OnInventoryChanged?.Invoke();
+
   }
 }

@@ -15,6 +15,7 @@ public class TradeSystem : MonoBehaviour
   public void HandleItemSold(ItemData item)
   {
     inventorySystem.Sell(item);
+    gameEconomy.AddCurrency(item.price); // I need to calculate average price for future
     if (shopSystem.shopItems.Contains(item)) return;
     shopSystem.AddItem(item);
   }

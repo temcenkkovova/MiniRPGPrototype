@@ -9,6 +9,7 @@ public class ShopUIController : MonoBehaviour
 
   public event Action<bool> OnShopOpen;
 
+
   void Start()
   {
 
@@ -20,6 +21,7 @@ public class ShopUIController : MonoBehaviour
     shopPanel.SetActive(true);
     shopStatus = true;
     OnShopOpen?.Invoke(shopStatus);
+    GameStateController.Instance.SetState(GameState.Shop);
   }
 
   public void CloseShop()
@@ -28,5 +30,6 @@ public class ShopUIController : MonoBehaviour
     shopPanel.SetActive(false);
     shopStatus = false;
     OnShopOpen?.Invoke(shopStatus);
+    GameStateController.Instance.SetState(GameState.Gameplay);
   }
 }

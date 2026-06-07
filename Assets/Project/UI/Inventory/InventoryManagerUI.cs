@@ -13,6 +13,7 @@ public class InventoryManagerUI : MonoBehaviour
     isOpen = true;
     inventoryPanel.SetActive(isOpen);
     OnInventoryOpened?.Invoke();
+    GameStateController.Instance.SetState(GameState.Inventory);
   }
 
   public void CloseInventory()
@@ -20,6 +21,7 @@ public class InventoryManagerUI : MonoBehaviour
     isOpen = false;
     inventoryPanel.SetActive(isOpen);
     OnInventoryClosed?.Invoke();
+    GameStateController.Instance.SetState(GameState.Gameplay);
   }
 
 }

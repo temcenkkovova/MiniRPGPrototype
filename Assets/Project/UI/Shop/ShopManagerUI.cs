@@ -12,8 +12,9 @@ public class ShopManagerUI : MonoBehaviour
 
   void Awake()
   {
-    if (shopUIController == null) return;
+    if (shopUIController == null || shopSystem == null) return;
     shopUIController.OnShopOpen += ShowItems;
+    shopSystem.OnItemsChanged += RebuildShopItems;
   }
 
 
@@ -34,9 +35,22 @@ public class ShopManagerUI : MonoBehaviour
 
   }
 
+  public void RebuildShopItems()
+  {
+    foreach (Transform child in shopGridUI)
+      Destroy(child.gameObject);
+
+    for (int i = 0; i < shopSystem.shopItems.Count; i++)
+    {
+      ShopItem item = Instantiate(prefabItem, shopGridUI);
+      item.Init(shopSystem.shopItems[i], shopSystem);
+      item.GetComponent<ShopItemController>().Init(shopSystem.shopItems[i], playerTotalPower);
+    }
+  }
   void OnDisable()
   {
-    if (shopUIController == null) return;
+    if (shopUIController == null || shopSystem == null) return;
     shopUIController.OnShopOpen -= ShowItems;
+    shopSystem.OnItemsChanged -= RebuildShopItems;
   }
 }

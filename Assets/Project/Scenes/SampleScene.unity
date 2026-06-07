@@ -8339,8 +8339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990401ae5eb1d264599bbb3684a952d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWeapon: {fileID: 11400000, guid: 466f389c99b02c046800e3be890cfa66, type: 2}
+  startWeapon: {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
   weaponPositionGrid: {fileID: 904390879}
+  inventorySystem: {fileID: 2097430923}
 --- !u!114 &1974371189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9356,7 +9357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItems:
-  - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
   - {fileID: 11400000, guid: ed575c51ecf2a6d47b26550fd8d5e6ab, type: 2}
   - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
   gameEconomy: {fileID: 2097430920}

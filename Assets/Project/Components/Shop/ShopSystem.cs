@@ -25,7 +25,12 @@ public class ShopSystem : MonoBehaviour
 
   public void RemoveItem(ItemData item) // I will need this methods in  future , when I have craft
   {
-    OnItemsChanged?.Invoke();
+    if (shopItems.Contains(item))
+    {
+      shopItems.Remove(item);
+      OnItemsChanged?.Invoke();
+    }
+
   }
 
   public void BuyItem(ItemData item)
@@ -35,6 +40,7 @@ public class ShopSystem : MonoBehaviour
       if (!gameEconomy.HasEnough(item.price)) return;
       gameEconomy.SpendCurrency(item.price);
       inventory.AddItem(item);
+      RemoveItem(item);
       OnItemPurchased?.Invoke(item);
     }
   }

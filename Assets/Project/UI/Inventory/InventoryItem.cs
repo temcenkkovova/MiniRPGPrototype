@@ -39,10 +39,11 @@ public class InventoryItem : MonoBehaviour
   {
     if (weapon == null) return;
     bool equipped = playerWeapon.IsEquipped(weapon);
-    iconField.color =
-          equipped
-              ? Color.gray
-              : Color.white;
+    if (iconField)
+      iconField.color =
+            equipped
+                ? Color.gray
+                : Color.white;
   }
 
   void OnEnable()

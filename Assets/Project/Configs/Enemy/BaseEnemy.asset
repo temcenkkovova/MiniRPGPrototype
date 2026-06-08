@@ -16,3 +16,5 @@ MonoBehaviour:
   moveSpeed: 2
   coinsReward: 20
   expReward: 20
+  prefab: {fileID: 3604357589239861136, guid: 6d84897352d03404c8c033d3bed89eb0, type: 3}
+  weaponConfig: {fileID: 11400000, guid: 3e50733875b55644a981630fbbb1108d, type: 2}

@@ -29,6 +29,7 @@ public class PlayerTotalPower : MonoBehaviour
   {
     battlePower = Mathf.RoundToInt(
     playerCombat.playerStats.PlayerPower + playerWeapon.weaponStats.CombatPower);
+
     OnBpChanged?.Invoke(battlePower);
   }
 }

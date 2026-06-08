@@ -10,10 +10,10 @@ public class EnemySpawnSystem : MonoBehaviour
   // This component will get radius between enemy spawn . The Spawn area  . Max enemy count . Scales enemy health and damage based on the player`s Combat Power;
   void Start()
   {
-    SpawnEnemy(3);
+    SpawnEnemies();
   }
 
-  public void SpawnEnemy(float spawnDistance)
+  public void SpawnEnemies()
   {
     if (enemyConfigs == null) return;
 
@@ -24,14 +24,30 @@ public class EnemySpawnSystem : MonoBehaviour
         Debug.Log("EnemyConfig or prefab missing");
         continue;
       }
-      EnemyBootstrap enemyBootstrap = Instantiate(item.prefab, GetRandomPosition(spawnDistance), transform.rotation);
+      EnemyBootstrap enemyBootstrap = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
       enemyBootstrap.Init(item);
       enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
+      EnemyManager.Instance.AddEnemy(enemyBootstrap);
 
     }
   }
+  public void SpawnEnemy()
+  {
+    int randomNumber = Random.Range(0, enemyConfigs.Count);
+    EnemyConfig randomEnemyConfig = enemyConfigs[randomNumber];
+    if (randomEnemyConfig == null) return;
+    if (randomEnemyConfig.prefab == null)
+    {
+      Debug.Log("EnemyConfig or prefab missing");
+      return;
+    }
+    EnemyBootstrap enemyBootstrap = Instantiate(randomEnemyConfig.prefab, GetRandomPosition(), transform.rotation);
+    enemyBootstrap.Init(randomEnemyConfig);
+    enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
+    EnemyManager.Instance.AddEnemy(enemyBootstrap);
+  }
 
-  private Vector3 GetRandomPosition(float spawnDistance)
+  private Vector3 GetRandomPosition()
   {
     Bounds bounds = spawnAreaCollider.bounds;
     return new Vector3(

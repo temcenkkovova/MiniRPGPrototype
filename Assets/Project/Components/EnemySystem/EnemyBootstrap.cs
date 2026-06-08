@@ -47,6 +47,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
+    enemyHealth.OnDeath += HandleEnemyDeath;
     enemyRewardSystem.Init(enemyConfig.coinsReward, enemyConfig.expReward);
     enemyWeaponController.Init(enemyConfig.weaponConfig);
   }
@@ -69,7 +70,12 @@ public class EnemyBootstrap : MonoBehaviour
     if (enemyHealth != null && attack != null)
     {
       enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
+      enemyHealth.OnDeath -= HandleEnemyDeath;
     }
 
+  }
+  private void HandleEnemyDeath()
+  {
+    EnemyManager.Instance.RemoveEnemy(this);
   }
 }

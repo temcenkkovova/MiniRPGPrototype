@@ -9,10 +9,19 @@ public class EnemyManager : MonoBehaviour
   public List<EnemyBootstrap> SpawnedEnemies => spawnedEnemies;
   public static EnemyManager Instance;
   public PlayerTotalPower playerTotalPower;
+  public PlayerSafeZone playerSafeZone;
+  private int lastSpawnBattlePower;
 
   void Awake()
   {
     Instance = this;
+  }
+
+  void Start()
+  {
+    if (playerTotalPower == null || playerSafeZone == null) return;
+    playerSafeZone.OnSafeZone += RebuildEnemyWorld;
+    lastSpawnBattlePower = playerTotalPower.BattlePower;
   }
 
   public void AddEnemy(EnemyBootstrap newEnemy)
@@ -45,4 +54,26 @@ public class EnemyManager : MonoBehaviour
     return scale;
   }
 
+  public void RebuildEnemyWorld(bool isSafeZone)
+  {
+
+    if (isSafeZone) return;
+    if (lastSpawnBattlePower - 30 <= playerTotalPower.BattlePower || lastSpawnBattlePower + 30 >= playerTotalPower.BattlePower)
+    {
+      lastSpawnBattlePower = playerTotalPower.BattlePower;
+      foreach (var enemy in spawnedEnemies)
+      {
+        Destroy(enemy.gameObject);
+      }
+      spawnedEnemies.Clear();
+      enemySpawnSystem.SpawnEnemies();
+    }
+
+  }
+
+  void OnDisable()
+  {
+    if (playerSafeZone == null) return;
+    playerSafeZone.OnSafeZone -= RebuildEnemyWorld;
+  }
 }

@@ -26,6 +26,7 @@ public class EnemySpawnSystem : MonoBehaviour
       }
       EnemyBootstrap enemyBootstrap = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
       enemyBootstrap.Init(item);
+
       enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
       EnemyManager.Instance.AddEnemy(enemyBootstrap);
 
@@ -43,8 +44,10 @@ public class EnemySpawnSystem : MonoBehaviour
     }
     EnemyBootstrap enemyBootstrap = Instantiate(randomEnemyConfig.prefab, GetRandomPosition(), transform.rotation);
     enemyBootstrap.Init(randomEnemyConfig);
+
     enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
     EnemyManager.Instance.AddEnemy(enemyBootstrap);
+
   }
 
   private Vector3 GetRandomPosition()

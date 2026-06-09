@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyWeaponController : MonoBehaviour
@@ -5,7 +6,7 @@ public class EnemyWeaponController : MonoBehaviour
   private WeaponConfig startWeaponConfig;
   public WeaponConfig CurrentWeaponConfig { get; private set; }
   public Transform weaponPositionGrid;
-  private WeaponStats weaponStats;
+  [NonSerialized] public WeaponStats weaponStats;
   private MeleeAttack attack;
 
   void Awake()
@@ -28,6 +29,7 @@ public class EnemyWeaponController : MonoBehaviour
   {
     CurrentWeaponConfig = newWeapon;
     weaponStats = new WeaponStats(CurrentWeaponConfig);
+    weaponStats.WeaponDamageScaling(EnemyManager.Instance.ScalingValue());
     foreach (Transform child in weaponPositionGrid)
       Destroy(child.gameObject);
 

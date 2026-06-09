@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
   public EnemySpawnSystem enemySpawnSystem;
   public List<EnemyBootstrap> SpawnedEnemies => spawnedEnemies;
   public static EnemyManager Instance;
+  public PlayerTotalPower playerTotalPower;
 
   void Awake()
   {
@@ -37,6 +38,11 @@ public class EnemyManager : MonoBehaviour
       }
     }
   }
+  public float ScalingValue()
+  {
 
+    float scale = 1f + playerTotalPower.BattlePower * 0.02f;
+    return scale;
+  }
 
 }

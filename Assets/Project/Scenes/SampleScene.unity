@@ -4274,6 +4274,7 @@ GameObject:
   - component: {fileID: 1522151223}
   - component: {fileID: 1522151224}
   - component: {fileID: 1522151225}
+  - component: {fileID: 1522151226}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -4341,8 +4342,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 796f4741d7f62e04094190facb24d954, type: 2}
   - {fileID: 11400000, guid: 796f4741d7f62e04094190facb24d954, type: 2}
   - {fileID: 11400000, guid: 796f4741d7f62e04094190facb24d954, type: 2}
+  - {fileID: 11400000, guid: 796f4741d7f62e04094190facb24d954, type: 2}
   playerBootstrap: {fileID: 1974371171}
   spawnAreaCollider: {fileID: 1087415954}
+--- !u!114 &1522151226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522151221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848ea1a28a3e77243a0c0eb878dc7fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnemies: 6
+  enemySpawnSystem: {fileID: 1522151225}
+  playerTotalPower: {fileID: 1974371192}
 --- !u!1 &1552862930
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,6 +5805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
+  scaledMaxHealth: 0
 --- !u!114 &1974371179
 MonoBehaviour:
   m_ObjectHideFlags: 0

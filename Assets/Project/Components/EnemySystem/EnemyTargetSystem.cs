@@ -33,9 +33,8 @@ public class EnemyTargetSystem : MonoBehaviour
     targetTr = null;
 
     if (enemyHealth == null) return;
-    if (enemyHealth.CurrentHealth < enemyHealth.MaxHealth)
+    if (enemyHealth.CurrentHealth < enemyHealth.scaledMaxHealth)
     {
-      Debug.Log("qq");
       enemyHealth.ResetHealth();
     }
   }

@@ -14,6 +14,7 @@ public class PlayerInteractionController : MonoBehaviour
 
   public void HandleInteract()
   {
+    if (npcInteraction == null) return;
     if (npcInteraction.InRadius)
       currentNPC?.Interact();
   }

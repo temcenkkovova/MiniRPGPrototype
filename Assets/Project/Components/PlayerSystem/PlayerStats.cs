@@ -51,7 +51,7 @@ public class PlayerStats
     get
     {
       return Mathf.RoundToInt(
-          BaseDamage * 5 +
+          BaseDamage * 3 +
           MoveSpeed * 2 +
           Health * 1
       );

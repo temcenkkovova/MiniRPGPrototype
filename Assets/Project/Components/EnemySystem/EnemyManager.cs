@@ -56,9 +56,8 @@ public class EnemyManager : MonoBehaviour
 
   public void RebuildEnemyWorld(bool isSafeZone)
   {
-
     if (isSafeZone) return;
-    if (lastSpawnBattlePower - 30 <= playerTotalPower.BattlePower || lastSpawnBattlePower + 30 >= playerTotalPower.BattlePower)
+    if (playerTotalPower.BattlePower <= lastSpawnBattlePower - 30 || playerTotalPower.BattlePower >= lastSpawnBattlePower + 30)
     {
       lastSpawnBattlePower = playerTotalPower.BattlePower;
       foreach (var enemy in spawnedEnemies)

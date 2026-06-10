@@ -4360,6 +4360,7 @@ MonoBehaviour:
   maxEnemies: 6
   enemySpawnSystem: {fileID: 1522151225}
   playerTotalPower: {fileID: 1974371192}
+  playerSafeZone: {fileID: 1974371184}
 --- !u!1 &1552862930
 GameObject:
   m_ObjectHideFlags: 0

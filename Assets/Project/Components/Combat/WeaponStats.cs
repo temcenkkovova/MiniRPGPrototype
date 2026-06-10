@@ -21,9 +21,9 @@ public class WeaponStats
       float attackSpeed = 1f / Mathf.Max(attackCooldown, 0.01f);
 
       return Mathf.RoundToInt(
-          weaponDamage * 5 +
+          weaponDamage * 3 +
           attackRange * 2 +
-          attackSpeed * 10
+          attackSpeed * 6
       //           + CritChance * 5
       // + CritMultiplier * 10
       // + BonusEffectsPower

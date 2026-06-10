@@ -15,7 +15,7 @@ public class PlayerExpUI : MonoBehaviour
 
   public void ShowExp(float value)
   {
-    textField.text = value.ToString() + " / " + playerLevel.ExpToNextLevel;
+    textField.text = value.ToString("F4") + " / " + playerLevel.ExpToNextLevel.ToString("F4");
   }
 
   void OnDisable()

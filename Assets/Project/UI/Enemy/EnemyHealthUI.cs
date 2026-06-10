@@ -19,7 +19,7 @@ public class EnemyHealthUI : MonoBehaviour
   public void ShowHealth(float health)
   {
 
-    textField.text = health.ToString() + " / " + enemyHealth.scaledMaxHealth;
+    textField.text = health.ToString("F0") + " / " + enemyHealth.scaledMaxHealth.ToString("F0");
   }
 
 }

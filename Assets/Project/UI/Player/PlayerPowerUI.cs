@@ -13,7 +13,7 @@ public class PlayerPowerUI : MonoBehaviour
   }
   public void ShowBP(int bp)
   {
-    textField.text = bp.ToString();
+    textField.text = bp.ToString("F0");
   }
 
   void OnDisable()

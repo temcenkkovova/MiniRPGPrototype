@@ -15,7 +15,7 @@ public class HealthUI : MonoBehaviour
 
   public void ShowHealth(float health)
   {
-    healthTextField.text = health.ToString();
+    healthTextField.text = health.ToString("F0");
   }
 
   void OnDisable()

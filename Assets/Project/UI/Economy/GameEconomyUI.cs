@@ -23,7 +23,7 @@ public class GameEconomyUI : MonoBehaviour
   {
     if (currencyField != null)
     {
-      currencyField.text = totalCurrency.ToString();
+      currencyField.text = totalCurrency.ToString("F0");
     }
   }
 

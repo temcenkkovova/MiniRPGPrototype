@@ -27,9 +27,9 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
     playerWeaponController = playerWeapon;
     icon.sprite = weaponItem.icon;
     titleField.text = weaponItem.title;
-    damageField.text = weaponItem.weaponConfig.damage.ToString();
-    radiusField.text = weaponItem.weaponConfig.range.ToString();
-    speedField.text = weaponItem.weaponConfig.cooldown.ToString() + "s";
+    damageField.text = "Damage - " + weaponItem.weaponConfig.damage.ToString();
+    radiusField.text = "Range - " + weaponItem.weaponConfig.range.ToString();
+    speedField.text = "Speed - " + weaponItem.weaponConfig.cooldown.ToString() + "s";
     battlePowerField.text = weaponItem.weaponConfig.startBP.ToString();
 
     equipBtn.interactable = !playerWeaponController.IsEquipped(weaponToEquip); ;

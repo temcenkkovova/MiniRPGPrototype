@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
 
   private PlayerAttackManager playerAttackManager;
   private PlayerInteractionController interactionController;
+  public NpcShop npcShop;
 
 
   void Awake()
@@ -33,6 +34,7 @@ public class PlayerInput : MonoBehaviour
     input.Player.Sprint.canceled += OnSprintCanceled;
     input.Player.Attack.performed += OnAttackStarted;
     input.Player.Interact.performed += OnInteractStarted;
+    input.Player.Shop.performed += OnShopStarted;
   }
   public void OnDisable()
   {
@@ -41,8 +43,13 @@ public class PlayerInput : MonoBehaviour
     input.Player.Sprint.canceled -= OnSprintCanceled;
     input.Player.Attack.performed -= OnAttackStarted;
     input.Player.Interact.performed -= OnInteractStarted;
+    input.Player.Shop.performed -= OnShopStarted;
   }
 
+  public void OnShopStarted(InputAction.CallbackContext context)
+  {
+    npcShop.HandleOpenShop();
+  }
   public void OnSprintStarted(InputAction.CallbackContext context)
   {
     movement.ChangeSprintState(true);

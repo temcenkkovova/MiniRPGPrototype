@@ -20,7 +20,6 @@ public class PlayerExpUI : MonoBehaviour
   }
   void Update()
   {
-    Debug.Log(target);
     fillImage.fillAmount = Mathf.Lerp(fillImage.fillAmount, target, Time.deltaTime * delaySpeed);
 
   }

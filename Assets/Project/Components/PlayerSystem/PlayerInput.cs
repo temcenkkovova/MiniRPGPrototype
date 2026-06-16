@@ -48,7 +48,15 @@ public class PlayerInput : MonoBehaviour
 
   public void OnShopStarted(InputAction.CallbackContext context)
   {
-    npcShop.HandleOpenShop();
+    if (npcShop.ShopStatus())
+    {
+      npcShop.HandleCloseShop();
+    }
+    else
+    {
+      npcShop.HandleOpenShop();
+    }
+
   }
   public void OnSprintStarted(InputAction.CallbackContext context)
   {

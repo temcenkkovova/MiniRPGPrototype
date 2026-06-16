@@ -5,6 +5,7 @@ public class ShopUIController : MonoBehaviour
 {
 
   private bool shopStatus;
+  public bool ShopStatus => shopStatus;
   public GameObject shopPanel;
 
   public event Action<bool> OnShopOpen;

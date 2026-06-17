@@ -6,6 +6,7 @@ public class EnemySpawnSystem : MonoBehaviour
   public List<EnemyConfig> enemyConfigs;
   public PlayerBootstrap playerBootstrap;
   public BoxCollider spawnAreaCollider;
+  public PopupManager popupManager;
 
   // This component will get radius between enemy spawn . The Spawn area  . Max enemy count . Scales enemy health and damage based on the player`s Combat Power;
   void Start()
@@ -29,6 +30,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
       enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
       EnemyManager.Instance.AddEnemy(enemyBootstrap);
+      enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);
 
     }
   }

@@ -31,6 +31,11 @@ public abstract class Health : MonoBehaviour, IDamageable
     if (CurrentHealth <= damage)
     {
       CurrentHealth = 0f;
+      OnDamaged?.Invoke(new DamageInfo
+      {
+        Damage = damage,
+        attacker = attacker
+      });
       Die();
     }
     else

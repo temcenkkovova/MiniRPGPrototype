@@ -7,6 +7,7 @@ public class InventoryManagerUI : MonoBehaviour
   public event Action OnInventoryClosed;
   public GameObject inventoryPanel;
   private bool isOpen = false;
+  public bool IsOpen => isOpen;
 
   public void OpenInventory()
   {

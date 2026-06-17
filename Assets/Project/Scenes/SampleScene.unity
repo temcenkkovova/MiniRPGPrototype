@@ -7122,6 +7122,7 @@ GameObject:
   - component: {fileID: 1522151224}
   - component: {fileID: 1522151225}
   - component: {fileID: 1522151226}
+  - component: {fileID: 1522151227}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -7192,6 +7193,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 796f4741d7f62e04094190facb24d954, type: 2}
   playerBootstrap: {fileID: 1974371171}
   spawnAreaCollider: {fileID: 1087415954}
+  popupManager: {fileID: 1522151227}
 --- !u!114 &1522151226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7208,6 +7210,19 @@ MonoBehaviour:
   enemySpawnSystem: {fileID: 1522151225}
   playerTotalPower: {fileID: 1974371192}
   playerSafeZone: {fileID: 1974371184}
+--- !u!114 &1522151227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522151221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fbdbe61cb1de24fad094ee526e129c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7202846426156596253, guid: d1c243a0bfeb1e24ea0a739356cbd5ea, type: 3}
 --- !u!1 &1532386771
 GameObject:
   m_ObjectHideFlags: 0
@@ -8893,6 +8908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcShop: {fileID: 1132579089}
+  inventoryManager: {fileID: 1152083986}
 --- !u!114 &1974371170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9837,6 +9853,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
   gameEconomy: {fileID: 2097430920}
   inventory: {fileID: 2097430923}
+  safeZone: {fileID: 0}
 --- !u!114 &2097430923
 MonoBehaviour:
   m_ObjectHideFlags: 0

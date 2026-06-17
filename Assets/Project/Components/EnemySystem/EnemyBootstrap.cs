@@ -25,6 +25,7 @@ public class EnemyBootstrap : MonoBehaviour
   private EnemyWeaponController enemyWeaponController;
 
 
+
   void Awake()
   {
     InitComponents();
@@ -44,6 +45,7 @@ public class EnemyBootstrap : MonoBehaviour
     deadState = new DeadState(fsmController, enemyAnimationController);
 
     enemyHealth.Init(enemyConfig.maxHealth);
+
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;

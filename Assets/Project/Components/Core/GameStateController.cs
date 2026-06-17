@@ -6,6 +6,8 @@ public class GameStateController : MonoBehaviour
 {
   [SerializeField] private GameState initialState = GameState.Gameplay;
   public static GameStateController Instance;
+
+
   public GameState CurrentState { get; private set; }
 
   public event Action<GameState> OnGameStateChanged;
@@ -33,5 +35,10 @@ public class GameStateController : MonoBehaviour
     CurrentState = newState;
     OnGameStateChanged?.Invoke(CurrentState);
 
+  }
+
+  public bool IsGameplayState()
+  {
+    return CurrentState == GameState.Gameplay;
   }
 }

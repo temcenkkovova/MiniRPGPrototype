@@ -6,6 +6,7 @@ public class ShopItemController : MonoBehaviour
 
   public Button itemPanel;
   private PlayerTotalPower playerTotalPower;
+
   private int requiredBP;
   public Image iconItem;
 

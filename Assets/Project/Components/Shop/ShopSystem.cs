@@ -12,6 +12,7 @@ public class ShopSystem : MonoBehaviour
   public GameEconomy gameEconomy;
   public event Action<ItemData> OnItemPurchased;
   public InventorySystem inventory;
+  public PlayerSafeZone safeZone;
 
   void Start()
   {

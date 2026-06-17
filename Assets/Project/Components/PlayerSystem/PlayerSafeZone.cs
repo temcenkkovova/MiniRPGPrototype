@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSafeZone : MonoBehaviour
 {
-  private bool safeZoneStatus = false;
+  private bool safeZoneStatus = true;
   public bool InSafeZone => safeZoneStatus;
   public event Action<bool> OnSafeZone;
 

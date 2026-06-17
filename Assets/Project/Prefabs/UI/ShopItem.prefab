@@ -781,6 +781,7 @@ MonoBehaviour:
   priceField: {fileID: 5879062952362676976}
   priceBtn: {fileID: 3143996072607452649}
   battlePowerField: {fileID: 5567562285650989041}
+  itemBtn: {fileID: 6538147841182619923}
 --- !u!114 &-1764418341278477115
 MonoBehaviour:
   m_ObjectHideFlags: 0

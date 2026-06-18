@@ -16,6 +16,7 @@ public class EnemyTargetSystem : MonoBehaviour
 
   public void SetNewTarget(DamageInfo damageInfo)
   {
+    if (damageInfo.attacker.tag != "Player") return;
     targetTr = damageInfo.attacker;
     player = damageInfo.attacker.GetComponent<PlayerBootstrap>();
     playerHealth = damageInfo.attacker.GetComponent<PlayerHealth>();
@@ -32,9 +33,8 @@ public class EnemyTargetSystem : MonoBehaviour
     targetTr = null;
 
     if (enemyHealth == null) return;
-    if (enemyHealth.CurrentHealth < enemyHealth.MaxHealth)
+    if (enemyHealth.CurrentHealth < enemyHealth.scaledMaxHealth)
     {
-      Debug.Log("qq");
       enemyHealth.ResetHealth();
     }
   }

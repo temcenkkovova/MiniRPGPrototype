@@ -21,6 +21,7 @@ public class PlayerBootstrap : MonoBehaviour
         if (movement == null || health == null || playerCombat == null || playerLevel == null || playerRespawn == null) return;
         movement.Init(playerStats);
         health.Init(playerStats.Health);
+        health.InitPlayerHealth(playerStats);
         playerCombat.InitBaseStats(playerStats);
         playerLevel.Init(config);
         playerRespawn.Init(playerStats);
@@ -29,10 +30,9 @@ public class PlayerBootstrap : MonoBehaviour
 
     void Start()
     {
-        if (playerStats != null || playerLevel != null)
-        {
-            playerLevel.OnLevelUpdate += playerStats.IncreaseStats;
-        }
+        if (playerLevel == null) return;
+
+        playerLevel.OnLevelUpdate += LevelUpdateActions;
     }
 
     public void GetAllComponents()
@@ -47,9 +47,16 @@ public class PlayerBootstrap : MonoBehaviour
 
     void OnDisable()
     {
-        if (playerStats != null || playerLevel != null)
+        if (playerLevel != null)
         {
-            playerLevel.OnLevelUpdate -= playerStats.IncreaseStats;
+            playerLevel.OnLevelUpdate -= LevelUpdateActions;
         }
+    }
+
+    private void LevelUpdateActions(int level)
+    {
+        if (playerStats == null || health == null) return;
+        playerStats.IncreaseStats();
+        health.SetMaxHealth();
     }
 }

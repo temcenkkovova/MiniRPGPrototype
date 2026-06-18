@@ -21,20 +21,22 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
 
   public void Init(WeaponItem weaponItem, PlayerWeaponController playerWeapon, InventorySystem inventory)
   {
+
     inventorySystem = inventory;
     weaponToEquip = weaponItem;
     playerWeaponController = playerWeapon;
     icon.sprite = weaponItem.icon;
     titleField.text = weaponItem.title;
-    damageField.text = weaponItem.weaponConfig.damage.ToString();
-    radiusField.text = weaponItem.weaponConfig.range.ToString();
-    speedField.text = weaponItem.weaponConfig.cooldown.ToString() + "s";
+    damageField.text = "Damage - " + weaponItem.weaponConfig.damage.ToString();
+    radiusField.text = "Range - " + weaponItem.weaponConfig.range.ToString();
+    speedField.text = "Speed - " + weaponItem.weaponConfig.cooldown.ToString() + "s";
     battlePowerField.text = weaponItem.weaponConfig.startBP.ToString();
 
     equipBtn.interactable = !playerWeaponController.IsEquipped(weaponToEquip); ;
     if (playerWeaponController.IsEquipped(weaponToEquip))
     {
       btnTextField.text = "Equipped";
+
     }
   }
 
@@ -50,7 +52,7 @@ public class WeaponItemDetail : MonoBehaviour // For future I will make Consumab
   {
     if (inventorySystem == null) return;
     if (playerWeaponController.IsEquipped(weaponToEquip)) return;
-    inventorySystem.SellItem(weaponToEquip);
+    inventorySystem.TrySellItem(weaponToEquip);
   }
 
 

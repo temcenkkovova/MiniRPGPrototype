@@ -9,4 +9,15 @@ public class NpcShop : MonoBehaviour
     if (shopUIController != null)
       shopUIController.OpenShop();
   }
+  public void HandleCloseShop()
+  {
+    if (shopUIController != null)
+      shopUIController.CloseShop();
+  }
+  public bool ShopStatus()
+  {
+    return shopUIController.ShopStatus;
+  }
+
+
 }

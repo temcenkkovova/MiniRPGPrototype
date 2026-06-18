@@ -5,6 +5,7 @@ public class SwordHitBox : MonoBehaviour
   private float damage;
   private Collider swordCollider;
   private Transform ownerTr;
+  private bool hitStatus = false;
   void Awake()
   {
     swordCollider = GetComponent<Collider>();
@@ -23,8 +24,9 @@ public class SwordHitBox : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
-    if (other.TryGetComponent<IDamageable>(out var damageable))
+    if (other.TryGetComponent<IDamageable>(out var damageable) && !hitStatus)
     {
+      hitStatus = true;
       damageable.TakeDamage(damage, ownerTr);
     }
 
@@ -32,7 +34,7 @@ public class SwordHitBox : MonoBehaviour
 
   void OnTriggerExit(Collider other)
   {
-
+    hitStatus = false;
   }
   public void EnableCollider()
   {

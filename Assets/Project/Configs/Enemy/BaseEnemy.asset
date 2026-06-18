@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0528c7c9cbbf54b47a047ae08910fade, type: 3}
   m_Name: BaseEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 10
   moveSpeed: 2
   coinsReward: 20
-  expReward: 20
-  enemyAudioConfig: {fileID: 11400000, guid: 71b30b9b00072fc42bbefe891203af6c, type: 2}
+  expReward: 5
+  prefab: {fileID: 3604357589239861136, guid: 6d84897352d03404c8c033d3bed89eb0, type: 3}
+  weaponConfig: {fileID: 11400000, guid: 3e50733875b55644a981630fbbb1108d, type: 2}

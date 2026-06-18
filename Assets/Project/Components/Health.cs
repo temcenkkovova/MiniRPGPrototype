@@ -8,6 +8,7 @@ public abstract class Health : MonoBehaviour, IDamageable
   public float MaxHealth { get; private set; }
   public event Action<float> OnHealthChanged;
   public event Action OnDeath;
+  public float scaledMaxHealth;
   public event Action<DamageInfo> OnDamaged; // It needs for show UI notification
   public bool IsDead { get; private set; }
 
@@ -30,6 +31,11 @@ public abstract class Health : MonoBehaviour, IDamageable
     if (CurrentHealth <= damage)
     {
       CurrentHealth = 0f;
+      OnDamaged?.Invoke(new DamageInfo
+      {
+        Damage = damage,
+        attacker = attacker
+      });
       Die();
     }
     else
@@ -58,7 +64,15 @@ public abstract class Health : MonoBehaviour, IDamageable
 
   public void ResetHealth()
   {
-    CurrentHealth = MaxHealth;
+    CurrentHealth = scaledMaxHealth;
+    OnHealthChanged?.Invoke(CurrentHealth);
+  }
+
+  public void ScaleHealth(float scale)
+  {
+
+    scaledMaxHealth = MaxHealth * scale;
+    CurrentHealth = scaledMaxHealth;
     OnHealthChanged?.Invoke(CurrentHealth);
   }
 }

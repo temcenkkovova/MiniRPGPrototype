@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ItemData : ScriptableObject
@@ -6,5 +7,6 @@ public class ItemData : ScriptableObject
   public string description;
   public string title;
   public float price;
+
 
 }

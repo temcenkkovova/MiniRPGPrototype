@@ -1,26 +1,35 @@
+using System;
 using UnityEngine;
 
 public class EnemyWeaponController : MonoBehaviour
 {
-  public WeaponConfig startWeaponConfig;
+  private WeaponConfig startWeaponConfig;
   public WeaponConfig CurrentWeaponConfig { get; private set; }
   public Transform weaponPositionGrid;
-  private WeaponStats weaponStats;
+  [NonSerialized] public WeaponStats weaponStats;
   private MeleeAttack attack;
+
   void Awake()
   {
     attack = GetComponent<MeleeAttack>();
 
   }
-  void Start()
+
+  public void Init(WeaponConfig weaponConfig)
   {
+    startWeaponConfig = weaponConfig;
     EquipWeapon(startWeaponConfig);
   }
+  // void Start()
+  // {
+  //   EquipWeapon(startWeaponConfig);
+  // }
 
   public void EquipWeapon(WeaponConfig newWeapon)
   {
     CurrentWeaponConfig = newWeapon;
     weaponStats = new WeaponStats(CurrentWeaponConfig);
+    weaponStats.WeaponDamageScaling(EnemyManager.Instance.ScalingValue());
     foreach (Transform child in weaponPositionGrid)
       Destroy(child.gameObject);
 

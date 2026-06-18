@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponStats
 {
   private float weaponDamage;
+  private float baseWeaponDamage;
   private float attackCooldown;
   private float attackRange;
   private int weaponLevel;
@@ -12,6 +13,7 @@ public class WeaponStats
   public float AttackRange => attackRange;
   public int Level => weaponLevel;
 
+
   public int CombatPower
   {
     get
@@ -19,9 +21,9 @@ public class WeaponStats
       float attackSpeed = 1f / Mathf.Max(attackCooldown, 0.01f);
 
       return Mathf.RoundToInt(
-          weaponDamage * 10 +
-          attackRange * 5 +
-          attackSpeed * 20
+          weaponDamage * 3 +
+          attackRange * 2 +
+          attackSpeed * 6
       //           + CritChance * 5
       // + CritMultiplier * 10
       // + BonusEffectsPower
@@ -38,8 +40,14 @@ public class WeaponStats
   public WeaponStats(WeaponConfig config)
   {
     weaponDamage = config.damage;
+    baseWeaponDamage = weaponDamage;
     attackCooldown = config.cooldown;
     attackRange = config.range;
     weaponLevel = 1;
+  }
+
+  public void WeaponDamageScaling(float scale)
+  {
+    weaponDamage = baseWeaponDamage * scale;
   }
 }

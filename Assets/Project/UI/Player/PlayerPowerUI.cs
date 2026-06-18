@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerPowerUI : MonoBehaviour
 {
   public TMP_Text textField;
-  public PlayerPower playerPower;
+  public PlayerTotalPower playerPower;
 
   void Awake()
   {
@@ -13,7 +13,7 @@ public class PlayerPowerUI : MonoBehaviour
   }
   public void ShowBP(int bp)
   {
-    textField.text = bp.ToString();
+    textField.text = bp.ToString("F0");
   }
 
   void OnDisable()

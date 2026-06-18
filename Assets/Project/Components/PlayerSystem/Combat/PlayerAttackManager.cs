@@ -39,6 +39,7 @@ public class PlayerAttackManager : MonoBehaviour
   }
   public void ManageAttack()
   {
+    if (GameStateController.Instance.CurrentState != GameState.Gameplay) return;
     if (!attack.CanAttack()) return;
     if (playerHealth.IsDead) return; // temporary condition
     attack.TryAttack();

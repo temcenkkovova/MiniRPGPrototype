@@ -51,9 +51,9 @@ public class PlayerStats
     get
     {
       return Mathf.RoundToInt(
-          BaseDamage * 10 +
-          MoveSpeed * 5 +
-          Health * 5
+          BaseDamage * 3 +
+          MoveSpeed * 2 +
+          Health * 1
       );
     }
   }
@@ -73,13 +73,12 @@ public class PlayerStats
     SprintSpeed = config.sprintSpeed;
   }
 
-  public void IncreaseStats(int value)
+  public void IncreaseStats()
   {
     BaseDamage *= 1.2f;
     MoveSpeed *= 1.1f;
-    Health *= 1.3f;
+    Health *= 1.1f;
     SprintSpeed *= 1.1f;
-
-    Debug.Log(Health);
+    OnStatsChanged?.Invoke();
   }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fe510703697847abc187c50ad6074, type: 3}
   m_Name: Shadowfang
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 17
   cooldown: 1
   range: 2
-  startBP: 1020
+  startBP: 69
   weaponPrefab: {fileID: 4673701426247691224, guid: e4aa1ff7ddb773840a65abf60f8f3ce1, type: 3}
   weaponAudioConfig: {fileID: 11400000, guid: a7a8cbd39063fa346a790ad0ab6e9130, type: 2}

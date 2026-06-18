@@ -6,9 +6,13 @@ public class EnemyRewardSystem : MonoBehaviour
   private EnemyHealth enemyHealth;
   public float Currencies { get; private set; }
   public float Experience { get; private set; }
-  public GameEconomy gameEconomy;
-  public PlayerLevel playerLevel;
+  private PlayerLevel playerLevel;
 
+  public void InitPlayerRef(PlayerBootstrap player)
+  {
+    if (player)
+      playerLevel = player.GetComponent<PlayerLevel>();
+  }
   public void Init(float coins, float expReward)
   {
     Currencies = coins;
@@ -24,8 +28,8 @@ public class EnemyRewardSystem : MonoBehaviour
 
   public void HandleDeathReward()
   {
-    if (gameEconomy == null || playerLevel == null) return;
-    gameEconomy.AddCurrency(Currencies);
+    if (playerLevel == null) return;
+    GameEconomy.Instance.AddCurrency(Currencies);
     playerLevel.AddExp(Experience);
   }
 

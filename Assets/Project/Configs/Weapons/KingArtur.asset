@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fe510703697847abc187c50ad6074, type: 3}
   m_Name: KingArtur
   m_EditorClassIdentifier: 
-  damage: 60
+  damage: 12
   cooldown: 0.5
   range: 2
-  startBP: 639
+  startBP: 45
   weaponPrefab: {fileID: 1733665775871714, guid: fe9dbec53c6344347a45c89fa7c33846, type: 3}
   weaponAudioConfig: {fileID: 11400000, guid: a7a8cbd39063fa346a790ad0ab6e9130, type: 2}

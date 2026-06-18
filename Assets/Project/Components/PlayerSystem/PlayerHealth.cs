@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-
+  private PlayerStats playerStats;
 
   void OnEnable()
   {
@@ -13,6 +13,15 @@ public class PlayerHealth : Health
   {
     base.Die();
 
+  }
+
+  public void InitPlayerHealth(PlayerStats playerStats)
+  {
+    this.playerStats = playerStats;
+  }
+  public void SetMaxHealth()
+  {
+    ResetMaxHealth(playerStats.Health);
   }
 
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyBootstrap : MonoBehaviour
 {
-  public EnemyConfig enemyConfig;
+  private EnemyConfig enemyConfig;
 
   private EnemyHealth enemyHealth;
   private EnemyFSMController fsmController;
@@ -22,16 +22,22 @@ public class EnemyBootstrap : MonoBehaviour
   private EnemyAnimationsController enemyAnimationController;
   private EnemyAttackManager enemyAttackManager;
   private EnemyRewardSystem enemyRewardSystem;
+  private EnemyWeaponController enemyWeaponController;
+
 
 
   void Awake()
   {
     InitComponents();
   }
+  public void Init(EnemyConfig enemyConfig)
+  {
+    this.enemyConfig = enemyConfig;
+  }
 
   void Start()
   {
-    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null || enemyRewardSystem == null) return;
+    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null || enemyRewardSystem == null || enemyWeaponController == null) return;
     chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
@@ -39,11 +45,13 @@ public class EnemyBootstrap : MonoBehaviour
     deadState = new DeadState(fsmController, enemyAnimationController);
 
     enemyHealth.Init(enemyConfig.maxHealth);
+
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);
     enemyHealth.OnDamaged += enemyTargetSystem.SetNewTarget;
+    enemyHealth.OnDeath += HandleEnemyDeath;
     enemyRewardSystem.Init(enemyConfig.coinsReward, enemyConfig.expReward);
-
+    enemyWeaponController.Init(enemyConfig.weaponConfig);
   }
 
   private void InitComponents()
@@ -56,6 +64,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyAnimationController = GetComponent<EnemyAnimationsController>();
     enemyAttackManager = GetComponent<EnemyAttackManager>();
     enemyRewardSystem = GetComponent<EnemyRewardSystem>();
+    enemyWeaponController = GetComponent<EnemyWeaponController>();
   }
 
   void OnDisable()
@@ -63,7 +72,12 @@ public class EnemyBootstrap : MonoBehaviour
     if (enemyHealth != null && attack != null)
     {
       enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
+      enemyHealth.OnDeath -= HandleEnemyDeath;
     }
 
+  }
+  private void HandleEnemyDeath()
+  {
+    EnemyManager.Instance.RemoveEnemy(this);
   }
 }

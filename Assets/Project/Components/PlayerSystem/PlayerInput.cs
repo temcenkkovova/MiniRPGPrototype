@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 {
   private PlayerController input;
   private PlayerMovement movement;
+  private PlayerStatsUIManager statsUIManager;
 
   private PlayerAttackManager playerAttackManager;
   private PlayerInteractionController interactionController;
@@ -20,6 +21,7 @@ public class PlayerInput : MonoBehaviour
     movement = GetComponent<PlayerMovement>();
     playerAttackManager = GetComponent<PlayerAttackManager>();
     interactionController = GetComponent<PlayerInteractionController>();
+    statsUIManager = GetComponent<PlayerStatsUIManager>();
   }
 
   void Update()
@@ -39,6 +41,7 @@ public class PlayerInput : MonoBehaviour
     input.Player.Interact.performed += OnInteractStarted;
     input.Player.Shop.performed += OnShopStarted;
     input.Player.Inventory.performed += OnInventoryStarted;
+    input.Player.Stats.performed += OnStatsStarted;
   }
   public void OnDisable()
   {
@@ -49,8 +52,13 @@ public class PlayerInput : MonoBehaviour
     input.Player.Interact.performed -= OnInteractStarted;
     input.Player.Shop.performed -= OnShopStarted;
     input.Player.Inventory.performed -= OnInventoryStarted;
+    input.Player.Stats.performed -= OnStatsStarted;
   }
 
+  public void OnStatsStarted(InputAction.CallbackContext context)
+  {
+    statsUIManager.ChangeStatePanel();
+  }
   public void OnInventoryStarted(InputAction.CallbackContext context)
   {
     if (inventoryManager.IsOpen)

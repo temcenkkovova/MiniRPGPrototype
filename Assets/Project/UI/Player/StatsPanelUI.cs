@@ -11,11 +11,11 @@ public class StatsPanelUI : MonoBehaviour
 
   public void InitStats(PlayerStats playerStats, WeaponStats weaponStats)
   {
-    damageField.text = playerStats.BaseDamage + "  /  " + weaponStats.WeaponDamage;
+    damageField.text = "Player " + playerStats.BaseDamage + "  /  " + "Weapon " + weaponStats.WeaponDamage;
     healthField.text = playerStats.Health.ToString();
     speedField.text = playerStats.MoveSpeed.ToString();
     armorField.text = "20";
-    totalBattlePowerField.text = playerStats.PlayerPower.ToString() + "  /  " + weaponStats.CombatPower.ToString();
+    totalBattlePowerField.text = "Player " + playerStats.PlayerPower.ToString() + "  /  " + "Weapon " + weaponStats.CombatPower.ToString();
 
   }
 }

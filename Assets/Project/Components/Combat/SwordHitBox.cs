@@ -5,14 +5,16 @@ public class SwordHitBox : MonoBehaviour
   private float damage;
   private Collider swordCollider;
   private Transform ownerTr;
-  private bool hitStatus = false;
+  private bool hitStatus;
   private IDamageable currentTarget;
-  private bool startAttack = false;
-  void Awake()
+  private bool startAttack;
+
+  private void Awake()
   {
     swordCollider = GetComponent<Collider>();
   }
-  void OnEnable()
+
+  private void OnEnable()
   {
     DisableCollider();
   }
@@ -21,39 +23,32 @@ public class SwordHitBox : MonoBehaviour
   {
     damage = newDamage;
     this.ownerTr = ownerTr;
-    startAttack = true;
   }
 
-  void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
   {
     if (!startAttack) return;
-    string ownerTag = ownerTr.tag;
-    IDamageable damageable = other.GetComponent<IDamageable>();
-    currentTarget = damageable;
-    bool equalTag = ownerTag == other.tag;
-    if (damageable != null && !equalTag && !hitStatus)
-    {
-      hitStatus = true;
+    if (ownerTr == null) return;
 
-      damageable.TakeDamage(damage, ownerTr);
-    }
-
-  }
-
-  void OnTriggerExit(Collider other)
-  {
     IDamageable damageable = other.GetComponent<IDamageable>();
     if (damageable == null) return;
-    if (currentTarget == damageable && hitStatus)
-    {
 
-      hitStatus = false;
-      startAttack = false;
-    }
+    bool equalTag = ownerTr.CompareTag(other.tag);
+    if (equalTag) return;
 
+    if (hitStatus) return;
+
+    hitStatus = true;
+    currentTarget = damageable;
+
+    damageable.TakeDamage(damage, ownerTr);
   }
+
   public void EnableCollider()
   {
+    hitStatus = false;
+    startAttack = true;
+    currentTarget = null;
 
     if (swordCollider)
       swordCollider.enabled = true;
@@ -61,8 +56,11 @@ public class SwordHitBox : MonoBehaviour
 
   public void DisableCollider()
   {
-
     if (swordCollider)
       swordCollider.enabled = false;
+
+    hitStatus = false;
+    startAttack = false;
+    currentTarget = null;
   }
 }

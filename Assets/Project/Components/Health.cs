@@ -19,7 +19,7 @@ public abstract class Health : MonoBehaviour, IDamageable
   }
   protected virtual void Die()
   {
-    Debug.Log("gea");
+
     OnDeath?.Invoke();
     IsDead = true;
   }
@@ -37,8 +37,7 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     if (armor == null) return;
     float reducedDamage = armor.ReduceDamage(damage);
-    Debug.Log("Income damage" + reducedDamage);
-    Debug.Log("current health " + CurrentHealth);
+
     if (CurrentHealth <= 0f) return;
 
     if (CurrentHealth <= reducedDamage)

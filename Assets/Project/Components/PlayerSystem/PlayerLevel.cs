@@ -39,4 +39,10 @@ public class PlayerLevel : MonoBehaviour
     OnLevelUpdate?.Invoke(CurrentLevel);
 
   }
+
+  public void InitSaveLevelData(int saveLevel, float saveExp)
+  {
+    CurrentLevel = saveLevel;
+    CurrentExp = saveExp;
+  }
 }

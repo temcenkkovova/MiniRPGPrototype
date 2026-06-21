@@ -27,6 +27,7 @@ public class SwordHitBox : MonoBehaviour
     if (other.TryGetComponent<IDamageable>(out var damageable) && !hitStatus)
     {
       hitStatus = true;
+      Debug.Log(ownerTr);
       damageable.TakeDamage(damage, ownerTr);
     }
 

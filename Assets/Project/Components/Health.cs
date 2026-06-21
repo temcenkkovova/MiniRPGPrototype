@@ -10,10 +10,16 @@ public abstract class Health : MonoBehaviour, IDamageable
   public event Action OnDeath;
   public float scaledMaxHealth;
   public event Action<DamageInfo> OnDamaged; // It needs for show UI notification
+  private Armor armor;
   public bool IsDead { get; private set; }
 
+  void Awake()
+  {
+    armor = GetComponent<Armor>();
+  }
   protected virtual void Die()
   {
+    Debug.Log("gea");
     OnDeath?.Invoke();
     IsDead = true;
   }
@@ -27,25 +33,38 @@ public abstract class Health : MonoBehaviour, IDamageable
 
   public void TakeDamage(float damage, Transform attacker)
   {
-    if (CurrentHealth <= 0) return;
-    if (CurrentHealth <= damage)
+
+
+    if (armor == null) return;
+    float reducedDamage = armor.ReduceDamage(damage);
+    Debug.Log("Income damage" + reducedDamage);
+    Debug.Log("current health " + CurrentHealth);
+    if (CurrentHealth <= 0f) return;
+
+    if (CurrentHealth <= reducedDamage)
     {
+
       CurrentHealth = 0f;
       OnDamaged?.Invoke(new DamageInfo
       {
-        Damage = damage,
+        Damage = reducedDamage,
         attacker = attacker
       });
       Die();
     }
     else
     {
-      CurrentHealth -= damage;
+      CurrentHealth -= reducedDamage;
       OnDamaged?.Invoke(new DamageInfo
       {
-        Damage = damage,
+        Damage = reducedDamage,
         attacker = attacker
       });
+
+      if (CurrentHealth < 1f)
+      {
+        Die();
+      }
     }
 
     OnHealthChanged?.Invoke(CurrentHealth);

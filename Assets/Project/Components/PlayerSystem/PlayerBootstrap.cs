@@ -13,6 +13,7 @@ public class PlayerBootstrap : MonoBehaviour
     private PlayerRespawn playerRespawn;
     private PlayerStatsUIManager playerStatsUIManager;
     private PlayerTotalPower playerTotalPower;
+    private Armor armor;
 
     public void Awake()
     {
@@ -28,7 +29,7 @@ public class PlayerBootstrap : MonoBehaviour
         playerLevel.Init(config);
         playerRespawn.Init(playerStats);
         playerStatsUIManager.Init(playerTotalPower);
-
+        armor.InitArmor(playerStats.Armor);
     }
 
     void Start()
@@ -36,6 +37,7 @@ public class PlayerBootstrap : MonoBehaviour
         if (playerLevel == null) return;
 
         playerLevel.OnLevelUpdate += LevelUpdateActions;
+        playerStats.OnArmorChanged += armor.InitArmor;
     }
 
     public void GetAllComponents()
@@ -47,14 +49,16 @@ public class PlayerBootstrap : MonoBehaviour
         playerRespawn = GetComponent<PlayerRespawn>();
         playerStatsUIManager = GetComponent<PlayerStatsUIManager>();
         playerTotalPower = GetComponent<PlayerTotalPower>();
+        armor = GetComponent<Armor>();
     }
 
     void OnDisable()
     {
-        if (playerLevel != null)
-        {
-            playerLevel.OnLevelUpdate -= LevelUpdateActions;
-        }
+        if (playerLevel == null || armor == null) return;
+
+        playerLevel.OnLevelUpdate -= LevelUpdateActions;
+        playerStats.OnArmorChanged -= armor.InitArmor;
+
     }
 
     private void LevelUpdateActions(int level)

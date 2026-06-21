@@ -19,6 +19,19 @@ public class ShopSystem : MonoBehaviour
 
   }
 
+  public void RefreshShop()
+  {
+    /*I need this method for refresh shop after load scene from SaveSystem*/
+    RemoveOwnedItemsFromShop();
+  }
+
+  private void RemoveOwnedItemsFromShop()
+  {
+    shopItems.RemoveAll(shopItem => inventory.inventoryItems.Exists(inventoryItem => inventoryItem.name == shopItem.name)); // Here I delete from shop that I have in inventory; 
+    // Find items by ID - better way . But I don`t have yet it;
+    OnItemsChanged?.Invoke();
+  }
+
   public void AddItem(ItemData newItem) // I will need this methods in future , when I have upgrade weapon by hero  power
   {
     shopItems.Add(newItem);

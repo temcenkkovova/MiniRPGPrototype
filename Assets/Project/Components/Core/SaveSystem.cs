@@ -9,12 +9,13 @@ public class SaveSystem : MonoBehaviour
 
   // private void OnApplicationQuit()
   // {
-  //   // SaveGame();
+  //   // Save();
   // }
-  public PlayerLevel playerLevel;
-  public InventorySystem inventory;
-  public PlayerWeaponController weaponController;
+  private PlayerLevel playerLevel;
+  private InventorySystem inventory;
+  private PlayerWeaponController weaponController;
   public List<WeaponItem> allPossibleEquipWeapons;
+  private ShopSystem shopSystem;
 
   [SerializeField] private string path;
 
@@ -76,19 +77,39 @@ public class SaveSystem : MonoBehaviour
 
     string json = File.ReadAllText(path);
     SaveData data = JsonUtility.FromJson<SaveData>(json);
+    StartCoroutine(LoadSceneAndApplyData(data));
+  }
+  private System.Collections.IEnumerator LoadSceneAndApplyData(SaveData data)
+  {
+    //Need to use Coroutine because I have to set new data after scene  load;
+    AsyncOperation operation = SceneManager.LoadSceneAsync(data.world.LastLocation);
+
+    while (!operation.isDone)
+      yield return null;
+
+    /*It`s important to find components by using FindObjectOfType because of SaveSystem does not destroy during scene is changing*/
+    playerLevel = FindObjectOfType<PlayerLevel>();
+    inventory = FindObjectOfType<InventorySystem>();
+    weaponController = FindObjectOfType<PlayerWeaponController>();
+    shopSystem = FindObjectOfType<ShopSystem>();
     inventory.InitSaveItemsName(data.inventory.InventoryItemsName);
     playerLevel.InitSaveLevelData(data.player.Level, data.player.Exp);
     GameEconomy.Instance.InitSavedCurrency(data.player.Coins);
-    string equippedWeaponName = data.inventory.EquippedWeaponName;
-    WeaponItem foundWeaponConfig = allPossibleEquipWeapons.Find(item => item.weaponConfig.name == equippedWeaponName);
-    if (foundWeaponConfig != null)
+    shopSystem.RefreshShop();
+    WeaponItem foundWeapon = allPossibleEquipWeapons.Find(
+    item => item.weaponConfig.name == data.inventory.EquippedWeaponName
+);
+
+    if (foundWeapon != null)
     {
-      weaponController.EquipWeapon(foundWeaponConfig.weaponConfig, foundWeaponConfig);
+      weaponController.EquipWeapon(foundWeapon.weaponConfig, foundWeapon);
     }
     else
     {
-      Debug.LogWarning($"Item not found: {foundWeaponConfig.name}");
+      Debug.LogWarning($"Weapon not found: {data.inventory.EquippedWeaponName}");
     }
+
+    playerLevel.transform.position = data.world.LastPosition;
   }
 }
 

@@ -3598,7 +3598,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -4547,6 +4547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881002931}
   - component: {fileID: 881002930}
+  - component: {fileID: 881002932}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -4582,6 +4583,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881002932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881002929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1b2379b8c6ca84f9ea173955b445df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPossibleEquipWeapons:
+  - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
+  - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
+  - {fileID: 11400000, guid: ed575c51ecf2a6d47b26550fd8d5e6ab, type: 2}
+  path: 
 --- !u!1 &887281842
 GameObject:
   m_ObjectHideFlags: 0
@@ -9831,7 +9849,6 @@ GameObject:
   - component: {fileID: 2097430920}
   - component: {fileID: 2097430922}
   - component: {fileID: 2097430923}
-  - component: {fileID: 2097430924}
   m_Layer: 0
   m_Name: GameEconomy
   m_TagString: Untagged
@@ -9884,7 +9901,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
   gameEconomy: {fileID: 2097430920}
   inventory: {fileID: 2097430923}
-  safeZone: {fileID: 0}
+  safeZone: {fileID: 1974371184}
 --- !u!114 &2097430923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9902,26 +9919,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
   - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
   - {fileID: 11400000, guid: ed575c51ecf2a6d47b26550fd8d5e6ab, type: 2}
---- !u!114 &2097430924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097430919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f1b2379b8c6ca84f9ea173955b445df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLevel: {fileID: 1974371185}
-  inventory: {fileID: 2097430923}
-  weaponController: {fileID: 1974371187}
-  allPossibleEquipWeapons:
-  - {fileID: 11400000, guid: 0ad32b3bd4afa81458eb2812f0edcfcc, type: 2}
-  - {fileID: 11400000, guid: b447205cb3c93e342a718563574c24e0, type: 2}
-  - {fileID: 11400000, guid: ed575c51ecf2a6d47b26550fd8d5e6ab, type: 2}
-  path: 
 --- !u!1 &2118174874
 GameObject:
   m_ObjectHideFlags: 0

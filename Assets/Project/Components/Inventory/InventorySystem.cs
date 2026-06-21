@@ -10,11 +10,6 @@ public class InventorySystem : MonoBehaviour
   public event Action<ItemData> OnItemSold;
   public void AddItem(ItemData item)
   {
-
-
-
-    Debug.Log(inventoryItems);
-
     if (item is WeaponItem weaponItem)
     {
       if (inventoryItems.Contains(weaponItem))
@@ -30,7 +25,7 @@ public class InventorySystem : MonoBehaviour
 
     }
 
-    // if(item is AnotherType anotherType) // when I and one more type I can use this code example
+    // if(item is AnotherType anotherType) // when I add another  type of items I will  use it 
     // {
     //   inventoryItems.Add(anotherType);
     //   OnInventoryChanged?.Invoke();

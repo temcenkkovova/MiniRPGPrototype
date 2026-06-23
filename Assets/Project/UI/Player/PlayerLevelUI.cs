@@ -11,6 +11,7 @@ public class PlayerLevelUI : MonoBehaviour
   {
     if (playerLevel == null) return;
     playerLevel.OnLevelUpdate += ShowLevel;
+    playerLevel.OnLevelDataLoaded += SetLoadedLevel;
     ShowLevel(playerLevel.CurrentLevel);
   }
 
@@ -18,10 +19,15 @@ public class PlayerLevelUI : MonoBehaviour
   {
     textField.text = level.ToString();
   }
+  public void SetLoadedLevel()
+  {
+    textField.text = playerLevel.CurrentLevel.ToString();
+  }
 
   void OnDisable()
   {
     if (playerLevel == null) return;
     playerLevel.OnLevelUpdate -= ShowLevel;
+    playerLevel.OnLevelDataLoaded -= SetLoadedLevel;
   }
 }

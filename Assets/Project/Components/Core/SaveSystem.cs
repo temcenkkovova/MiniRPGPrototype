@@ -40,6 +40,10 @@ public class SaveSystem : MonoBehaviour
   }
   public SaveData SetSaveData()
   {
+    playerLevel = FindObjectOfType<PlayerLevel>();
+    inventory = FindObjectOfType<InventorySystem>();
+    weaponController = FindObjectOfType<PlayerWeaponController>();
+    shopSystem = FindObjectOfType<ShopSystem>();
     SaveData data = new SaveData();
     List<string> inventoryNames = new List<string>();
     foreach (var item in inventory.inventoryItems)
@@ -108,8 +112,8 @@ public class SaveSystem : MonoBehaviour
     {
       Debug.LogWarning($"Weapon not found: {data.inventory.EquippedWeaponName}");
     }
+    playerLevel.GetComponent<PlayerRespawn>().HandleLoadedPosition(data.world.LastPosition);
 
-    playerLevel.transform.position = data.world.LastPosition;
   }
 }
 

@@ -31,7 +31,7 @@ public class NPCBootstrap : MonoBehaviour
 
   public void OpenQuestDialog()
   {
-    Quest quest = GetComponent<Quest>();
+    QuestManager quest = GetComponent<QuestManager>();
     quest.OpenDialog();
   }
 

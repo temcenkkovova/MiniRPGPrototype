@@ -19278,6 +19278,7 @@ GameObject:
   - component: {fileID: 1091957776}
   - component: {fileID: 1091957778}
   - component: {fileID: 1091957777}
+  - component: {fileID: 1091957779}
   m_Layer: 5
   m_Name: QuestPanel
   m_TagString: Untagged
@@ -19345,6 +19346,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091957775}
   m_CullTransparentMesh: 1
+--- !u!114 &1091957779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091957775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0fca5bafe7e3443ac726051483b97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missQuestPanel: {fileID: 1656185091}
+  questPanel: {fileID: 544181670}
+  gridParent: {fileID: 544181671}
+  questItemPrefab: {fileID: 1065646827565282671, guid: 40416ab3a45259147868d513143b58d9, type: 3}
+  questSystem: {fileID: 2097430924}
 --- !u!1 &1092127595
 GameObject:
   m_ObjectHideFlags: 0

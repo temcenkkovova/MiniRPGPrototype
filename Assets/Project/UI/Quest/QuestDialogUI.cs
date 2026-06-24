@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class QuestDialogUI : MonoBehaviour
 {
-  public Quest quest;
+  public QuestManager quest;
   public Transform gridParent;
   public QuestUI questUIPrefab;
   public GameObject questPanel;

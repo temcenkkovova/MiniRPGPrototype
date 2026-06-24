@@ -8,10 +8,10 @@ public class QuestUI : MonoBehaviour
   public TMP_Text condition;
   public TMP_Text expReward;
   public TMP_Text coinReward;
-  private Quest quest;
+  private QuestManager quest;
 
 
-  public void Init(QuestConfig data, Quest quest)
+  public void Init(QuestConfig data, QuestManager quest)
   {
     title.text = data.title;
     description.text = data.description;

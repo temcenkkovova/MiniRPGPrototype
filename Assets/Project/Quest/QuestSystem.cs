@@ -8,7 +8,7 @@ public class QuestSystem : MonoBehaviour
   public List<QuestData> acceptedQuests = new List<QuestData>();
   public event Action OnQuestsChanged;
 
-  public void AcceptQuest(QuestConfig quest)
+  public void AcceptQuest(QuestConfig quest, Quest questManager)
   {
     QuestData questData = new QuestData
     {
@@ -17,5 +17,6 @@ public class QuestSystem : MonoBehaviour
     };
     acceptedQuests.Add(questData);
     OnQuestsChanged?.Invoke();
+    questManager.CloseDialog(); // I implemented it for make sure that the quest will accept than I will close the dialog
   }
 }

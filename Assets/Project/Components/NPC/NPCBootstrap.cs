@@ -16,6 +16,10 @@ public class NPCBootstrap : MonoBehaviour
       case NPCRole.Shop:
         OpenShop();
         return;
+
+      case NPCRole.Quest:
+        OpenQuestDialog();
+        return;
     }
   }
 
@@ -25,8 +29,10 @@ public class NPCBootstrap : MonoBehaviour
     shop.HandleOpenShop();
   }
 
-  public void OpenQuest()
+  public void OpenQuestDialog()
   {
-
+    Quest quest = GetComponent<Quest>();
+    quest.OpenDialog();
   }
+
 }

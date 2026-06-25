@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
-  // here will current quests to complete
+  // here will be current quests to complete
   public List<QuestData> acceptedQuests = new List<QuestData>();
   public event Action OnQuestsChanged;
 
@@ -29,6 +29,20 @@ public class QuestSystem : MonoBehaviour
       acceptedQuests.Add(questData);
       OnQuestsChanged?.Invoke();
       questManager.CloseDialog(); // I implemented it for make sure that the quest will accept than I will close the dialog
+    }
+  }
+
+  public void QuestEnemyKilled(string enemyName)
+  {
+    foreach (var quest in acceptedQuests)
+    {
+      if (quest.isCompleted)
+        continue;
+
+      if (quest.Config.EnemyNameToKill == enemyName)
+      {
+        quest.AddKill();
+      }
     }
   }
 }

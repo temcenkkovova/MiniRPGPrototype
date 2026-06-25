@@ -23,7 +23,8 @@ public class QuestManagerUI : MonoBehaviour
     foreach (var item in questSystem.acceptedQuests)
     {
       QuestItemUI questItem = Instantiate(questItemPrefab, gridParent);
-      questItem.Init(item.Config);
+      questItem.Init(item);
+
     }
   }
 

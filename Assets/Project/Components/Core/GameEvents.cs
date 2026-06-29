@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameEvents
 {
   public static event Action<string> OnEnemyKilled;
-  public static event Action<QuestData> OnQuestCompleted;
+  public static event Action<RewardData> OnQuestCompleted;
 
   public static void EnemyKilled(string enemyName)
   {
@@ -15,6 +15,11 @@ public static class GameEvents
 
   public static void QuestCompleted(QuestData questData)
   {
-    OnQuestCompleted?.Invoke(questData);
+    RewardData reward = new RewardData
+    {
+      Coins = questData.Config.rewardCoins,
+      Exp = questData.Config.RewardExp,
+    };
+    OnQuestCompleted?.Invoke(reward);
   }
 }

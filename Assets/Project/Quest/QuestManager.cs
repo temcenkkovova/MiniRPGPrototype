@@ -39,6 +39,11 @@ public class QuestManager : MonoBehaviour
     questSystem.AcceptQuest(config, this);
 
   }
+  public void Complete()
+  {
+    questSystem.CompletedQuest(config);
+    CloseDialog();
+  }
 
   public void ChangeQuestStatus()
   {

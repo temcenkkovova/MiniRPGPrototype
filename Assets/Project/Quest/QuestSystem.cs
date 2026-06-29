@@ -6,6 +6,7 @@ public class QuestSystem : MonoBehaviour
 {
   // here will be current quests to complete
   public List<QuestData> acceptedQuests = new List<QuestData>();
+  public List<QuestData> completedQuests = new List<QuestData>();
 
   public event Action OnQuestsChanged;
 
@@ -57,4 +58,17 @@ public class QuestSystem : MonoBehaviour
       }
     }
   }
+
+  public void CompletedQuest(QuestConfig questConfig)
+  {
+    QuestData questData = acceptedQuests.Find(item => item.Config.name == questConfig.name);
+    acceptedQuests.Remove(questData);
+    completedQuests.Add(questData);
+    OnQuestsChanged?.Invoke();
+    if (questData == null) return;
+
+    GameEvents.QuestCompleted(questData);
+  }
+
+
 }

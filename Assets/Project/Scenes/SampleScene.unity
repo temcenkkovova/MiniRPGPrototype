@@ -27904,6 +27904,7 @@ GameObject:
   - component: {fileID: 1522151225}
   - component: {fileID: 1522151226}
   - component: {fileID: 1522151227}
+  - component: {fileID: 1522151228}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -28003,6 +28004,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7202846426156596253, guid: d1c243a0bfeb1e24ea0a739356cbd5ea, type: 3}
+--- !u!114 &1522151228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522151221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a319e71e559a1b4c9eb3a5d8c321a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: {fileID: 1974371185}
+  gameEconomy: {fileID: 2097430920}
 --- !u!4 &1524211032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6251920492078742113, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}

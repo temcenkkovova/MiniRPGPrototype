@@ -2143,7 +2143,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705344840565353171}
         m_TargetAssemblyTypeName: QuestUI, Assembly-CSharp
-        m_MethodName: HandleAccept
+        m_MethodName: HandleCompleteQuest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

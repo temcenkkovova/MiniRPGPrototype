@@ -57,4 +57,10 @@ public class QuestUI : MonoBehaviour
     quest.AcceptQuest();
   }
 
+  public void HandleCompleteQuest()
+  {
+    if (!quest) return;
+    quest.Complete();
+  }
+
 }

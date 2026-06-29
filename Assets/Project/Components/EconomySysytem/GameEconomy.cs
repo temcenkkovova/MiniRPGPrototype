@@ -36,4 +36,10 @@ public class GameEconomy : MonoBehaviour
     OnCurrencyChanged?.Invoke(CurrentCurrency);
   }
 
+  public void InitSavedCurrency(float savedCurrency)
+  {
+    CurrentCurrency = savedCurrency;
+    OnCurrencyChanged?.Invoke(CurrentCurrency);
+  }
+
 }

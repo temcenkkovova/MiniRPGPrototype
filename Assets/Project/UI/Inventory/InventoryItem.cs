@@ -37,6 +37,7 @@ public class InventoryItem : MonoBehaviour
 
   public void Refresh()
   {
+    Debug.Log("Refresh inve");
     if (weapon == null) return;
     bool equipped = playerWeapon.IsEquipped(weapon);
     if (iconField)

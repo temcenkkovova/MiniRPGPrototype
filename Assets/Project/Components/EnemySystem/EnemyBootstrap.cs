@@ -45,6 +45,7 @@ public class EnemyBootstrap : MonoBehaviour
     deadState = new DeadState(fsmController, enemyAnimationController);
 
     enemyHealth.Init(enemyConfig.maxHealth);
+    enemyHealth.InitEnemyConfig(enemyConfig);
 
     enemyMovement.Init(enemyConfig);
     fsmController.InitState(enemyHealth, IdleSt, DeadSt);

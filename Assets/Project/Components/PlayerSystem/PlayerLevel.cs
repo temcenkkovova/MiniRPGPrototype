@@ -11,6 +11,7 @@ public class PlayerLevel : MonoBehaviour
   public float MultiplyExp { get; private set; }
   public event Action<int> OnLevelUpdate;
   public event Action<float> OnCurrentExpChanged;
+  public event Action OnLevelDataLoaded;
 
 
   public void Init(PlayerConfig playerConfig)
@@ -38,5 +39,12 @@ public class PlayerLevel : MonoBehaviour
     OnCurrentExpChanged?.Invoke(CurrentExp);
     OnLevelUpdate?.Invoke(CurrentLevel);
 
+  }
+
+  public void InitSaveLevelData(int saveLevel, float saveExp)
+  {
+    CurrentLevel = saveLevel;
+    CurrentExp = saveExp;
+    OnLevelDataLoaded?.Invoke();
   }
 }

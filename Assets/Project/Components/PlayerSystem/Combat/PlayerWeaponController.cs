@@ -6,7 +6,7 @@ public class PlayerWeaponController : MonoBehaviour
 
   public WeaponConfig CurrentWeaponConfig { get; private set; }
   private MeleeAttack attack;
-  [SerializeField] private WeaponItem startWeapon;
+  [SerializeField] public WeaponItem startWeapon;
   public Transform weaponPositionGrid;
   [NonSerialized] public WeaponStats weaponStats;
   public WeaponItem EquippedWeapon { get; private set; }
@@ -19,6 +19,7 @@ public class PlayerWeaponController : MonoBehaviour
   {
     attack = GetComponent<MeleeAttack>();
     playerAudio = GetComponent<PlayerAudio>();
+
   }
 
   void Start()
@@ -26,6 +27,8 @@ public class PlayerWeaponController : MonoBehaviour
     EquipWeapon(startWeapon.weaponConfig, startWeapon);
     inventorySystem.AddItem(startWeapon);
   }
+
+
   public void EquipWeapon(WeaponConfig newWeapon, WeaponItem weaponItem = null)
   {
 
@@ -35,8 +38,6 @@ public class PlayerWeaponController : MonoBehaviour
       EquippedWeapon = weaponItem;
 
     }
-
-
     weaponStats = new WeaponStats(CurrentWeaponConfig);
     foreach (Transform child in weaponPositionGrid)
       Destroy(child.gameObject);

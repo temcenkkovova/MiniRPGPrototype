@@ -15,6 +15,7 @@ public class PlayerExpUI : MonoBehaviour
   {
     if (playerLevel == null) return;
     playerLevel.OnCurrentExpChanged += ShowExp;
+    playerLevel.OnLevelDataLoaded += SetLoadedExp;
     ShowExp(playerLevel.CurrentExp);
     fillImage.fillAmount = 0f;
   }
@@ -23,7 +24,16 @@ public class PlayerExpUI : MonoBehaviour
     fillImage.fillAmount = Mathf.Lerp(fillImage.fillAmount, target, Time.deltaTime * delaySpeed);
 
   }
+  public void SetLoadedExp()
+  {
+    textField.text = playerLevel.CurrentExp.ToString("F4") + " / " + playerLevel.ExpToNextLevel.ToString("F4");
+    target = playerLevel.CurrentExp / playerLevel.ExpToNextLevel;
+    if (playerLevel.CurrentExp >= playerLevel.ExpToNextLevel)
+    {
 
+      target = 0f;
+    }
+  }
   public void ShowExp(float value)
   {
 
@@ -41,5 +51,6 @@ public class PlayerExpUI : MonoBehaviour
   {
     if (playerLevel == null) return;
     playerLevel.OnCurrentExpChanged -= ShowExp;
+    playerLevel.OnLevelDataLoaded -= SetLoadedExp;
   }
 }

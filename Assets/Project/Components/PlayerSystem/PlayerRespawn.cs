@@ -1,4 +1,4 @@
-using System.Numerics;
+
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -32,6 +32,13 @@ public class PlayerRespawn : MonoBehaviour
     playerHealth.Respawn();
     playerHealth.ResetMaxHealth(playerStats.Health);
 
+  }
+  public void HandleLoadedPosition(Vector3 loadedPos)
+  {
+    if (characterController == null) return;
+    characterController.enabled = false;
+    transform.position = loadedPos;
+    characterController.enabled = true;
   }
 
 

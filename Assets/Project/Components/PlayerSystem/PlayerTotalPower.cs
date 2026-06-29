@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerTotalPower : MonoBehaviour
 {
 
-  private PlayerWeaponController playerWeapon;
-  private PlayerCombat playerCombat;
+  [NonSerialized] public PlayerWeaponController playerWeapon;
+  [NonSerialized] public PlayerCombat playerCombat;
   private int battlePower;
   public int BattlePower => battlePower;
   public event Action<int> OnBpChanged;

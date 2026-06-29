@@ -5,12 +5,16 @@ public class SwordHitBox : MonoBehaviour
   private float damage;
   private Collider swordCollider;
   private Transform ownerTr;
-  private bool hitStatus = false;
-  void Awake()
+  private bool hitStatus;
+  private IDamageable currentTarget;
+  private bool startAttack;
+
+  private void Awake()
   {
     swordCollider = GetComponent<Collider>();
   }
-  void OnEnable()
+
+  private void OnEnable()
   {
     DisableCollider();
   }
@@ -19,25 +23,32 @@ public class SwordHitBox : MonoBehaviour
   {
     damage = newDamage;
     this.ownerTr = ownerTr;
-
   }
 
-  void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
   {
-    if (other.TryGetComponent<IDamageable>(out var damageable) && !hitStatus)
-    {
-      hitStatus = true;
-      damageable.TakeDamage(damage, ownerTr);
-    }
+    if (!startAttack) return;
+    if (ownerTr == null) return;
 
+    IDamageable damageable = other.GetComponent<IDamageable>();
+    if (damageable == null) return;
+
+    bool equalTag = ownerTr.CompareTag(other.tag);
+    if (equalTag) return;
+
+    if (hitStatus) return;
+
+    hitStatus = true;
+    currentTarget = damageable;
+
+    damageable.TakeDamage(damage, ownerTr);
   }
 
-  void OnTriggerExit(Collider other)
-  {
-    hitStatus = false;
-  }
   public void EnableCollider()
   {
+    hitStatus = false;
+    startAttack = true;
+    currentTarget = null;
 
     if (swordCollider)
       swordCollider.enabled = true;
@@ -45,8 +56,11 @@ public class SwordHitBox : MonoBehaviour
 
   public void DisableCollider()
   {
-
     if (swordCollider)
       swordCollider.enabled = false;
+
+    hitStatus = false;
+    startAttack = false;
+    currentTarget = null;
   }
 }

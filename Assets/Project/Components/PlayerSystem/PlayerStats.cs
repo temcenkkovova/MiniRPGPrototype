@@ -5,6 +5,7 @@ public class PlayerStats
 {
   private float health;
   private float moveSpeed;
+  public float armor;
   private float sprintSpeed;
   public float ExpToNextLevel;
   public float MultiplyExp;
@@ -15,6 +16,15 @@ public class PlayerStats
     {
       sprintSpeed = value;
       OnSprintSpeedChanged?.Invoke(sprintSpeed);
+    }
+  }
+  public float Armor
+  {
+    get => armor; set
+    {
+      armor = value;
+      OnArmorChanged?.Invoke(armor);
+      OnStatsChanged?.Invoke();
     }
   }
   public float BaseDamage
@@ -36,6 +46,7 @@ public class PlayerStats
     }
   }
   public event Action<float> OnHealthChanged;
+  public event Action<float> OnArmorChanged;
 
   public float MoveSpeed
   {
@@ -71,12 +82,14 @@ public class PlayerStats
     MultiplyExp = config.multiplyExp;
     BaseDamage = config.baseDamage;
     SprintSpeed = config.sprintSpeed;
+    Armor = config.baseArmor;
   }
 
   public void IncreaseStats()
   {
     BaseDamage *= 1.2f;
     MoveSpeed *= 1.1f;
+    Armor += 0.5f;
     Health *= 1.1f;
     SprintSpeed *= 1.1f;
     OnStatsChanged?.Invoke();

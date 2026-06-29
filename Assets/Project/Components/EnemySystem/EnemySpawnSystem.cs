@@ -49,7 +49,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
     EnemyManager.Instance.AddEnemy(enemyBootstrap);
-
+    enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);
   }
 
   private Vector3 GetRandomPosition()

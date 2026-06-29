@@ -9589,7 +9589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &544181671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19406,7 +19406,7 @@ MonoBehaviour:
   missQuestPanel: {fileID: 1656185091}
   questPanel: {fileID: 544181670}
   gridParent: {fileID: 544181671}
-  questItemPrefab: {fileID: 1065646827565282671, guid: 40416ab3a45259147868d513143b58d9, type: 3}
+  questItemPrefab: {fileID: 9013295005174734115, guid: 40416ab3a45259147868d513143b58d9, type: 3}
   questSystem: {fileID: 2097430924}
 --- !u!1 &1092127595
 GameObject:
@@ -29982,7 +29982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1656185092
 RectTransform:
   m_ObjectHideFlags: 0

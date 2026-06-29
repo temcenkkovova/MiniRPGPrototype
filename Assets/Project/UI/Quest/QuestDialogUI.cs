@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestDialogUI : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class QuestDialogUI : MonoBehaviour
   public Transform gridParent;
   public QuestUI questUIPrefab;
   public GameObject questPanel;
+
 
   void Awake()
   {
@@ -17,8 +19,12 @@ public class QuestDialogUI : MonoBehaviour
   {
     questPanel.SetActive(isOpen);
     if (!isOpen) return;
+
+    foreach (Transform child in gridParent)
+      Destroy(child.gameObject);
     QuestUI uI = Instantiate(questUIPrefab, gridParent);
     uI.Init(quest.config, quest);
+
   }
   void OnDisable()
   {

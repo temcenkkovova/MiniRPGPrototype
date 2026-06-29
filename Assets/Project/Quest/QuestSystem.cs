@@ -6,7 +6,18 @@ public class QuestSystem : MonoBehaviour
 {
   // here will be current quests to complete
   public List<QuestData> acceptedQuests = new List<QuestData>();
+
   public event Action OnQuestsChanged;
+
+  void Start()
+  {
+    GameEvents.OnEnemyKilled += QuestEnemyKilled;
+  }
+
+  void OnDisable()
+  {
+    GameEvents.OnEnemyKilled -= QuestEnemyKilled;
+  }
 
   public void AcceptQuest(QuestConfig config, QuestManager questManager)
   {
@@ -29,6 +40,7 @@ public class QuestSystem : MonoBehaviour
       acceptedQuests.Add(questData);
       OnQuestsChanged?.Invoke();
       questManager.CloseDialog(); // I implemented it for make sure that the quest will accept than I will close the dialog
+      questManager.ChangeQuestStatus();
     }
   }
 

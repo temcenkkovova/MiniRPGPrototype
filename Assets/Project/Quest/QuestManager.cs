@@ -6,7 +6,20 @@ public class QuestManager : MonoBehaviour
   public QuestConfig config;
   public QuestSystem questSystem;
 
+  private bool isAcceptedQuest = false;
+  public bool IsAcceptedQuest => isAcceptedQuest;
+
   public event Action<bool> IsOpenQuestDialog;
+
+  public bool CheckQuestCompleteStatus()
+  {
+    bool status = false;
+
+    QuestData questData = questSystem.acceptedQuests.Find(item => item.Config.name == config.name);
+    if (questData == null) return false;
+    status = questData.isCompleted;
+    return status;
+  }
 
   public void OpenDialog()
   {
@@ -24,6 +37,12 @@ public class QuestManager : MonoBehaviour
   public void AcceptQuest()
   {
     questSystem.AcceptQuest(config, this);
+
+  }
+
+  public void ChangeQuestStatus()
+  {
+    isAcceptedQuest = true;
   }
 
 }

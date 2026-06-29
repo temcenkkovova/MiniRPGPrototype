@@ -6,7 +6,7 @@ public class QuestData
   public int CurrentKills;
   public bool isCompleted => CurrentKills >= Config.RequiredKills;
   public event Action<int> OnCurrentKillsChanged;
-  public event Action<QuestData> OnQuestCompleted;
+  // public event Action<QuestData> OnQuestCompleted;
 
 
   public void AddKill()
@@ -14,10 +14,10 @@ public class QuestData
     if (isCompleted) return;
 
     CurrentKills++;
-    OnCurrentKillsChanged.Invoke(CurrentKills);
+    OnCurrentKillsChanged?.Invoke(CurrentKills);
     if (isCompleted)
     {
-      OnQuestCompleted.Invoke(this);
+      // GameEvents.QuestCompleted(this);
     }
 
   }

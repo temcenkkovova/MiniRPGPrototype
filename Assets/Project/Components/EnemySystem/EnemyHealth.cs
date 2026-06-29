@@ -8,6 +8,8 @@ public class EnemyHealth : Health
   private PopupManager popupManager;
   private Transform currentTr;
 
+  private EnemyConfig enemyConfig;
+
 
   void Start()
   {
@@ -24,6 +26,7 @@ public class EnemyHealth : Health
   protected override void Die()
   {
     base.Die();
+    GameEvents.EnemyKilled(enemyConfig.name);
   }
 
   void OnDestroy()
@@ -32,9 +35,15 @@ public class EnemyHealth : Health
     OnDamaged -= ShowPopUpHealth;
   }
 
+  public void InitEnemyConfig(EnemyConfig enemyConfig)
+  {
+    this.enemyConfig = enemyConfig;
+  }
+
   public void InitPopupManager(PopupManager manager)
   {
     popupManager = manager;
+
   }
 
 }

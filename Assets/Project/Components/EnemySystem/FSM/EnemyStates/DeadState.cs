@@ -10,11 +10,13 @@ public class DeadState : IEnemyState
 {
   private EnemyFSMController fsm;
   private EnemyAnimationsController animationController;
+  private EnemyMovement movement;
 
-  public DeadState(EnemyFSMController fsm, EnemyAnimationsController animationController)
+  public DeadState(EnemyFSMController fsm, EnemyAnimationsController animationController, EnemyMovement movement)
   {
     this.fsm = fsm;
     this.animationController = animationController;
+    this.movement = movement;
   }
 
   public void Update()
@@ -26,8 +28,10 @@ public class DeadState : IEnemyState
   {
 
     fsm.enabled = false;
+    movement.StopMove();
     animationController.DeadAnimation();
     fsm.StartDestroyCoroutine();
+
   }
   public void Exit()
   {

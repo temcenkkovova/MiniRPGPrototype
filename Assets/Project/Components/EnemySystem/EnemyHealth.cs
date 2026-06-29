@@ -10,12 +10,15 @@ public class EnemyHealth : Health
 
   private EnemyConfig enemyConfig;
 
+  private Collider enemyCollider;
 
   void Start()
   {
     ScaleHealth(EnemyManager.Instance.ScalingValue());
     OnDamaged += ShowPopUpHealth;
     currentTr = transform;
+
+    enemyCollider = GetComponent<Collider>();
   }
   public void ShowPopUpHealth(DamageInfo damageInfo)
   {
@@ -26,6 +29,7 @@ public class EnemyHealth : Health
   protected override void Die()
   {
     base.Die();
+    enemyCollider.enabled = false;
     GameEvents.EnemyKilled(enemyConfig.name);
   }
 

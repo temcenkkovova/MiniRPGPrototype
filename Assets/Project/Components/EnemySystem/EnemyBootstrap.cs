@@ -42,7 +42,7 @@ public class EnemyBootstrap : MonoBehaviour
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, 10f);
-    deadState = new DeadState(fsmController, enemyAnimationController);
+    deadState = new DeadState(fsmController, enemyAnimationController, enemyMovement);
 
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyHealth.InitEnemyConfig(enemyConfig);

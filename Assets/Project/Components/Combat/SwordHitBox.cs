@@ -7,7 +7,7 @@ public class SwordHitBox : MonoBehaviour
   private Transform ownerTr;
   private bool hitStatus;
   private IDamageable currentTarget;
-  private bool startAttack;
+  private bool startAttack = false;
 
   private void Awake()
   {
@@ -46,6 +46,7 @@ public class SwordHitBox : MonoBehaviour
 
   public void EnableCollider()
   {
+
     hitStatus = false;
     startAttack = true;
     currentTarget = null;
@@ -56,8 +57,13 @@ public class SwordHitBox : MonoBehaviour
 
   public void DisableCollider()
   {
+
     if (swordCollider)
+    {
       swordCollider.enabled = false;
+
+    }
+
 
     hitStatus = false;
     startAttack = false;

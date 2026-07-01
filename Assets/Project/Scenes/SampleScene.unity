@@ -3282,6 +3282,22 @@ PrefabInstance:
       propertyPath: questSystem
       value: 
       objectReference: {fileID: 2097430924}
+    - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
+      propertyPath: configs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
+      propertyPath: configs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3828c9a01664944a8a98d5d3a36de34, type: 2}
+    - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
+      propertyPath: configs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b47bd1088c54e984699c95af70030fab, type: 2}
+    - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
+      propertyPath: configs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ec8bba5a441cc64992be5bc0add9581, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
 --- !u!4 &179608070 stripped

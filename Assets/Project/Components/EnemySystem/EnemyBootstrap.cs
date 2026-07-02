@@ -88,7 +88,6 @@ public class EnemyBootstrap : MonoBehaviour
 
   private void HandleEnemyDeath()
   {
-    //EnemyManager.Instance.RemoveEnemy(this);
     spawnZone.SpawnedEnemyDeath(this);
   }
 }

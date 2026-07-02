@@ -49,7 +49,6 @@ public class EnemySpawnZone : MonoBehaviour
     enemyBootstrap.InitZone(this);
 
     enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
-    //EnemyManager.Instance.AddEnemy(enemyBootstrap);
     spawned.Add(enemyBootstrap);
     enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);
   }

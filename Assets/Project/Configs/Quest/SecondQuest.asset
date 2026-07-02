@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Save world
   description: The world has been occupied by murlocs
-  EnemyNameToKill: Murloc
+  EnemyNameToKill: Assasin
   RequiredKills: 5
   rewardCoins: 50
   RewardExp: 120

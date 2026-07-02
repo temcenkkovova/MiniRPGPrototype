@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class EnemyManager : MonoBehaviour
   public PlayerTotalPower playerTotalPower;
   public PlayerSafeZone playerSafeZone;
   private int lastSpawnBattlePower;
+
+  public event Action OnRebuildEnemies;
 
   void Awake()
   {
@@ -65,7 +68,8 @@ public class EnemyManager : MonoBehaviour
         Destroy(enemy.gameObject);
       }
       spawnedEnemies.Clear();
-      enemySpawnSystem.SpawnEnemies();
+      //enemySpawnSystem.SpawnEnemies();
+      OnRebuildEnemies?.Invoke();
     }
 
   }

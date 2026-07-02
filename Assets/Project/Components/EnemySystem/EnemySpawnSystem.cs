@@ -9,10 +9,10 @@ public class EnemySpawnSystem : MonoBehaviour
   public PopupManager popupManager;
 
   // This component will get radius between enemy spawn . The Spawn area  . Max enemy count . Scales enemy health and damage based on the player`s Combat Power;
-  void Start()
-  {
-    SpawnEnemies();
-  }
+  // void Start()
+  // {
+  //   SpawnEnemies();
+  // }
 
   public void SpawnEnemies()
   {

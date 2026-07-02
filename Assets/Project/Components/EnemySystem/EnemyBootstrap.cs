@@ -24,6 +24,8 @@ public class EnemyBootstrap : MonoBehaviour
   private EnemyRewardSystem enemyRewardSystem;
   private EnemyWeaponController enemyWeaponController;
 
+  private EnemySpawnZone spawnZone;
+
 
 
   void Awake()
@@ -77,8 +79,16 @@ public class EnemyBootstrap : MonoBehaviour
     }
 
   }
+
+  public void InitZone(EnemySpawnZone spawnZone)
+  {
+    this.spawnZone = spawnZone;
+  }
+
+
   private void HandleEnemyDeath()
   {
-    EnemyManager.Instance.RemoveEnemy(this);
+    //EnemyManager.Instance.RemoveEnemy(this);
+    spawnZone.SpawnedEnemyDeath(this);
   }
 }

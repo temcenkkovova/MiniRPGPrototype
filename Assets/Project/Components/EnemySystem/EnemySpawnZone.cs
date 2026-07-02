@@ -8,15 +8,17 @@ public class EnemySpawnZone : MonoBehaviour
   public PlayerBootstrap playerBootstrap;
   public PopupManager popupManager;
 
+  private List<EnemyBootstrap> spawned = new List<EnemyBootstrap>();
+
   public EnemyManager enemyManager;
   void OnEnable()
   {
-    enemyManager.OnRebuildEnemies += SpawnEnemies;
+    enemyManager.OnRebuildEnemies += HandleRebuildWorld;
   }
 
   void OnDisable()
   {
-    enemyManager.OnRebuildEnemies -= SpawnEnemies;
+    enemyManager.OnRebuildEnemies -= HandleRebuildWorld;
   }
 
   private void Start()
@@ -26,6 +28,7 @@ public class EnemySpawnZone : MonoBehaviour
 
   public void SpawnEnemies()
   {
+
     if (spawnZoneConfig.Enemies == null) return;
 
     foreach (var item in spawnZoneConfig.Enemies)
@@ -35,14 +38,42 @@ public class EnemySpawnZone : MonoBehaviour
         Debug.Log("EnemyConfig or prefab missing");
         continue;
       }
-      EnemyBootstrap enemyBootstrap = Instantiate(item.prefab, GetRandomPosition(), transform.rotation);
-      enemyBootstrap.Init(item);
-
-      enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
-      EnemyManager.Instance.AddEnemy(enemyBootstrap);
-      enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);
+      SpawnEnemy(item);
 
     }
+  }
+  private void SpawnEnemy(EnemyConfig config)
+  {
+    EnemyBootstrap enemyBootstrap = Instantiate(config.prefab, GetRandomPosition(), transform.rotation);
+    enemyBootstrap.Init(config);
+    enemyBootstrap.InitZone(this);
+
+    enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
+    //EnemyManager.Instance.AddEnemy(enemyBootstrap);
+    spawned.Add(enemyBootstrap);
+    enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);
+  }
+
+  public void SpawnedEnemyDeath(EnemyBootstrap enemy)
+  {
+    if (!spawned.Contains(enemy)) return;
+    spawned.Remove(enemy);
+    CheckRespawn();
+  }
+
+  private void CheckRespawn()
+  {
+    if (spawned.Count < spawnZoneConfig.MaxEnemies)
+    {
+      StartCoroutine(SpawnAfterDelay());
+    }
+  }
+
+  System.Collections.IEnumerator SpawnAfterDelay()
+  {
+    yield return new WaitForSeconds(3);
+    int randomNumber = Random.Range(0, spawnZoneConfig.MaxEnemies);
+    SpawnEnemy(spawnZoneConfig.Enemies[randomNumber]);
   }
 
   private Vector3 GetRandomPosition()
@@ -53,5 +84,15 @@ public class EnemySpawnZone : MonoBehaviour
          transform.position.y,
          Random.Range(bounds.min.z, bounds.max.z)
      );
+  }
+
+  private void HandleRebuildWorld()
+  {
+    foreach (var enemy in spawned)
+    {
+      Destroy(enemy.gameObject);
+    }
+    spawned.Clear();
+    SpawnEnemies();
   }
 }

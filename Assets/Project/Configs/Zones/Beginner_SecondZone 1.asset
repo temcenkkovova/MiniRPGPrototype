@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84aab98c63e92c640b5cb2f5d2ebdd65, type: 3}
-  m_Name: Beginner_SecondZone
+  m_Name: Beginner_SecondZone 1
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 11400000, guid: dfd1eb1e9f25e284cbb62b21f0850a38, type: 2}

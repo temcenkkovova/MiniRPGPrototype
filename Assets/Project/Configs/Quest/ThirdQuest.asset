@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Save world twice
   description: The world has been occupied by demons
-  EnemyNameToKill: Demon
+  EnemyNameToKill: Berserk
   RequiredKills: 7
   rewardCoins: 70
   RewardExp: 150

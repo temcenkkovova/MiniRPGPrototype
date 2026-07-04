@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3629219843613827006}
   - component: {fileID: 5159838149303773552}
   - component: {fileID: 3269630252714425881}
+  - component: {fileID: 2881750387844684510}
   m_Layer: 0
   m_Name: NameBar
   m_TagString: Untagged
@@ -192,6 +193,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bffd12492ded2240a96480e1c639d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2881750387844684510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2884804702578693422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901288a4b1fa0694daa081d280ea30c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameField: {fileID: 5747934982618792203}
+  objectName: {fileID: 5236988368083856660}
 --- !u!1 &3604357587442653893
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,8 +558,9 @@ GameObject:
   - component: {fileID: 3604357589239861158}
   - component: {fileID: 3604357589239861159}
   - component: {fileID: 2368610451612100423}
+  - component: {fileID: 5236988368083856660}
   m_Layer: 0
-  m_Name: BaseEnemy
+  m_Name: Marauder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,6 +790,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28ebba4d94067d348a98691384133cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5236988368083856660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604357589239861156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26e81054ee3ad54892600bf88828636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3604357589265829985

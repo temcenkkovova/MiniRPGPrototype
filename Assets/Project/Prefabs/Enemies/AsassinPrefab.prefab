@@ -11810,7 +11810,7 @@ GameObject:
   - component: {fileID: 7025379743048417065}
   - component: {fileID: 7025379743041507565}
   m_Layer: 0
-  m_Name: Asassin
+  m_Name: AsassinPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-  public QuestConfig config;
+
   public QuestSystem questSystem;
   public List<QuestConfig> configs;
   private bool isAcceptedQuest = false;
@@ -12,8 +12,10 @@ public class QuestManager : MonoBehaviour
 
   public event Action<bool> IsOpenQuestDialog;
   private int currentQuestNumber = 0;
+  public QuestConfig defaultQuestConfig;
+  public QuestConfig currentQuestConfig => isQuestChainFinished ? defaultQuestConfig : configs[currentQuestNumber];
 
-  public QuestConfig currentQuestConfig => configs[currentQuestNumber];
+  private bool isQuestChainFinished = false;
 
   public bool CheckQuestCompleteStatus()
   {
@@ -35,27 +37,27 @@ public class QuestManager : MonoBehaviour
   {
     IsOpenQuestDialog?.Invoke(false);
     GameStateController.Instance.SetState(GameState.Gameplay);
-
   }
 
   public void AcceptQuest()
   {
-    //questSystem.AcceptQuest(config, this);   old version
     questSystem.AcceptQuest(currentQuestConfig, this);
-
   }
   public void Complete()
   {
-    //questSystem.CompletedQuest(config);  old version
     questSystem.CompletedQuest(currentQuestConfig);
     isAcceptedQuest = false;
     currentQuestNumber++;
     CloseDialog();
+
+    if (currentQuestNumber >= configs.Count)
+    {
+      isQuestChainFinished = true;
+    }
   }
 
   public void ChangeQuestStatus()
   {
     isAcceptedQuest = true;
   }
-
 }

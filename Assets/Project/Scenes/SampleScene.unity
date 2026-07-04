@@ -3592,6 +3592,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
+      propertyPath: defaultQuestConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 093a39b2ee5ce7c4286f0a468faa14dd, type: 2}
+    - target: {fileID: 8682951315332911258, guid: eac58ef05152d6d45ad080cdf1b7201f, type: 3}
       propertyPath: configs.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: c3828c9a01664944a8a98d5d3a36de34, type: 2}

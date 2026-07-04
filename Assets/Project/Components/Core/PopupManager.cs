@@ -12,7 +12,7 @@ public class PopupManager : MonoBehaviour
     Vector3 offset = new Vector3(
     Random.Range(-0.5f, 0.5f),
     Random.Range(0.5f, 1.5f),
-    0f
+    1f
 );
 
     Popup popup = Instantiate(prefab, trParent.localPosition + offset, Quaternion.identity);

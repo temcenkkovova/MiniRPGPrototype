@@ -22,7 +22,7 @@ public class EnemyHealth : Health
   }
   public void ShowPopUpHealth(DamageInfo damageInfo)
   {
-    string context = "- " + damageInfo.Damage.ToString();
+    string context = "- " + damageInfo.Damage.ToString("F0");
     popupManager.Show(context, currentTr, Color.red);
   }
 

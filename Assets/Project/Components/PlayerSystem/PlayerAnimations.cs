@@ -9,6 +9,8 @@ public class PlayerAnimations : MonoBehaviour
   public event Action AttackAnimationFinished;
   public event Action AttackAnimationStarted;
 
+
+
   void Awake()
   {
     animator = GetComponent<Animator>();
@@ -34,15 +36,21 @@ public class PlayerAnimations : MonoBehaviour
 
   public void StartAttackAnimation()
   {
+
     animator.SetTrigger("Attack");
+
   }
 
   public void OnAttackAnimationStarted()
   {
+
+
     AttackAnimationStarted?.Invoke();
+
   }
   public void OnAttackAnimationFinished()
   {
+
     AttackAnimationFinished?.Invoke();
 
   }

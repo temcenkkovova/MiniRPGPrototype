@@ -25,6 +25,7 @@ public class MeleeAttack : Attack
 
   public void EnableHitbox()
   {
+
     swordHitBox.EnableCollider();
   }
   public void DisableHitbox()

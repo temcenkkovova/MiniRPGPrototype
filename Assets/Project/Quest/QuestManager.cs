@@ -1,21 +1,27 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-  public QuestConfig config;
-  public QuestSystem questSystem;
 
+  public QuestSystem questSystem;
+  public List<QuestConfig> configs;
   private bool isAcceptedQuest = false;
   public bool IsAcceptedQuest => isAcceptedQuest;
 
   public event Action<bool> IsOpenQuestDialog;
+  private int currentQuestNumber = 0;
+  public QuestConfig defaultQuestConfig;
+  public QuestConfig currentQuestConfig => isQuestChainFinished ? defaultQuestConfig : configs[currentQuestNumber];
+
+  private bool isQuestChainFinished = false;
 
   public bool CheckQuestCompleteStatus()
   {
     bool status = false;
 
-    QuestData questData = questSystem.acceptedQuests.Find(item => item.Config.name == config.name);
+    QuestData questData = questSystem.acceptedQuests.Find(item => item.Config.name == currentQuestConfig.name);
     if (questData == null) return false;
     status = questData.isCompleted;
     return status;
@@ -31,23 +37,27 @@ public class QuestManager : MonoBehaviour
   {
     IsOpenQuestDialog?.Invoke(false);
     GameStateController.Instance.SetState(GameState.Gameplay);
-
   }
 
   public void AcceptQuest()
   {
-    questSystem.AcceptQuest(config, this);
-
+    questSystem.AcceptQuest(currentQuestConfig, this);
   }
   public void Complete()
   {
-    questSystem.CompletedQuest(config);
+    questSystem.CompletedQuest(currentQuestConfig);
+    isAcceptedQuest = false;
+    currentQuestNumber++;
     CloseDialog();
+
+    if (currentQuestNumber >= configs.Count)
+    {
+      isQuestChainFinished = true;
+    }
   }
 
   public void ChangeQuestStatus()
   {
     isAcceptedQuest = true;
   }
-
 }

@@ -24,6 +24,9 @@ public class EnemyBootstrap : MonoBehaviour
   private EnemyRewardSystem enemyRewardSystem;
   private EnemyWeaponController enemyWeaponController;
 
+  private EnemySpawnZone spawnZone;
+  private ObjectName objectName;
+
 
 
   void Awake()
@@ -37,12 +40,12 @@ public class EnemyBootstrap : MonoBehaviour
 
   void Start()
   {
-    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null || enemyRewardSystem == null || enemyWeaponController == null) return;
+    if (enemyHealth == null || fsmController == null || enemyMovement == null || enemyTargetSystem == null || attack == null || enemyAnimationController == null || enemyAttackManager == null || enemyRewardSystem == null || enemyWeaponController == null || objectName == null) return;
     chaseState = new ChaseState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     idleState = new IdleState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController);
     attackState = new AttackState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, enemyAttackManager);
     patrolState = new PatrolState(new EnemyContext { enemyTargetSystem = enemyTargetSystem, enemy = this, enemyAttack = attack, enemyMovement = enemyMovement }, fsmController, 10f);
-    deadState = new DeadState(fsmController, enemyAnimationController);
+    deadState = new DeadState(fsmController, enemyAnimationController, enemyMovement);
 
     enemyHealth.Init(enemyConfig.maxHealth);
     enemyHealth.InitEnemyConfig(enemyConfig);
@@ -53,6 +56,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyHealth.OnDeath += HandleEnemyDeath;
     enemyRewardSystem.Init(enemyConfig.coinsReward, enemyConfig.expReward);
     enemyWeaponController.Init(enemyConfig.weaponConfig);
+    objectName.InitName(enemyConfig.name);
   }
 
   private void InitComponents()
@@ -66,6 +70,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyAttackManager = GetComponent<EnemyAttackManager>();
     enemyRewardSystem = GetComponent<EnemyRewardSystem>();
     enemyWeaponController = GetComponent<EnemyWeaponController>();
+    objectName = GetComponent<ObjectName>();
   }
 
   void OnDisable()
@@ -77,8 +82,15 @@ public class EnemyBootstrap : MonoBehaviour
     }
 
   }
+
+  public void InitZone(EnemySpawnZone spawnZone)
+  {
+    this.spawnZone = spawnZone;
+  }
+
+
   private void HandleEnemyDeath()
   {
-    EnemyManager.Instance.RemoveEnemy(this);
+    spawnZone.SpawnedEnemyDeath(this);
   }
 }

@@ -23,7 +23,7 @@ public class QuestDialogUI : MonoBehaviour
     foreach (Transform child in gridParent)
       Destroy(child.gameObject);
     QuestUI uI = Instantiate(questUIPrefab, gridParent);
-    uI.Init(quest.config, quest);
+    uI.Init(quest.currentQuestConfig, quest);
 
   }
   void OnDisable()

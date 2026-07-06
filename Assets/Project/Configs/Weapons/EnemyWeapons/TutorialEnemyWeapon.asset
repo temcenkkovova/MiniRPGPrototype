@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fe510703697847abc187c50ad6074, type: 3}
   m_Name: TutorialEnemyWeapon
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 5
   cooldown: 1
   range: 2
   startBP: 0

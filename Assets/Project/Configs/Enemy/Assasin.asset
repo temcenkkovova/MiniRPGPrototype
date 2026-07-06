@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0528c7c9cbbf54b47a047ae08910fade, type: 3}
   m_Name: Assasin
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 45
   moveSpeed: 2
-  coinsReward: 30
-  expReward: 7
+  coinsReward: 10
+  expReward: 25
   prefab: {fileID: 5301504609996195174, guid: 8a408a23f4d11284db95fe8a1b3dc416, type: 3}
   weaponConfig: {fileID: 11400000, guid: 051ea0e7a7f69ce43bab8aa0667b31e4, type: 2}

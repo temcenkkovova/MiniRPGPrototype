@@ -26,7 +26,7 @@ public class PlayerExpUI : MonoBehaviour
   }
   public void SetLoadedExp()
   {
-    textField.text = playerLevel.CurrentExp.ToString("F4") + " / " + playerLevel.ExpToNextLevel.ToString("F4");
+    textField.text = playerLevel.CurrentExp.ToString("F0") + " / " + playerLevel.ExpToNextLevel.ToString("F0");
     target = playerLevel.CurrentExp / playerLevel.ExpToNextLevel;
     if (playerLevel.CurrentExp >= playerLevel.ExpToNextLevel)
     {
@@ -37,7 +37,7 @@ public class PlayerExpUI : MonoBehaviour
   public void ShowExp(float value)
   {
 
-    textField.text = value.ToString("F4") + " / " + playerLevel.ExpToNextLevel.ToString("F4");
+    textField.text = value.ToString("F0") + " / " + playerLevel.ExpToNextLevel.ToString("F0");
     target = playerLevel.CurrentExp / playerLevel.ExpToNextLevel;
     if (playerLevel.CurrentExp >= playerLevel.ExpToNextLevel)
     {

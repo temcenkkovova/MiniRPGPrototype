@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   moveSpeed: 2
   baseArmor: 3
-  expToNextLevel: 20
+  expToNextLevel: 100
   multiplyExp: 1.2
   baseDamage: 12
   sprintSpeed: 6

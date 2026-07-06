@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03554c71d6304cd4586c0abc484bf9c1, type: 3}
   m_Name: PlayerEconomy
   m_EditorClassIdentifier: 
-  startCurrency: 20
+  startCurrency: 0

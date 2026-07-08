@@ -6,6 +6,8 @@ public class GameEconomyUI : MonoBehaviour
   public GameEconomy gameEconomy;
 
   public TMP_Text currencyField;
+  public PopupManager popupManager;
+  public Transform economyPanel;
 
   void Awake()
   {
@@ -16,15 +18,17 @@ public class GameEconomyUI : MonoBehaviour
   void Start()
   {
     if (gameEconomy == null) return;
-    ShowCurrency(gameEconomy.CurrentCurrency);
+    currencyField.text = gameEconomy.CurrentCurrency.ToString("F0");
   }
 
   public void ShowCurrency(float totalCurrency)
   {
-    if (currencyField != null)
-    {
-      currencyField.text = totalCurrency.ToString("F0");
-    }
+    if (currencyField == null || popupManager == null) return;
+
+    string transformedText = "+ " + totalCurrency.ToString("F0");
+    popupManager.ShowUI(transformedText, economyPanel, Color.yellow);
+    currencyField.text = totalCurrency.ToString("F0");
+
   }
 
   void OnDisable()

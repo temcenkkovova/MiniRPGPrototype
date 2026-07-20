@@ -7,6 +7,7 @@ public class EnemySpawnZone : MonoBehaviour
   public BoxCollider spawnAreaCollider;
   public PlayerBootstrap playerBootstrap;
   public PopupManager popupManager;
+  public BloodEffectSpawner bloodEffectSpawner;
 
   private List<EnemyBootstrap> spawned = new List<EnemyBootstrap>();
 
@@ -23,7 +24,7 @@ public class EnemySpawnZone : MonoBehaviour
 
   private void Start()
   {
-    SpawnEnemies();
+    //SpawnEnemies();
   }
 
   public void SpawnEnemies()
@@ -47,7 +48,7 @@ public class EnemySpawnZone : MonoBehaviour
     EnemyBootstrap enemyBootstrap = Instantiate(config.prefab, GetRandomPosition(), transform.rotation);
     enemyBootstrap.Init(config);
     enemyBootstrap.InitZone(this);
-
+    enemyBootstrap.InitVFX(bloodEffectSpawner);
     enemyBootstrap.GetComponent<EnemyRewardSystem>().InitPlayerRef(playerBootstrap);
     spawned.Add(enemyBootstrap);
     enemyBootstrap.GetComponent<EnemyHealth>().InitPopupManager(popupManager);

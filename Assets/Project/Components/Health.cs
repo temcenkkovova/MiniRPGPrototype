@@ -31,7 +31,7 @@ public abstract class Health : MonoBehaviour, IDamageable
     OnHealthChanged?.Invoke(maxHealth);
   }
 
-  public void TakeDamage(float damage, Transform attacker)
+  public void TakeDamage(float damage, Transform attacker, Vector3 hitPoint)
   {
 
 
@@ -47,7 +47,9 @@ public abstract class Health : MonoBehaviour, IDamageable
       OnDamaged?.Invoke(new DamageInfo
       {
         Damage = reducedDamage,
-        attacker = attacker
+        attacker = attacker,
+        hitPoint = hitPoint,
+
       });
       Die();
     }
@@ -57,7 +59,8 @@ public abstract class Health : MonoBehaviour, IDamageable
       OnDamaged?.Invoke(new DamageInfo
       {
         Damage = reducedDamage,
-        attacker = attacker
+        attacker = attacker,
+        hitPoint = hitPoint,
       });
 
       if (CurrentHealth < 1f)

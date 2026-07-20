@@ -16,5 +16,5 @@ MonoBehaviour:
   description: The world has been occupied by murlocs
   EnemyNameToKill: Assasin
   RequiredKills: 5
-  rewardCoins: 50
-  RewardExp: 120
+  rewardCoins: 40
+  RewardExp: 70

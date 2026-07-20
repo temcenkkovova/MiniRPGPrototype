@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: 3604357589239861159}
   - component: {fileID: 2368610451612100423}
   - component: {fileID: 5236988368083856660}
+  - component: {fileID: 1019964729978739228}
   m_Layer: 0
   m_Name: Marauder
   m_TagString: Enemy
@@ -804,6 +805,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26e81054ee3ad54892600bf88828636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1019964729978739228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604357589239861156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d385c409fa9ff824ebdb98a7704b3994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodEffectSpawner: {fileID: 0}
 --- !u!1 &3604357589265829985
 GameObject:
   m_ObjectHideFlags: 0

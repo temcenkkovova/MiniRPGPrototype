@@ -15,5 +15,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 9299f9b3a86034d7ba27b7810696eb1e, type: 3}
   description: This is a legendary Shadowfang
   title: Shadowfang
-  price: 15
+  price: 90
   weaponConfig: {fileID: 11400000, guid: 23d5503ebbc75744e8a887eea5d20602, type: 2}

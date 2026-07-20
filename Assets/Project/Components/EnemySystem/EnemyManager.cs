@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
   public float ScalingValue()
   {
 
-    float scale = 1f + playerTotalPower.BattlePower * 0.02f;
+    float scale = 1f + playerTotalPower.BattlePower * 0.003f;
     return scale;
   }
 

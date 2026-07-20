@@ -16,5 +16,5 @@ MonoBehaviour:
   description: The farm needs help against marauders
   EnemyNameToKill: Marauder
   RequiredKills: 3
-  rewardCoins: 30
-  RewardExp: 100
+  rewardCoins: 20
+  RewardExp: 30

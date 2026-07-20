@@ -17,4 +17,4 @@ MonoBehaviour:
   EnemyNameToKill: Berserk
   RequiredKills: 7
   rewardCoins: 70
-  RewardExp: 150
+  RewardExp: 120

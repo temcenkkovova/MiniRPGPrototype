@@ -26,8 +26,8 @@ public class EnemyBootstrap : MonoBehaviour
 
   private EnemySpawnZone spawnZone;
   private ObjectName objectName;
-
-
+  private BloodEffectSpawner bloodEffect;
+  private EnemyVFX enemyVFX;
 
   void Awake()
   {
@@ -71,7 +71,15 @@ public class EnemyBootstrap : MonoBehaviour
     enemyRewardSystem = GetComponent<EnemyRewardSystem>();
     enemyWeaponController = GetComponent<EnemyWeaponController>();
     objectName = GetComponent<ObjectName>();
+    enemyVFX = GetComponent<EnemyVFX>();
   }
+
+  public void InitVFX(BloodEffectSpawner bloodEffectSpawner)
+  {
+    enemyVFX.InitBloodEffectSpawner(bloodEffectSpawner);
+
+  }
+
 
   void OnDisable()
   {
@@ -79,6 +87,7 @@ public class EnemyBootstrap : MonoBehaviour
     {
       enemyHealth.OnDamaged -= enemyTargetSystem.SetNewTarget;
       enemyHealth.OnDeath -= HandleEnemyDeath;
+
     }
 
   }

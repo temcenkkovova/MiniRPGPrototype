@@ -40,8 +40,8 @@ public class SwordHitBox : MonoBehaviour
 
     hitStatus = true;
     currentTarget = damageable;
-
-    damageable.TakeDamage(damage, ownerTr);
+    Vector3 hitPoint = other.ClosestPoint(transform.position);
+    damageable.TakeDamage(damage, ownerTr, hitPoint);
   }
 
   public void EnableCollider()
